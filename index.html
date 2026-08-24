@@ -320,6 +320,7 @@ section{padding-block:var(--aire); position:relative; overflow-x:clip}
 /* ---------- El plato ---------- */
 .rueda{position:relative; margin:clamp(12px,2.4vw,24px) auto 0;
   width:var(--lado,320px); height:var(--lado,320px);
+  max-width:100%;   /* jamás más ancho que su hueco */
   touch-action:pan-y}
 .rueda__hilos{position:absolute; inset:0; z-index:1; pointer-events:none;
   opacity:0; transition:opacity 1.2s var(--seda) .25s}
@@ -401,8 +402,11 @@ section{padding-block:var(--aire); position:relative; overflow-x:clip}
 /* ---------- El deslizador ---------- */
 .desliza{position:relative; z-index:4; max-width:440px;
   margin:clamp(12px,2.2vw,24px) auto 0; padding:0 6px}
-.desliza__pista{position:relative; height:36px; display:flex; align-items:center;
-  cursor:grab; touch-action:pan-y; user-select:none; -webkit-user-select:none}
+.desliza__pista{position:relative; height:44px; display:flex; align-items:center;
+  cursor:grab; user-select:none; -webkit-user-select:none;
+  /* none = mientras el dedo esté aquí, la página no se mueve */
+  touch-action:none; -ms-touch-action:none;
+  -webkit-tap-highlight-color:transparent}
 .desliza__pista:active{cursor:grabbing}
 .desliza__riel{position:absolute; left:0; right:0; height:2px; border-radius:2px;
   background:linear-gradient(90deg,rgba(86,197,232,.5),rgba(159,186,205,.16))}
@@ -2896,10 +2900,22 @@ const Rueda = (function () {
      El lado se calcula aquí, en píxeles, y se aplica a la
      caja y a cada círculo. Ancho y alto siempre idénticos. */
   function medir() {
-    const disponibleAncho = (caja.parentElement ? caja.parentElement.clientWidth : innerWidth);
+    /* clientWidth incluye el margen interior, así que engaña.
+       Aquí se lo restamos para saber el ancho de verdad. */
+    let ancho = innerWidth;
+    const padre = caja.parentElement;
+    if (padre) {
+      const est = getComputedStyle(padre);
+      ancho = padre.clientWidth
+            - parseFloat(est.paddingLeft || 0)
+            - parseFloat(est.paddingRight || 0);
+    }
+    /* Un respiro para que los círculos nunca toquen el borde
+       ni se corten al girar. */
+    const RESPIRO = 22;
     const alturaTitulo = innerWidth < 700 ? 190 : 215;   /* cintillo, título y deslizador */
-    const disponibleAlto = innerHeight - alturaTitulo;
-    return Math.max(250, Math.min(disponibleAncho, disponibleAlto, 600));
+    const alto = innerHeight - alturaTitulo;
+    return Math.max(240, Math.min(ancho - RESPIRO, alto, 600));
   }
 
   function colocar() {
@@ -3042,13 +3058,45 @@ const Rueda = (function () {
       poner((x / r.width) * 100);
     }
 
+    /* Mientras el dedo esté sobre la barra, el gesto es nuestro:
+       se bloquea el desplazamiento de la página. */
     pistaD.addEventListener("pointerdown", e => {
+      tomando = true;
+      pistaD.classList.add("tomada");
+      try { pistaD.setPointerCapture(e.pointerId); } catch (err) {}
+      e.preventDefault();
+      desde(e);
+    }, { passive: false });
+
+    pistaD.addEventListener("pointermove", e => {
+      if (!tomando) return;
+      e.preventDefault();
+      desde(e);
+    }, { passive: false });
+
+    ["pointerup", "pointercancel"].forEach(ev =>
+      pistaD.addEventListener(ev, e => {
+        tomando = false;
+        pistaD.classList.remove("tomada");
+        try { pistaD.releasePointerCapture(e.pointerId); } catch (err) {}
+      }));
+
+    /* Safari en iPhone todavía escucha los gestos táctiles antiguos.
+       Sin esto, el navegador roba el arrastre a mitad de camino. */
+    pistaD.addEventListener("touchstart", e => {
       tomando = true; pistaD.classList.add("tomada");
-      pistaD.setPointerCapture(e.pointerId); desde(e);
-    });
-    pistaD.addEventListener("pointermove", e => { if (tomando) desde(e); });
-    ["pointerup", "pointercancel", "pointerleave"].forEach(ev =>
-      pistaD.addEventListener(ev, () => { tomando = false; pistaD.classList.remove("tomada"); }));
+      e.preventDefault(); desde(e);
+    }, { passive: false });
+
+    pistaD.addEventListener("touchmove", e => {
+      if (!tomando) return;
+      e.preventDefault(); desde(e);
+    }, { passive: false });
+
+    ["touchend", "touchcancel"].forEach(ev =>
+      pistaD.addEventListener(ev, () => {
+        tomando = false; pistaD.classList.remove("tomada");
+      }));
 
     bolita.addEventListener("keydown", e => {
       const p = parseFloat(bolita.getAttribute("aria-valuenow")) || 0;
