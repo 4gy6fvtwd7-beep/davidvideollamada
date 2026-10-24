@@ -98,10 +98,13 @@ a{color:var(--bosque)}
 
 .portada__lienzo{position:absolute; top:0; left:0; right:0;
   height:min(62dvh,620px); overflow:hidden; pointer-events:none}
+/* La foto nace visible. Si arrancara en opacity:0 y el teléfono
+   tuviera "Reducir movimiento" activado, la animación se cancela
+   y la foto no aparecería nunca. */
 .portada__foto{width:100%; height:100%; object-fit:cover;
   object-position:80.5% 44%;
-  opacity:0; animation:fotoEntra 1.1s var(--suave) forwards}
-@keyframes fotoEntra{to{opacity:1}}
+  animation:fotoEntra 1.1s var(--suave)}
+@keyframes fotoEntra{from{opacity:0} to{opacity:1}}
 
 /* el verde entra por la izquierda y por abajo, bien largo,
    para que la foto se funda en vez de cortarse */
