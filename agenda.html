@@ -128,21 +128,21 @@ a{color:var(--bosque)}
 .portada__velo{position:absolute; inset:-1px; pointer-events:none;
   background:
     linear-gradient(180deg,
-      rgba(53,81,63,.34) 0%,
-      rgba(53,81,63,.28) 12%,
-      rgba(53,81,63,.12) 24%,
-      rgba(53,81,63,.06) 34%,
-      rgba(53,81,63,.05) 44%,
-      rgba(53,81,63,.26) 60%,
-      rgba(53,81,63,.58) 72%,
-      rgba(53,81,63,.86) 82%,
-      var(--hondo) 92%,
+      rgba(53,81,63,.20) 0%,
+      rgba(53,81,63,.14) 9%,
+      rgba(53,81,63,.04) 17%,
+      rgba(53,81,63,0) 26%,
+      rgba(53,81,63,0) 58%,
+      rgba(53,81,63,.10) 68%,
+      rgba(53,81,63,.34) 78%,
+      rgba(53,81,63,.66) 87%,
+      rgba(53,81,63,.90) 94%,
       var(--hondo) 100%),
     linear-gradient(92deg,
-      rgba(53,81,63,.78) 0%,
-      rgba(53,81,63,.40) 14%,
-      rgba(53,81,63,.12) 30%,
-      rgba(53,81,63,0) 48%)}
+      rgba(53,81,63,.46) 0%,
+      rgba(53,81,63,.20) 12%,
+      rgba(53,81,63,.04) 24%,
+      rgba(53,81,63,0) 36%)}
 
 .portada__marca{grid-row:1; z-index:3; display:flex; align-items:flex-start;
   gap:14px; color:#fff;
@@ -155,12 +155,12 @@ a{color:var(--bosque)}
    apague ya sobre la foto: si terminara justo en el borde se
    vería la línea de corte. */
 .portada__marca::before{content:""; position:absolute; z-index:-1;
-  left:0; right:0; top:0; bottom:-80px; pointer-events:none;
+  left:0; right:0; top:0; bottom:-44px; pointer-events:none;
   background:linear-gradient(180deg,
-    rgba(30,48,37,.60) 0%,
-    rgba(30,48,37,.58) 46%,
-    rgba(30,48,37,.48) 72%,
-    rgba(30,48,37,.22) 88%,
+    rgba(30,48,37,.70) 0%,
+    rgba(30,48,37,.67) 58%,
+    rgba(30,48,37,.44) 80%,
+    rgba(30,48,37,.16) 92%,
     rgba(30,48,37,0) 100%)}
 .portada__marca .gota{width:28px; height:28px; color:rgba(255,255,255,.85)}
 
@@ -858,7 +858,7 @@ a{color:var(--bosque)}
     "listos": "Te espero ese día. Revisa tu correo: te llegó la confirmación.",
     "elige": "Ahora elige tu día",
     "tusdatos": "Ahora tus datos",
-    "marca": "David Montenegro",
+    "nombre": "David Montenegro",
     "frase": "",
 
     "portadat": "Agenda tu videollamada",
@@ -1255,7 +1255,7 @@ const Form = (function () {
      Se escriben con textContent, así que nunca inyectan código. */
   function aplicarTextos() {
     const puntos = [
-      ["pMarca", "marca", "David Montenegro"],
+      ["pMarca", "nombre", "David Montenegro"],
       ["pTitulo", "portadat", "Agenda tu videollamada"],
       ["pSub", "portadas", "Elige el día y la hora de tu videollamada de 20 minutos."],
       ["btnEmpezar", "portadab", "Agendar mi cita ahora"],
@@ -1627,7 +1627,7 @@ const Mando = (function () {
      ["clave", "etiqueta"] o ["clave.0", "etiqueta"] para las listas. */
   const EDITABLES = [
     ["·", "La portada"],
-    ["marca", "Tu nombre (va encima de la frase)"],
+    ["nombre", "Tu nombre (va encima de la frase)"],
     ["frase", "Tu frase (déjala vacía si no quieres ninguna)"],
     ["portadat", "Titular"],
     ["portadas", "Frase debajo del titular"],
