@@ -92,17 +92,20 @@ a{color:var(--bosque)}
    abajo para que no se vea ninguna línea de corte.
    ============================================================ */
 .portada{position:relative; min-height:100dvh; background:var(--hondo);
-  display:flex; flex-direction:column; justify-content:flex-end;
-  overflow:hidden}
+  display:grid; grid-template-rows:auto 1fr auto; overflow:hidden}
 .portada[hidden]{display:none}
 
-.portada__lienzo{position:absolute; top:0; left:0; right:0;
-  height:min(62dvh,620px); overflow:hidden; pointer-events:none}
+/* La foto vive en la franja del medio. Arriba y abajo hay verde
+   sólido, así ni la frase ni el titular pisan una sola cara. */
+.portada__lienzo{position:relative; grid-row:2;
+  min-height:min(34dvh,300px); overflow:hidden; pointer-events:none}
 /* La foto nace visible. Si arrancara en opacity:0 y el teléfono
    tuviera "Reducir movimiento" activado, la animación se cancela
    y la foto no aparecería nunca. */
-.portada__foto{width:100%; height:100%; object-fit:cover;
-  object-position:80.5% 44%;
+/* En absoluto a propósito: si fuera un elemento normal impondría
+   su propia altura (su proporción) y estiraría toda la portada. */
+.portada__foto{position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:80.5% 44%;
   animation:fotoEntra 1.1s var(--suave)}
 @keyframes fotoEntra{from{opacity:0} to{opacity:1}}
 
@@ -111,14 +114,15 @@ a{color:var(--bosque)}
 .portada__velo{position:absolute; inset:-1px; pointer-events:none;
   background:
     linear-gradient(180deg,
-      rgba(53,81,63,.40) 0%,
-      rgba(53,81,63,.10) 18%,
-      rgba(53,81,63,.05) 36%,
-      rgba(53,81,63,.22) 52%,
-      rgba(53,81,63,.48) 64%,
-      rgba(53,81,63,.74) 73%,
-      rgba(53,81,63,.92) 80%,
-      var(--hondo) 87%,
+      var(--hondo) 0%,
+      rgba(53,81,63,.86) 5%,
+      rgba(53,81,63,.40) 12%,
+      rgba(53,81,63,.08) 22%,
+      rgba(53,81,63,.05) 44%,
+      rgba(53,81,63,.26) 60%,
+      rgba(53,81,63,.58) 72%,
+      rgba(53,81,63,.86) 82%,
+      var(--hondo) 92%,
       var(--hondo) 100%),
     linear-gradient(92deg,
       rgba(53,81,63,.78) 0%,
@@ -126,17 +130,38 @@ a{color:var(--bosque)}
       rgba(53,81,63,.12) 30%,
       rgba(53,81,63,0) 48%)}
 
-.portada__marca{position:absolute; z-index:3;
-  top:calc(26px + env(safe-area-inset-top,0px)); left:20px;
-  display:flex; align-items:center; gap:11px;
-  color:#fff; font-size:17px; font-weight:700; letter-spacing:-.01em;
-  text-shadow:0 2px 16px rgba(0,0,0,.5)}
-.portada__marca .gota{width:26px; height:26px; flex:none}
+.portada__marca{grid-row:1; z-index:3; display:flex; align-items:flex-start;
+  gap:13px; color:#fff;
+  padding:calc(22px + env(safe-area-inset-top,0px)) 20px 16px 20px}
+.portada__marca .gota{width:21px; height:21px; color:rgba(255,255,255,.85)}
 
-.portada__pie{position:relative; z-index:3; width:100%; max-width:600px;
-  padding:0 20px calc(38px + env(safe-area-inset-bottom,0px))}
-.portada h1{color:#fff; font-size:clamp(34px,8.8vw,54px); max-width:13ch;
-  margin-bottom:14px; text-shadow:0 2px 24px rgba(4,22,19,.45)}
+/* El círculo de la foto de perfil, como el de las redes.
+   Sin foto queda el aro con la gota; con foto la recorta centrada. */
+.avatar{flex:none; width:46px; height:46px; border-radius:50%;
+  display:grid; place-items:center; overflow:hidden; position:relative;
+  background:rgba(255,255,255,.13);
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.5), 0 4px 16px rgba(20,34,26,.35)}
+.avatar img{position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center}
+.avatar--foto{background:transparent}
+.avatar--foto .gota{display:none}
+
+.marca__txt{min-width:0; flex:1; padding-top:1px}
+.marca__nombre{display:block; font-size:15px; font-weight:700;
+  letter-spacing:-.01em; color:#fff; margin-bottom:3px}
+.marca__nombre:empty{display:none}
+/* La frase: letra del titular, tamaño contenido, sobre verde sólido */
+.marca__frase{display:block; font-family:var(--display);
+  font-variation-settings:"opsz" 36,"SOFT" 0,"WONK" 1;
+  font-weight:400; font-style:italic; letter-spacing:-.004em;
+  font-size:clamp(14px,3.7vw,17px); line-height:1.42;
+  color:rgba(255,255,255,.88); max-width:42ch}
+.marca__frase:empty{display:none}
+
+.portada__pie{grid-row:3; z-index:3; width:100%; max-width:600px;
+  padding:18px 20px calc(34px + env(safe-area-inset-bottom,0px))}
+.portada h1{color:#fff; font-size:clamp(32px,8.2vw,52px); max-width:13ch;
+  margin-bottom:13px; text-shadow:0 2px 24px rgba(4,22,19,.45)}
 .portada__s{color:rgba(255,255,255,.82); font-size:clamp(15.5px,4.1vw,18px);
   line-height:1.55; max-width:34ch; margin-bottom:26px;
   text-shadow:0 1px 14px rgba(4,22,19,.4)}
@@ -153,20 +178,24 @@ a{color:var(--bosque)}
 
 /* pantallas medianas en vertical */
 @media(min-width:600px){
-  .portada__lienzo{height:min(64dvh,760px)}
-  .portada__marca{top:calc(34px + env(safe-area-inset-top,0px)); left:36px}
-  .portada__pie{padding:0 36px calc(46px + env(safe-area-inset-bottom,0px))}
+  .portada__marca{padding:calc(30px + env(safe-area-inset-top,0px)) 36px 20px 36px; gap:15px}
+  .avatar{width:54px; height:54px}
+  .marca__nombre{font-size:16px}
+  .portada__pie{padding:22px 36px calc(46px + env(safe-area-inset-bottom,0px))}
 }
 
 /* pantallas anchas y teléfonos acostados: la foto ocupa todo */
 @media (orientation:landscape) and (max-height:600px),
        (min-width:900px) and (min-height:560px) and (orientation:landscape){
-  .portada{justify-content:flex-end}
-  .portada__lienzo{height:100%; bottom:0}
+  .portada{grid-template-rows:1fr; grid-template-areas:"todo"}
+  .portada__lienzo{grid-row:auto; grid-area:todo}
   .portada__foto{object-position:64% 30%}
-  .portada__marca{top:40px; left:48px}
-  .portada__pie{max-width:620px;
-    padding:0 48px calc(56px + env(safe-area-inset-bottom,0px)) 48px}
+  .portada__marca{grid-row:auto; grid-area:todo; align-self:start;
+    padding:36px 48px 0 48px; max-width:560px}
+  .portada__pie{grid-row:auto; grid-area:todo; align-self:end; justify-self:start;
+    max-width:620px; padding:0 48px calc(56px + env(safe-area-inset-bottom,0px)) 48px}
+  .marca__frase{text-shadow:0 2px 18px rgba(20,34,26,.75)}
+  .marca__nombre{text-shadow:0 2px 14px rgba(20,34,26,.7)}
   /* oscuro a la izquierda, donde va el texto; limpio a la derecha,
      donde están las personas y el agua */
   .portada__velo{background:
@@ -187,8 +216,11 @@ a{color:var(--bosque)}
 
 /* teléfono acostado: poca altura, todo más compacto */
 @media (orientation:landscape) and (max-height:600px){
-  .portada__marca{top:16px; left:26px; font-size:15px}
-  .portada__marca .gota{width:22px; height:22px}
+  .portada__marca{padding:14px 26px 0 26px; gap:11px; max-width:520px}
+  .avatar{width:36px; height:36px}
+  .marca__nombre{font-size:14px; margin-bottom:2px}
+  .marca__frase{font-size:13.5px; line-height:1.38}
+  .portada__lienzo{min-height:0}
   .portada__pie{padding:0 26px calc(20px + env(safe-area-inset-bottom,0px)) 26px;
     max-width:540px}
   .portada h1{font-size:clamp(28px,5.6vh,38px); margin-bottom:10px; max-width:14ch}
@@ -198,14 +230,16 @@ a{color:var(--bosque)}
 
 /* pantalla vertical bajita: que el texto siempre quepa */
 @media (orientation:portrait) and (max-height:700px){
-  .portada__lienzo{height:min(60dvh,420px)}
-  .portada h1{font-size:30px; margin-bottom:10px}
+  .portada__marca{padding-top:calc(16px + env(safe-area-inset-top,0px)); padding-bottom:12px}
+  .avatar{width:40px; height:40px}
+  .marca__frase{font-size:13.5px}
+  .portada h1{font-size:29px; margin-bottom:10px}
   .portada__s{font-size:15px; margin-bottom:18px}
   .portada .btn{min-height:54px}
 }
 
 @media(min-width:1500px){
-  .portada__marca{left:72px}
+  .portada__marca{padding-left:72px; padding-right:72px}
   .portada__pie{padding-left:72px; padding-right:72px}
 }
 
@@ -505,6 +539,17 @@ a{color:var(--bosque)}
   .cal__horas{grid-template-columns:1fr 1fr; gap:8px}
   .cal__hora{font-size:14.5px; padding:15px 6px}
 }
+
+/* Teléfono acostado de verdad bajito: con tan poca altura la frase
+   no cabe junto al titular y el botón. Manda el botón. */
+@media (orientation:landscape) and (max-height:460px){
+  .marca__frase{display:none}
+  .portada__marca{padding:10px 26px 0 26px}
+  .portada__pie{padding-top:10px; padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  .portada h1{font-size:clamp(24px,5vh,32px); margin-bottom:7px}
+  .portada__s{font-size:14px; margin-bottom:13px}
+  .portada .btn{min-height:48px; font-size:15.5px}
+}
 </style>
 </head>
 
@@ -519,11 +564,17 @@ a{color:var(--bosque)}
 <section class="portada" id="portada">
 
   <div class="portada__marca">
-    <svg class="gota" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+    <span class="avatar" id="pAvatar">
+      <img id="pAvatarImg" alt="" hidden>
+      <svg class="gota" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
       <path d="M12 2C12 2 3.5 12.6 3.5 18.6a8.5 8.5 0 0017 0C20.5 12.6 12 2 12 2z"/>
       <path d="M8.4 18.8a3.6 3.6 0 003.6 3.6" stroke-linecap="round" opacity=".65"/>
     </svg>
-    <span id="pMarca">Aquafeel</span>
+    </span>
+    <span class="marca__txt">
+      <span class="marca__nombre" id="pMarca">Aquafeel</span>
+      <span class="marca__frase" id="pFrase"></span>
+    </span>
   </div>
 
   <div class="portada__pie">
@@ -629,6 +680,16 @@ a{color:var(--bosque)}
           <button class="sec" type="button" id="btnBloquear">Bloquear esa hora</button>
         </div>
 
+        <h4>Tu foto</h4>
+        <p class="pista">Sale en el círculo de arriba, junto a tu frase. Se recorta y se centra sola; una foto cuadrada queda mejor.</p>
+        <div id="fotoPrevia" style="margin-bottom:14px"></div>
+        <input type="file" id="fotoArchivo" accept="image/*"
+          style="width:100%;font-family:var(--cuerpo);font-size:14px;color:var(--humo)">
+        <div class="acciones">
+          <button class="btn" type="button" id="btnFotoGuardar">Guardar la foto</button>
+          <button class="sec" type="button" id="btnFotoQuitar">Quitar la foto</button>
+        </div>
+
         <h4>Textos de la página</h4>
         <p class="pista">Cambia cualquier texto y toca Guardar. Se actualiza al instante para todos. Si borras uno, vuelve el original.</p>
         <div id="textosLista"></div>
@@ -721,6 +782,8 @@ a{color:var(--bosque)}
     "elige": "Ahora elige tu día",
     "tusdatos": "Ahora tus datos",
     "marca": "Aquafeel",
+    "frase": "",
+
     "portadat": "Agenda tu videollamada",
     "portadas": "Elige el día y la hora de tu videollamada de 20 minutos.",
     "portadab": "Agendar mi cita ahora",
@@ -873,6 +936,25 @@ const Nube = {
       if (!j) return [];
       return Array.isArray(j) ? j.filter(Boolean) : Object.values(j);
     } catch (e) { return null; }
+  },
+  async leerPerfil() {
+    if (!this.activa()) return null;
+    try {
+      const r = await fetch(this.ruta("/agenda/perfil") + "?cache=" + Date.now(), { cache: "no-store" });
+      if (!r.ok) return null;
+      const j = await r.json();
+      return (j && typeof j === "object") ? j : null;
+    } catch (e) { return null; }
+  },
+  async escribirPerfil(obj) {
+    if (!this.activa()) return false;
+    try {
+      const r = await fetch(this.ruta("/agenda/perfil"), {
+        method: "PUT", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(obj)
+      });
+      return r.ok;
+    } catch (e) { return false; }
   },
   async leerTextos() {
     if (!this.activa()) return null;
@@ -1106,6 +1188,19 @@ const Form = (function () {
       const e = $(id);
       if (e) e.textContent = tx(clave, porDefecto);
     }
+    /* La frase sí puede quedar vacía: entonces no se muestra. */
+    const f = $("pFrase");
+    if (f) f.textContent = (T.frase == null) ? "" : String(T.frase).trim();
+  }
+
+  /* La foto del círculo. Si no hay, se queda el aro con la gota. */
+  function aplicarFoto(dato) {
+    const aro = $("pAvatar"), img = $("pAvatarImg");
+    if (!aro || !img) return;
+    const hay = typeof dato === "string" && dato.indexOf("data:image/") === 0;
+    if (hay) { img.src = dato; img.hidden = false; aro.classList.add("avatar--foto"); }
+    else { img.removeAttribute("src"); img.hidden = true; aro.classList.remove("avatar--foto"); }
+    D.perfilFoto = hay ? dato : "";
   }
 
   function pintar() {
@@ -1419,6 +1514,8 @@ const Form = (function () {
     pintar();
     /* Los textos guardados en la nube mandan sobre los del archivo.
        Se piden aparte para que la página no espere por ellos. */
+    aplicarFoto(D.perfilFoto);
+    Nube.leerPerfil().then(p => { if (p && p.foto) aplicarFoto(p.foto); });
     Nube.leerTextos().then(t => {
       if (!t) return;
       Object.assign(T, t);
@@ -1432,7 +1529,7 @@ const Form = (function () {
       if (paso === 2) pintar();
     }
   }
-  return { arrancar, refrescar: pintar, textos: aplicarTextos };
+  return { arrancar, refrescar: pintar, textos: aplicarTextos, foto: aplicarFoto };
 })();
 
 /* ════════════════════════════════════════════════════════════
@@ -1454,6 +1551,7 @@ const Mando = (function () {
   const EDITABLES = [
     ["·", "La portada"],
     ["marca", "Nombre de la marca"],
+    ["frase", "Tu frase (déjala vacía si no quieres ninguna)"],
     ["portadat", "Titular"],
     ["portadas", "Frase debajo del titular"],
     ["portadab", "Texto del botón"],
@@ -1505,6 +1603,42 @@ const Mando = (function () {
     if (i === undefined) return v == null ? "" : v;
     return (Array.isArray(v) && v[+i] != null) ? v[+i] : "";
   };
+
+  /* Recorta la foto a un cuadrado centrado y la encoge, para que
+     pese poco y entre bien en el círculo. */
+  let fotoNueva = null;
+  function prepararFoto(archivo) {
+    return new Promise((listo, falla) => {
+      if (!archivo || archivo.type.indexOf("image/") !== 0) return falla("no es una imagen");
+      const lector = new FileReader();
+      lector.onerror = () => falla("no se pudo leer");
+      lector.onload = () => {
+        const im = new Image();
+        im.onerror = () => falla("no se pudo abrir");
+        im.onload = () => {
+          const L = 240, lado = Math.min(im.width, im.height);
+          const cx = (im.width - lado) / 2, cy = (im.height - lado) / 2;
+          const c = document.createElement("canvas");
+          c.width = L; c.height = L;
+          c.getContext("2d").drawImage(im, cx, cy, lado, lado, 0, 0, L, L);
+          listo(c.toDataURL("image/jpeg", 0.82));
+        };
+        im.src = lector.result;
+      };
+      lector.readAsDataURL(archivo);
+    });
+  }
+
+  function pintarFotoPrevia(dato) {
+    const c = $("fotoPrevia");
+    if (!c) return;
+    c.innerHTML = dato
+      ? '<div style="display:flex;align-items:center;gap:12px">' +
+        '<img src="' + dato + '" alt="" style="width:62px;height:62px;border-radius:50%;' +
+        'object-fit:cover;box-shadow:0 0 0 1.5px var(--hueso)">' +
+        '<span style="font-size:13.5px;color:var(--humo)">Así se verá en el círculo</span></div>'
+      : '<p class="pista" style="margin:0">Todavía no has puesto ninguna foto.</p>';
+  }
 
   function pintarTextos() {
     const cont = $("textosLista");
@@ -1607,6 +1741,8 @@ const Mando = (function () {
     $("mandoTitulo").textContent = "Panel del administrador";
     llenarCampos();
     pintarTextos();
+    pintarFotoPrevia(D.perfilFoto || "");
+    Nube.leerPerfil().then(p => { if (p && p.foto) { Form.foto(p.foto); pintarFotoPrevia(p.foto); } });
     pintarEstado();
     avisar("Cargando las citas...");
     const r = await Nube.leerReservas();
@@ -1669,6 +1805,32 @@ const Mando = (function () {
     document.body.appendChild(a); a.click();
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
     avisar("Copia descargada. Súbela a GitHub.", "ok");
+  });
+
+  $("fotoArchivo").addEventListener("change", async e => {
+    const a = e.target.files && e.target.files[0];
+    if (!a) return;
+    try {
+      fotoNueva = await prepararFoto(a);
+      pintarFotoPrevia(fotoNueva);
+      avisar("Foto lista. Toca Guardar la foto.");
+    } catch (err) { avisar("Esa imagen no se pudo usar. Prueba con otra.", "mal"); }
+  });
+
+  $("btnFotoGuardar").addEventListener("click", async () => {
+    if (!fotoNueva) { avisar("Elige primero una imagen.", "mal"); return; }
+    avisar("Guardando la foto...");
+    const ok = await Nube.escribirPerfil({ foto: fotoNueva });
+    if (ok) { Form.foto(fotoNueva); avisar("Foto guardada. Ya se ve en la portada.", "ok"); }
+    else avisar("No se pudo guardar. Revisa la conexión.", "mal");
+  });
+
+  $("btnFotoQuitar").addEventListener("click", async () => {
+    avisar("Quitando la foto...");
+    const ok = await Nube.escribirPerfil(null);
+    if (ok) { fotoNueva = null; Form.foto(""); pintarFotoPrevia(""); $("fotoArchivo").value = "";
+              avisar("Foto quitada.", "ok"); }
+    else avisar("No se pudo quitar. Revisa la conexión.", "mal");
   });
 
   $("btnTextos").addEventListener("click", async () => {
