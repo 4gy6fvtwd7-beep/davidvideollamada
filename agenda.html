@@ -29,17 +29,17 @@
    los usa en estilos en línea. No se tocan.
    ============================================================ */
 :root{
-  --hondo:#0A332C; --bosque:#14574A; --vivo:#1C8F6E;
-  --papel:#EDF1EE; --salvia:#DDE6E0; --nieve:#FFFFFF;
-  --tinta:#16241F; --humo:#5E6F68; --hueso:#C7D4CC;
+  --hondo:#35513F; --bosque:#456B52; --vivo:#5B9169;
+  --papel:#F1F4EE; --salvia:#DEE8DD; --nieve:#FFFFFF;
+  --tinta:#243329; --humo:#5F7265; --hueso:#C5D4C4;
   --ambar-txt:#7D5E14; --ambar-fon:#F7EFDC; --ambar-bor:#DFC894;
   --alarma:#A83B28;
 
-  --abismo:#EDF1EE; --profundo:#FFFFFF; --cielo:#14574A;
-  --aqua:#1C8F6E; --verde:#1C8F6E; --verde-txt:#FFFFFF;
-  --rojo:#A83B28; --marfil:#16241F; --plata:#5E6F68;
-  --champan:#7D5E14; --linea:#C7D4CC; --linea-luz:#A9BFB4;
-  --vidrio:rgba(20,87,74,.05);
+  --abismo:#F1F4EE; --profundo:#FFFFFF; --cielo:#456B52;
+  --aqua:#5B9169; --verde:#5B9169; --verde-txt:#FFFFFF;
+  --rojo:#A83B28; --marfil:#243329; --plata:#5F7265;
+  --champan:#7D5E14; --linea:#C5D4C4; --linea-luz:#A3BCA4;
+  --vidrio:rgba(69,107,82,.05);
 
   --display:"Fraunces",Georgia,serif;
   --cuerpo:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -59,7 +59,7 @@ h1,h2,h3{font-family:var(--display);
   font-weight:450; letter-spacing:-.018em; line-height:1.07; margin:0}
 p{margin:0}
 a{color:var(--bosque)}
-::selection{background:rgba(28,143,110,.22); color:var(--tinta)}
+::selection{background:rgba(91,145,105,.22); color:var(--tinta)}
 :where(a,button,input,select,textarea,[tabindex]):focus-visible{
   outline:2px solid var(--bosque); outline-offset:3px; border-radius:4px}
 
@@ -110,19 +110,21 @@ a{color:var(--bosque)}
    para que la foto se funda en vez de cortarse */
 .portada__velo{position:absolute; inset:-1px; pointer-events:none;
   background:
-    linear-gradient(176deg,
-      rgba(10,51,44,.42) 0%,
-      rgba(10,51,44,.10) 18%,
-      rgba(10,51,44,.06) 38%,
-      rgba(10,51,44,.30) 58%,
-      rgba(10,51,44,.72) 80%,
-      rgba(10,51,44,.95) 93%,
+    linear-gradient(180deg,
+      rgba(53,81,63,.40) 0%,
+      rgba(53,81,63,.10) 18%,
+      rgba(53,81,63,.05) 36%,
+      rgba(53,81,63,.22) 52%,
+      rgba(53,81,63,.48) 64%,
+      rgba(53,81,63,.74) 73%,
+      rgba(53,81,63,.92) 80%,
+      var(--hondo) 87%,
       var(--hondo) 100%),
     linear-gradient(92deg,
-      rgba(10,51,44,.78) 0%,
-      rgba(10,51,44,.40) 14%,
-      rgba(10,51,44,.12) 30%,
-      rgba(10,51,44,0) 48%)}
+      rgba(53,81,63,.78) 0%,
+      rgba(53,81,63,.40) 14%,
+      rgba(53,81,63,.12) 30%,
+      rgba(53,81,63,0) 48%)}
 
 .portada__marca{position:absolute; z-index:3;
   top:calc(26px + env(safe-area-inset-top,0px)); left:20px;
@@ -143,11 +145,11 @@ a{color:var(--bosque)}
    se distingue. En verde se perdía contra el propio fondo. */
 .portada .btn{max-width:380px; background:var(--nieve); color:var(--hondo);
   box-shadow:0 14px 34px rgba(0,0,0,.4)}
-.portada .btn::before{background-color:rgba(10,51,44,.12);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A332C' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M12 5l7 7-7 7'/%3E%3C/svg%3E")}
+.portada .btn::before{background-color:rgba(53,81,63,.12);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2335513F' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M12 5l7 7-7 7'/%3E%3C/svg%3E")}
 .portada .btn:hover{background:#fff; box-shadow:0 18px 40px rgba(0,0,0,.48)}
-.portada .btn:hover::before{background-color:rgba(10,51,44,.2)}
-.portada .onda{background:rgba(10,51,44,.18)}
+.portada .btn:hover::before{background-color:rgba(53,81,63,.2)}
+.portada .onda{background:rgba(53,81,63,.18)}
 
 /* pantallas medianas en vertical */
 @media(min-width:600px){
@@ -169,16 +171,16 @@ a{color:var(--bosque)}
      donde están las personas y el agua */
   .portada__velo{background:
     linear-gradient(100deg,
-      rgba(8,38,33,.88) 0%,
-      rgba(8,38,33,.80) 18%,
-      rgba(8,38,33,.58) 36%,
-      rgba(8,38,33,.28) 54%,
-      rgba(8,38,33,.08) 74%,
-      rgba(8,38,33,.16) 100%),
+      rgba(42,64,50,.88) 0%,
+      rgba(42,64,50,.80) 18%,
+      rgba(42,64,50,.58) 36%,
+      rgba(42,64,50,.28) 54%,
+      rgba(42,64,50,.08) 74%,
+      rgba(42,64,50,.16) 100%),
     linear-gradient(180deg,
-      rgba(8,38,33,.34) 0%,
-      rgba(8,38,33,0) 30%,
-      rgba(8,38,33,.42) 100%)}
+      rgba(42,64,50,.34) 0%,
+      rgba(42,64,50,0) 30%,
+      rgba(42,64,50,.42) 100%)}
   .portada h1{font-size:clamp(46px,4.6vw,70px); max-width:12ch; margin-bottom:18px}
   .portada__s{font-size:19px; margin-bottom:32px}
 }
@@ -215,7 +217,7 @@ a{color:var(--bosque)}
 .pantalla[hidden]{display:none}
 .caja{width:100%; max-width:600px; background:var(--nieve);
   border:1px solid var(--hueso); border-radius:24px; overflow:hidden;
-  box-shadow:0 26px 64px rgba(10,51,44,.12);
+  box-shadow:0 26px 64px rgba(53,81,63,.12);
   animation:entraCaja .6s var(--seda)}
 @keyframes entraCaja{from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none}}
 
@@ -268,7 +270,7 @@ a{color:var(--bosque)}
   transition:border-color .25s var(--suave), background .25s var(--suave), transform .3s var(--seda)}
 .opcion:hover{border-color:var(--linea-luz); background:var(--salvia)}
 .opcion:active{transform:scale(.99)}
-.opcion.elegida{border-color:var(--bosque); background:rgba(28,143,110,.1);
+.opcion.elegida{border-color:var(--bosque); background:rgba(91,145,105,.1);
   color:var(--hondo); font-weight:600}
 .opcion__caja{flex:none; width:26px; height:26px; border-radius:50%;
   border:1.5px solid var(--hueso); background:var(--nieve);
@@ -290,7 +292,7 @@ a{color:var(--bosque)}
   color:var(--tinta); font-family:var(--cuerpo); font-size:16px; font-weight:500;
   transition:border-color .2s ease, box-shadow .2s ease}
 .campo input::placeholder{color:#9AA8A2; font-weight:400}
-.campo input:focus{border-color:var(--bosque); box-shadow:0 0 0 3px rgba(20,87,74,.12); outline:none}
+.campo input:focus{border-color:var(--bosque); box-shadow:0 0 0 3px rgba(69,107,82,.12); outline:none}
 
 /* el corte entre el calendario y los datos */
 .paso-abajo{position:relative; display:flex; align-items:center; gap:16px;
@@ -320,11 +322,11 @@ a{color:var(--bosque)}
   margin-top:16px; padding-top:15px; border-top:1px solid rgba(180,138,42,.3);
   font-size:14.5px; line-height:1.45; color:var(--hondo); font-weight:600}
 .aviso__ok input{flex:none; width:22px; height:22px; margin:0; accent-color:var(--vivo); cursor:pointer}
-.aviso.confirmado{border-color:rgba(28,143,110,.45); background:rgba(28,143,110,.08)}
+.aviso.confirmado{border-color:rgba(91,145,105,.45); background:rgba(91,145,105,.08)}
 .aviso.confirmado .aviso__ico{background:var(--vivo)}
 .aviso.confirmado b{color:var(--bosque)}
 .aviso.confirmado p{color:var(--humo)}
-.aviso.confirmado .aviso__ok{border-top-color:rgba(28,143,110,.25)}
+.aviso.confirmado .aviso__ok{border-top-color:rgba(91,145,105,.25)}
 .aviso.sacudir{animation:sacudir .5s; border-color:var(--alarma)}
 @keyframes sacudir{0%,100%{transform:translateX(0)}
   15%{transform:translateX(-9px)} 30%{transform:translateX(9px)}
@@ -385,7 +387,7 @@ a{color:var(--bosque)}
 /* lo que escogió, confirmado de un vistazo */
 .yaesta{display:flex; align-items:center; gap:11px; margin-top:20px;
   padding:15px 17px; border-radius:14px;
-  background:rgba(28,143,110,.1); border:1px solid rgba(28,143,110,.4);
+  background:rgba(91,145,105,.1); border:1px solid rgba(91,145,105,.4);
   color:var(--hondo); font-size:16px; font-weight:700;
   animation:entraPaso .4s var(--seda)}
 .yaesta i{flex:none; width:26px; height:26px; border-radius:50%; background:var(--vivo);
@@ -437,12 +439,12 @@ a{color:var(--bosque)}
   transition:opacity .3s ease, transform .3s var(--seda)}
 .llave:hover,.llave:focus-visible{opacity:1; transform:scale(1.08); color:var(--hondo)}
 .mando{position:fixed; inset:0; z-index:97; display:none;
-  background:rgba(10,51,44,.72); backdrop-filter:blur(10px); overflow-y:auto; padding:16px}
+  background:rgba(53,81,63,.72); backdrop-filter:blur(10px); overflow-y:auto; padding:16px}
 .mando.abierto{display:block; animation:fundir .3s}
 @keyframes fundir{from{opacity:0} to{opacity:1}}
 .mando__caja{max-width:560px; margin:26px auto 60px; background:var(--nieve);
   border:1px solid var(--hueso); border-radius:22px; overflow:hidden;
-  box-shadow:0 30px 70px rgba(10,51,44,.3); animation:entraCaja .5s var(--seda)}
+  box-shadow:0 30px 70px rgba(53,81,63,.3); animation:entraCaja .5s var(--seda)}
 .mando__cab{padding:18px 20px; display:flex; align-items:center; gap:12px;
   border-bottom:1px solid var(--hueso); background:var(--papel)}
 .mando__cab b{flex:1; font-size:16px; color:var(--hondo)}
@@ -476,14 +478,14 @@ a{color:var(--bosque)}
 .estado{font-size:13.5px; font-weight:600; padding:11px 14px; border-radius:11px;
   margin-bottom:18px; display:flex; align-items:center; gap:9px; line-height:1.4}
 .estado::before{content:""; width:8px; height:8px; border-radius:50%; flex:none}
-.estado--ok{background:rgba(28,143,110,.1); color:var(--bosque); border:1px solid rgba(28,143,110,.3)}
+.estado--ok{background:rgba(91,145,105,.1); color:var(--bosque); border:1px solid rgba(91,145,105,.3)}
 .estado--ok::before{background:var(--vivo)}
 .estado--no{background:var(--ambar-fon); color:var(--ambar-txt); border:1px solid var(--ambar-bor)}
 .estado--no::before{background:#B68A2A}
 .brindis{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px);
   background:var(--hondo); border:1px solid var(--hondo); color:#fff;
   font-size:14.5px; font-weight:600; padding:14px 22px; border-radius:999px;
-  box-shadow:0 18px 44px rgba(10,51,44,.35); z-index:130; opacity:0;
+  box-shadow:0 18px 44px rgba(53,81,63,.35); z-index:130; opacity:0;
   pointer-events:none; transition:opacity .3s ease, transform .3s ease;
   max-width:88vw; text-align:center}
 .brindis.visible{opacity:1; transform:translateX(-50%) translateY(0)}
@@ -521,12 +523,12 @@ a{color:var(--bosque)}
       <path d="M12 2C12 2 3.5 12.6 3.5 18.6a8.5 8.5 0 0017 0C20.5 12.6 12 2 12 2z"/>
       <path d="M8.4 18.8a3.6 3.6 0 003.6 3.6" stroke-linecap="round" opacity=".65"/>
     </svg>
-    Aquafeel
+    <span id="pMarca">Aquafeel</span>
   </div>
 
   <div class="portada__pie">
-    <h1>Agenda tu videollamada</h1>
-    <p class="portada__s">Elige el día y la hora de tu videollamada de 20 minutos.</p>
+    <h1 id="pTitulo">Agenda tu videollamada</h1>
+    <p class="portada__s" id="pSub">Elige el día y la hora de tu videollamada de 20 minutos.</p>
     <button class="btn" type="button" id="btnEmpezar">Agendar mi cita ahora</button>
   </div>
 
@@ -627,6 +629,14 @@ a{color:var(--bosque)}
           <button class="sec" type="button" id="btnBloquear">Bloquear esa hora</button>
         </div>
 
+        <h4>Textos de la página</h4>
+        <p class="pista">Cambia cualquier texto y toca Guardar. Se actualiza al instante para todos. Si borras uno, vuelve el original.</p>
+        <div id="textosLista"></div>
+        <div class="acciones">
+          <button class="btn" type="button" id="btnTextos">Guardar los textos</button>
+          <button class="sec" type="button" id="btnTextosReset">Volver a los textos originales</button>
+        </div>
+
         <h4>Guardar</h4>
         <p class="pista">Las horas se guardan en la nube y valen para las dos páginas. La dirección del calendario vive en el archivo: para que quede fija, descarga la copia y súbela a GitHub.</p>
         <div class="acciones">
@@ -709,7 +719,31 @@ a{color:var(--bosque)}
     "listot": "Listo, tu videollamada está apartada",
     "listos": "Te espero ese día. Revisa tu correo: te llegó la confirmación.",
     "elige": "Ahora elige tu día",
-    "tusdatos": "Ahora tus datos"
+    "tusdatos": "Ahora tus datos",
+    "marca": "Aquafeel",
+    "portadat": "Agenda tu videollamada",
+    "portadas": "Elige el día y la hora de tu videollamada de 20 minutos.",
+    "portadab": "Agendar mi cita ahora",
+    "lblnombre": "Tu nombre completo",
+    "lblcorreo": "Tu correo electrónico",
+    "lbltel": "Tu número de teléfono",
+    "phnombre": "Nombre y apellido",
+    "phcorreo": "tucorreo@ejemplo.com",
+    "phtel": "Tu número",
+    "elighora": "Elige la hora",
+    "notahoras": "Aparto 2 horas completas. Lo importante son los primeros veinte minutos; el resto es margen por si surgen preguntas.",
+    "diaslibres": "días con horas libres",
+    "tocadia": "Toca un día para ver las horas libres.",
+    "espero": "Te espero ese día.",
+    "correot": "Revisa tu correo",
+    "correop": "Te llegó la confirmación con todos los datos.",
+    "correospam": "Si no la ves, revisa tu carpeta de spam.",
+    "wapptxt": "¿Quieres estar seguro de que tu cita quedó apartada? Toca el botón y me llega toda tu información por WhatsApp.",
+    "wappbtn": "Confirmar también por WhatsApp",
+    "wappopc": "Es opcional. Tu cita ya está apartada.",
+    "btnsig": "Siguiente",
+    "btnagendar": "Agendar mi cita",
+    "btnatras": "Atrás"
   }
 }
 </script>
@@ -724,6 +758,20 @@ const menosMov = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const vacio = v => !v || String(v).trim() === "";
 const D = JSON.parse($("datos").textContent);
 const T = D.textos;
+/* Si un texto se borró desde el panel, se cae al de siempre
+   en vez de dejar un hueco en blanco. */
+const txl = (clave, porDefecto) => {
+  const v = T[clave];
+  if (!Array.isArray(v)) return porDefecto;
+  return porDefecto.map((d, i) => {
+    const x = v[i];
+    return (x === undefined || x === null || String(x).trim() === "") ? d : x;
+  });
+};
+const tx = (clave, porDefecto) => {
+  const v = T[clave];
+  return (v === undefined || v === null || String(v).trim() === "") ? porDefecto : v;
+};
 
 function huella(s) {
   let h1 = 0x811c9dc5, h2 = 0x01000193;
@@ -825,6 +873,25 @@ const Nube = {
       if (!j) return [];
       return Array.isArray(j) ? j.filter(Boolean) : Object.values(j);
     } catch (e) { return null; }
+  },
+  async leerTextos() {
+    if (!this.activa()) return null;
+    try {
+      const r = await fetch(this.ruta("/agenda/textos") + "?cache=" + Date.now(), { cache: "no-store" });
+      if (!r.ok) return null;
+      const j = await r.json();
+      return (j && typeof j === "object" && !Array.isArray(j)) ? j : null;
+    } catch (e) { return null; }
+  },
+  async escribirTextos(obj) {
+    if (!this.activa()) return false;
+    try {
+      const r = await fetch(this.ruta("/agenda/textos"), {
+        method: "PUT", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(obj)
+      });
+      return r.ok;
+    } catch (e) { return false; }
   },
   async escribirReservas(lista) {
     if (!this.activa()) return false;
@@ -935,9 +1002,10 @@ const Form = (function () {
       (R.leido
         ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>'
         : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L1.8 20.5h20.4L12 3.5z"/><path d="M12 10v4.4"/><circle cx="12" cy="17.6" r=".9" fill="currentColor" stroke="none"/></svg>') +
-      '</span><div><b>' + escapar(T.avisot) + '</b><p>' + escapar(T.avisop) + '</p></div></div>' +
+      '</span><div><b>' + escapar(tx("avisot","Antes de elegir el día")) + '</b><p>' +
+      escapar(tx("avisop","Vamos a ver precios y opciones concretas. Elige un día y una hora donde puedan estar las personas que toman la decisión contigo.")) + '</p></div></div>' +
       '<label class="aviso__ok"><input type="checkbox" class="avisoOk"' + (R.leido ? " checked" : "") + '>' +
-      '<span>' + escapar(T.avisock) + '</span></label></div>';
+      '<span>' + escapar(tx("avisock","Confirmo que estaré con quien decide conmigo")) + '</span></label></div>';
   }
 
   function calendario() {
@@ -947,7 +1015,7 @@ const Form = (function () {
     /* Una línea tranquila que marca el cambio de sección y
        una flechita que baja la mirada al calendario. */
     let h = avisoHtml();
-    h += '<p class="cal__eti">' + escapar(T.elige) + '</p>';
+    h += '<p class="cal__eti">' + escapar(tx("elige","Ahora elige tu día")) + '</p>';
 
     const primero = new Date(mesVista.getFullYear(), mesVista.getMonth(), 1);
     const ultimo = new Date(mesVista.getFullYear(), mesVista.getMonth() + 1, 0);
@@ -982,13 +1050,13 @@ const Form = (function () {
         (libre ? "" : " disabled") + '>' + n + '</button>';
     }
 
-    h += '</div><p class="cal__pie"><i></i> días con horas libres</p></div>';
+    h += '</div><p class="cal__pie"><i></i> ' + escapar(tx("diaslibres","días con horas libres")) + '</p></div>';
 
     if (R.fecha) {
-      h += '<p class="cal__eti">Elige la hora</p>' +
-        '<p class="cal__nota">Aparto ' + D.agenda.duracion +
-        ' horas completas. Lo importante son los primeros veinte minutos; ' +
-        'el resto es margen por si surgen preguntas.</p>' +
+      h += '<p class="cal__eti">' + escapar(tx("elighora","Elige la hora")) + '</p>' +
+        '<p class="cal__nota">' + escapar(tx("notahoras",
+          "Aparto " + D.agenda.duracion + " horas completas. Lo importante son los primeros " +
+          "veinte minutos; el resto es margen por si surgen preguntas.")) + '</p>' +
         '<div class="cal__horas">';
       Agenda.horas().forEach((x, i) => {
         const oc = Agenda.ocupada(R.fecha, x);
@@ -998,7 +1066,7 @@ const Form = (function () {
       });
       h += '</div>';
     } else {
-      h += '<p class="cal__vacio">Toca un día para ver las horas libres.</p>';
+      h += '<p class="cal__vacio">' + escapar(tx("tocadia","Toca un día para ver las horas libres.")) + '</p>';
     }
     if (R.fecha && R.hora !== undefined) {
       h += '<p class="yaesta"><i><svg width="14" height="14" viewBox="0 0 24 24" ' +
@@ -1024,6 +1092,22 @@ const Form = (function () {
     if (t) R.telefono = t.value;
   }
 
+  /* Los textos que viven en el HTML (portada y botón Atrás).
+     Se escriben con textContent, así que nunca inyectan código. */
+  function aplicarTextos() {
+    const puntos = [
+      ["pMarca", "marca", "Aquafeel"],
+      ["pTitulo", "portadat", "Agenda tu videollamada"],
+      ["pSub", "portadas", "Elige el día y la hora de tu videollamada de 20 minutos."],
+      ["btnEmpezar", "portadab", "Agendar mi cita ahora"],
+      ["btnAtras", "btnatras", "Atrás"]
+    ];
+    for (const [id, clave, porDefecto] of puntos) {
+      const e = $(id);
+      if (e) e.textContent = tx(clave, porDefecto);
+    }
+  }
+
   function pintar() {
     guardarCampos();
     $("prog").style.width = (paso / TOTAL * 100) + "%";
@@ -1041,48 +1125,48 @@ const Form = (function () {
     if (paso === 2) refrescarHoras();
 
     if (paso === 0) {
-      h += '<h2>' + escapar(T.p1t) + '</h2>' +
-        '<p class="sub">' + escapar(T.p1s) + '</p>' +
+      h += '<h2>' + escapar(tx("p1t","Agenda tu cita")) + '</h2>' +
+        '<p class="sub">' + escapar(tx("p1s","Solo dos cositas antes de que escojas el día de tu cita.")) + '</p>' +
         '<p class="sub" style="color:var(--marfil);font-weight:600;margin-bottom:14px">' +
-        escapar(T.p1p) + '</p>' +
-        '<p class="aclara">' + escapar(T.p1n) + '</p>' +
-        opciones(T.p1o, "inversion");
+        escapar(tx("p1p","¿Cuánto estarías dispuesto a invertir en un buen sistema de filtrado para tu hogar?")) + '</p>' +
+        '<p class="aclara">' + escapar(tx("p1n","Los sistemas mejores son más costosos, pero puedes financiarlos desde 98 dólares al mes si no tienes el dinero completo.")) + '</p>' +
+        opciones(txl("p1o", ["Menos de 5 mil","Entre 5 mil y 10 mil","Más de 10 mil"]), "inversion");
     }
     else if (paso === 1) {
-      h += '<h2>' + escapar(T.p2t) + '</h2>' +
-        '<p class="ojo">' + escapar(T.p2s) + '</p>' +
+      h += '<h2>' + escapar(tx("p2t","Una última cosa antes de agendar")) + '</h2>' +
+        '<p class="ojo">' + escapar(tx("p2s","Esta llamada es para quienes toman juntos las decisiones importantes de la casa.")) + '</p>' +
         '<p class="sub" style="color:var(--marfil);font-weight:600;margin-bottom:16px">' +
-        escapar(T.p2p) + '</p>' +
-        opciones(T.p2o, "decide");
+        escapar(tx("p2p","¿Con quién compartirías la decisión de invertir en algo así?")) + '</p>' +
+        opciones(txl("p2o", ["Con mi pareja","Con otro familiar (padre, madre, hijo o hija)","Solo yo"]), "decide");
     }
     else if (paso === 2) {
-      h += '<h2>' + escapar(T.p3t) + '</h2>' +
+      h += '<h2>' + escapar(tx("p3t","Elige tu día y tu hora")) + '</h2>' +
         calendario() +
-        '<div class="paso-abajo"><span>' + escapar(T.tusdatos || "Ahora tus datos") + '</span>' +
+        '<div class="paso-abajo"><span>' + escapar(tx("tusdatos","Ahora tus datos")) + '</span>' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
         'stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>' +
-        '<p class="sub">' + escapar(T.p3s) + '</p>' +
-        '<div class="campo"><label for="fNombre">Tu nombre completo</label>' +
-        '<input type="text" id="fNombre" autocomplete="name" placeholder="Nombre y apellido" value="' + escapar(R.nombre || "") + '"></div>' +
-        '<div class="campo"><label for="fEmail">Tu correo electrónico</label>' +
-        '<input type="email" id="fEmail" autocomplete="email" inputmode="email" placeholder="tucorreo@ejemplo.com" value="' + escapar(R.email || "") + '"></div>' +
-        '<div class="campo" style="margin-bottom:24px"><label for="fTel">Tu número de teléfono</label>' +
-        '<input type="tel" id="fTel" autocomplete="tel" inputmode="tel" placeholder="Tu número" value="' + escapar(R.telefono || "") + '"></div>';
+        '<p class="sub">' + escapar(tx("p3s","Completa tu información para que podamos estar en contacto.")) + '</p>' +
+        '<div class="campo"><label for="fNombre">' + escapar(tx("lblnombre","Tu nombre completo")) + '</label>' +
+        '<input type="text" id="fNombre" autocomplete="name" placeholder="' + escapar(tx("phnombre","Nombre y apellido")) + '" value="' + escapar(R.nombre || "") + '"></div>' +
+        '<div class="campo"><label for="fEmail">' + escapar(tx("lblcorreo","Tu correo electrónico")) + '</label>' +
+        '<input type="email" id="fEmail" autocomplete="email" inputmode="email" placeholder="' + escapar(tx("phcorreo","tucorreo@ejemplo.com")) + '" value="' + escapar(R.email || "") + '"></div>' +
+        '<div class="campo" style="margin-bottom:24px"><label for="fTel">' + escapar(tx("lbltel","Tu número de teléfono")) + '</label>' +
+        '<input type="tel" id="fTel" autocomplete="tel" inputmode="tel" placeholder="' + escapar(tx("phtel","Tu número")) + '" value="' + escapar(R.telefono || "") + '"></div>';
     }
     else {
       h += '<div class="listo"><div class="tic">' +
         '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>' +
         '</div>' +
 
-        '<h2>' + escapar(T.listot) + '</h2>' +
+        '<h2>' + escapar(tx("listot","Listo, tu videollamada está apartada")) + '</h2>' +
 
         '<p class="cuando">' + escapar(cuandoTexto()) + '</p>' +
-        '<p class="sub" style="margin:0 0 22px">Te espero ese día.</p>' +
+        '<p class="sub" style="margin:0 0 22px">' + escapar(tx("espero","Te espero ese día.")) + '</p>' +
 
         '<div class="nota">' +
-          '<b>Revisa tu correo</b>' +
-          '<p>Te llegó la confirmación con todos los datos.</p>' +
-          '<p class="nota__spam">Si no la ves, revisa tu carpeta de spam.</p>' +
+          '<b>' + escapar(tx("correot","Revisa tu correo")) + '</b>' +
+          '<p>' + escapar(tx("correop","Te llegó la confirmación con todos los datos.")) + '</p>' +
+          '<p class="nota__spam">' + escapar(tx("correospam","Si no la ves, revisa tu carpeta de spam.")) + '</p>' +
         '</div>' +
 
         '<p class="envio" id="envio"><i></i> Enviando tu confirmación...</p>' +
@@ -1091,7 +1175,8 @@ const Form = (function () {
 
     h += '<p class="err" id="err"></p></div>';
     cuerpo.innerHTML = h;
-    $("btnSig").textContent = paso === 2 ? "Agendar mi cita" : "Siguiente";
+    $("btnSig").textContent = paso === 2
+      ? tx("btnagendar","Agendar mi cita") : tx("btnsig","Siguiente");
     $("btnSig").disabled = false;
 
     cuerpo.querySelectorAll(".opcion").forEach(b => {
@@ -1212,12 +1297,12 @@ const Form = (function () {
       "Decide con: " + (R.decide || "-");
     c.innerHTML =
       '<div class="wapp">' +
-        '<p class="wapp__txt">¿Quieres estar seguro de que tu cita quedó apartada? ' +
-        'Toca el botón y me llega toda tu información por WhatsApp.</p>' +
+        '<p class="wapp__txt">' + escapar(tx("wapptxt",
+          "¿Quieres estar seguro de que tu cita quedó apartada? Toca el botón y me llega toda tu información por WhatsApp.")) + '</p>' +
         '<a class="btn" href="https://wa.me/' + D.whatsapp.replace(/\D/g,"") +
         '?text=' + encodeURIComponent(msj) + '" target="_blank" rel="noopener">' +
-        'Confirmar también por WhatsApp</a>' +
-        '<p class="wapp__opc">Es opcional. Tu cita ya está apartada.</p>' +
+        escapar(tx("wappbtn","Confirmar también por WhatsApp")) + '</a>' +
+        '<p class="wapp__opc">' + escapar(tx("wappopc","Es opcional. Tu cita ya está apartada.")) + '</p>' +
       '</div>';
   }
 
@@ -1267,7 +1352,7 @@ const Form = (function () {
      soltar la selección y decírselo con calma. */
   function seAdelantaron() {
     const btn = $("btnSig");
-    if (btn) { btn.disabled = false; btn.textContent = "Agendar mi cita"; }
+    if (btn) { btn.disabled = false; btn.textContent = tx("btnagendar","Agendar mi cita"); }
     R.hora = undefined;
     pintar();
     const e = $("err");
@@ -1288,6 +1373,7 @@ const Form = (function () {
 
     btn.disabled = true;
     btn.textContent = "Apartando tu hora...";
+    void aplicarTextos;
 
     /* Última mirada a la nube, por si alguien se adelantó */
     const frescas = await Nube.leerReservas();
@@ -1329,7 +1415,16 @@ const Form = (function () {
   });
 
   async function arrancar() {
+    aplicarTextos();
     pintar();
+    /* Los textos guardados en la nube mandan sobre los del archivo.
+       Se piden aparte para que la página no espere por ellos. */
+    Nube.leerTextos().then(t => {
+      if (!t) return;
+      Object.assign(T, t);
+      aplicarTextos();
+      pintar();
+    });
     const r = await Nube.leerReservas();
     if (r) {
       D.agenda.reservas = r;
@@ -1337,7 +1432,7 @@ const Form = (function () {
       if (paso === 2) pintar();
     }
   }
-  return { arrancar, refrescar: pintar };
+  return { arrancar, refrescar: pintar, textos: aplicarTextos };
 })();
 
 /* ════════════════════════════════════════════════════════════
@@ -1352,6 +1447,102 @@ const Mando = (function () {
     e.className = "estado " + (ok ? "estado--ok" : "estado--no");
     e.textContent = (Citas.activa() ? "Calendario conectado" : "Calendario sin conectar") +
       " · " + (Nube.activa() ? "compartido con tu página principal" : "sin guardado en la nube");
+  }
+
+  /* Qué se puede editar y cómo se llama en cristiano.
+     ["clave", "etiqueta"] o ["clave.0", "etiqueta"] para las listas. */
+  const EDITABLES = [
+    ["·", "La portada"],
+    ["marca", "Nombre de la marca"],
+    ["portadat", "Titular"],
+    ["portadas", "Frase debajo del titular"],
+    ["portadab", "Texto del botón"],
+    ["·", "Paso 1 · la inversión"],
+    ["p1t", "Título"],
+    ["p1s", "Frase debajo del título"],
+    ["p1p", "La pregunta"],
+    ["p1n", "Nota del financiamiento"],
+    ["p1o.0", "Opción 1"], ["p1o.1", "Opción 2"], ["p1o.2", "Opción 3"],
+    ["·", "Paso 2 · quién decide"],
+    ["p2t", "Título"],
+    ["p2s", "Frase destacada"],
+    ["p2p", "La pregunta"],
+    ["p2o.0", "Opción 1"], ["p2o.1", "Opción 2"], ["p2o.2", "Opción 3"],
+    ["·", "Paso 3 · día, hora y datos"],
+    ["p3t", "Título"],
+    ["elige", "Rótulo antes del calendario"],
+    ["tocadia", "Aviso cuando no hay día elegido"],
+    ["diaslibres", "Pie del calendario"],
+    ["elighora", "Rótulo antes de las horas"],
+    ["notahoras", "Nota de las dos horas"],
+    ["tusdatos", "Rótulo antes de los datos"],
+    ["p3s", "Frase antes de los datos"],
+    ["lblnombre", "Etiqueta del nombre"],
+    ["lblcorreo", "Etiqueta del correo"],
+    ["lbltel", "Etiqueta del teléfono"],
+    ["·", "El aviso dorado"],
+    ["avisot", "Título del aviso"],
+    ["avisop", "Texto del aviso"],
+    ["avisock", "Texto de la casilla"],
+    ["·", "Pantalla final"],
+    ["listot", "Título"],
+    ["espero", "Frase debajo de la fecha"],
+    ["correot", "Título del recuadro"],
+    ["correop", "Texto del recuadro"],
+    ["correospam", "Nota del spam"],
+    ["wapptxt", "Texto de WhatsApp"],
+    ["wappbtn", "Botón de WhatsApp"],
+    ["wappopc", "Nota de que es opcional"],
+    ["·", "Los botones"],
+    ["btnsig", "Botón siguiente"],
+    ["btnagendar", "Botón de agendar"],
+    ["btnatras", "Botón de atrás"]
+  ];
+
+  const leerClave = c => {
+    const [k, i] = c.split(".");
+    const v = D.textos[k];
+    if (i === undefined) return v == null ? "" : v;
+    return (Array.isArray(v) && v[+i] != null) ? v[+i] : "";
+  };
+
+  function pintarTextos() {
+    const cont = $("textosLista");
+    if (!cont) return;
+    let h = "";
+    for (const [clave, etiqueta] of EDITABLES) {
+      if (clave === "·") {
+        h += '<p style="font-size:13px;font-weight:700;color:var(--bosque);' +
+             'margin:18px 0 10px;padding-top:12px;border-top:1px solid var(--hueso)">' +
+             escapar(etiqueta) + '</p>';
+        continue;
+      }
+      const valor = String(leerClave(clave));
+      const largo = valor.length > 58;
+      h += '<div class="campo"><label for="tx_' + clave + '">' + escapar(etiqueta) + '</label>' +
+        (largo
+          ? '<textarea id="tx_' + clave + '" data-tx="' + clave + '" rows="3" ' +
+            'style="width:100%;padding:12px 15px;background:var(--papel);' +
+            'border:1px solid var(--hueso);border-radius:12px;color:var(--tinta);' +
+            'font-family:var(--cuerpo);font-size:15px;line-height:1.5;resize:vertical">' +
+            escapar(valor) + '</textarea>'
+          : '<input type="text" id="tx_' + clave + '" data-tx="' + clave + '" value="' +
+            escapar(valor) + '" autocomplete="off">') +
+        '</div>';
+    }
+    cont.innerHTML = h;
+  }
+
+  /* Recoge lo escrito y lo mete en D.textos sin romper las listas */
+  function recogerTextos() {
+    const campos = document.querySelectorAll("[data-tx]");
+    for (const el of campos) {
+      const [k, i] = el.getAttribute("data-tx").split(".");
+      const v = el.value;
+      if (i === undefined) { D.textos[k] = v; continue; }
+      if (!Array.isArray(D.textos[k])) D.textos[k] = [];
+      D.textos[k][+i] = v;
+    }
   }
 
   function pintarCitas() {
@@ -1415,6 +1606,7 @@ const Mando = (function () {
     $("mandoPanel").hidden = false;
     $("mandoTitulo").textContent = "Panel del administrador";
     llenarCampos();
+    pintarTextos();
     pintarEstado();
     avisar("Cargando las citas...");
     const r = await Nube.leerReservas();
@@ -1477,6 +1669,25 @@ const Mando = (function () {
     document.body.appendChild(a); a.click();
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
     avisar("Copia descargada. Súbela a GitHub.", "ok");
+  });
+
+  $("btnTextos").addEventListener("click", async () => {
+    recogerTextos();
+    Form.textos();
+    Form.refrescar();
+    avisar("Guardando los textos...");
+    const ok = await Nube.escribirTextos(D.textos);
+    avisar(ok ? "Textos guardados. Ya se ven en la página."
+              : "Se cambiaron aquí, pero no se pudieron guardar en la nube.",
+           ok ? "ok" : "mal");
+  });
+
+  $("btnTextosReset").addEventListener("click", async () => {
+    if (!confirm("¿Volver a los textos originales del archivo? Se pierde lo que hayas escrito.")) return;
+    avisar("Restaurando...");
+    const ok = await Nube.escribirTextos(null);
+    if (ok) { avisar("Listo. Recarga la página para verlos.", "ok"); }
+    else { avisar("No se pudo restaurar. Revisa la conexión.", "mal"); }
   });
 
   $("btnGuardar").addEventListener("click", async () => {
