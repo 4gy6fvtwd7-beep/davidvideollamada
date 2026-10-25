@@ -567,8 +567,10 @@ a{color:var(--bosque)}
 .alcal__t{font-size:15px; font-weight:700; color:var(--hondo); margin-bottom:12px}
 .alcal__bs{display:grid; gap:9px}
 @media(min-width:460px){ .alcal__bs{grid-template-columns:1fr 1fr} }
-.alcal a{display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  min-height:54px; padding:14px 18px; border-radius:999px; text-decoration:none;
+.alcal__bs{grid-template-columns:1fr !important}
+.alcal a{display:flex; align-items:center; justify-content:flex-start; gap:12px;
+  min-height:56px; padding:14px 20px; border-radius:16px; text-decoration:none;
+  text-align:left; line-height:1.35;
   border:1px solid var(--hueso); background:var(--nieve); color:var(--hondo);
   font-family:var(--cuerpo); font-size:15px; font-weight:600;
   transition:background .25s var(--suave), border-color .25s var(--suave)}
@@ -833,9 +835,9 @@ a{color:var(--bosque)}
     "wappopc": "Es opcional. Tu cita ya está apartada.",
     "btnsig": "Siguiente",
     "btnagendar": "Agendar mi cita",
-    "calt": "Agrega la cita a tu calendario",
-    "calapple": "Calendario de Apple",
-    "calgoogle": "Google Calendar",
+    "calt": "Agrégala a tu calendario ahora para que no se te olvide",
+    "calapple": "Agrégalo al calendario aquí si usas iPhone",
+    "calgoogle": "Agrégalo al calendario aquí si tienes Android",
     "btnatras": "Atrás"
   }
 }
@@ -1262,12 +1264,12 @@ const Form = (function () {
       '<rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
     const apple = '<a href="' + enlaceIcs() + '" download="mi-cita.ics"' +
       (esApple ? ' class="alcal--primero"' : '') + '>' + icoCal + ' ' +
-      escapar(tx("calapple", "Calendario de Apple")) + '</a>';
+      escapar(tx("calapple", "Agrégalo al calendario aquí si usas iPhone")) + '</a>';
     const google = '<a href="' + escapar(enlaceGoogle()) + '" target="_blank" rel="noopener"' +
       (esApple ? '' : ' class="alcal--primero"') + '>' + icoCal + ' ' +
-      escapar(tx("calgoogle", "Google Calendar")) + '</a>';
+      escapar(tx("calgoogle", "Agrégalo al calendario aquí si tienes Android")) + '</a>';
     return '<div class="alcal"><p class="alcal__t">' +
-      escapar(tx("calt", "Agrega la cita a tu calendario")) + '</p>' +
+      escapar(tx("calt", "Agrégala a tu calendario ahora para que no se te olvide")) + '</p>' +
       '<div class="alcal__bs">' + (esApple ? apple + google : google + apple) + '</div></div>';
   }
 
