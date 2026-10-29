@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mi CRM · David Montenegro</title>
+<meta name="theme-color" content="#35513F">
+<meta name="robots" content="noindex,nofollow">
+
+<!-- Para que al añadirla a la pantalla de inicio se abra como una
+     app, sin barras del navegador, y con su icono. -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Mi CRM">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400..700&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400..700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400..700&display=swap"></noscript>
+
+<style>
+/* ============================================================
+   MI CRM · los colores y las letras de la marca
+   Mismos valores que agenda.html. Si cambian allí, cambian aquí.
+   ============================================================ */
+:root{
+  --hondo:#35513F; --bosque:#456B52; --vivo:#5B9169;
+  --papel:#F1F4EE; --salvia:#DEE8DD; --nieve:#FFFFFF;
+  --tinta:#243329; --humo:#5F7265; --hueso:#C5D4C4; --linea-luz:#A3BCA4;
+  --ambar-fon:#F7EFDC; --ambar-txt:#7D5E14; --ambar-bor:#DFC894;
+  --alarma:#A83B28;
+  --display:"Fraunces",Georgia,serif;
+  --cuerpo:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --seda:cubic-bezier(.16,1,.3,1);
+  --suave:cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; overflow-x:hidden}
+body{margin:0; background:var(--papel); color:var(--tinta);
+  font-family:var(--cuerpo); font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  min-height:100dvh;
+  /* En la pantalla de inicio del iPhone no hay barras: el respeto
+     por la isla y por la barra de abajo lo pone el propio sistema. */
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+h1,h2,h3{font-family:var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 1;
+  font-weight:450; letter-spacing:-.018em; line-height:1.07; margin:0}
+p{margin:0}
+a{color:var(--bosque)}
+::selection{background:rgba(91,145,105,.22); color:var(--tinta)}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:2px solid var(--bosque); outline-offset:3px; border-radius:4px}
+[hidden]{display:none !important}
+
+/* ---------- Botones ---------- */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  width:100%; min-height:60px; padding:16px 24px;
+  background:var(--hondo); color:#fff; font-family:var(--cuerpo);
+  font-size:17px; font-weight:600; text-align:center; text-decoration:none;
+  border:0; border-radius:999px; cursor:pointer;
+  transition:background .3s var(--suave), transform .4s var(--seda)}
+.btn:hover{background:var(--bosque)}
+.btn:active{transform:scale(.985)}
+.btn:disabled{opacity:.45; cursor:not-allowed}
+.btn--claro{background:var(--nieve); color:var(--hondo);
+  box-shadow:inset 0 0 0 1.5px var(--hueso)}
+.btn--claro:hover{background:var(--salvia)}
+.btn--chico{min-height:46px; font-size:15px; width:auto; padding:11px 20px}
+.btn--peligro{background:var(--alarma)}
+.btn--peligro:hover{background:#8E3222}
+
+.enlace{background:none; border:0; padding:8px 2px; cursor:pointer;
+  font-family:var(--cuerpo); font-size:15px; font-weight:600;
+  color:var(--bosque); text-decoration:underline; text-underline-offset:3px}
+
+/* ---------- Estructura ---------- */
+.envoltura{width:100%; max-width:620px; margin:0 auto; padding:20px 18px 48px}
+.tarjeta{background:var(--nieve); border:1px solid var(--hueso);
+  border-radius:24px; padding:26px 22px; margin-bottom:16px;
+  box-shadow:0 26px 64px rgba(53,81,63,.12)}
+.tarjeta--pegada{padding:0; overflow:hidden}
+
+.marca{display:flex; align-items:center; gap:11px; padding:6px 2px 16px}
+.marca__gota{width:36px; height:36px; flex:none; border-radius:50%;
+  background:var(--hondo); display:grid; place-items:center; color:#fff}
+.marca__txt{font-family:var(--display); font-variation-settings:"opsz" 72,"SOFT" 0,"WONK" 0;
+  font-weight:600; font-size:18px; letter-spacing:-.012em; line-height:1.1}
+
+.sub{font-size:16px; color:var(--humo); line-height:1.6; margin-top:10px}
+.nota-chica{font-size:13.5px; color:var(--humo); line-height:1.55}
+
+/* ---------- La cara del cliente ---------- */
+.magnet__portada{display:block; width:100%; height:auto; aspect-ratio:16/9;
+  object-fit:cover; background:var(--salvia); border-bottom:1px solid var(--hueso)}
+.magnet__cuerpo{padding:24px 22px 26px}
+.magnet__tipo{font-size:12px; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--humo); margin-bottom:9px}
+.magnet__titulo{font-size:clamp(26px,6.4vw,34px)}
+
+.campo{margin-bottom:14px}
+.campo label{display:block; font-size:14.5px; color:var(--humo); margin-bottom:6px}
+.campo input,.campo select,.campo textarea{width:100%; min-height:54px;
+  padding:13px 15px; background:var(--nieve); border:1px solid var(--hueso);
+  border-radius:13px; color:var(--tinta); font-family:var(--cuerpo);
+  font-size:17px; font-weight:500;
+  transition:border-color .2s ease, box-shadow .2s ease}
+.campo textarea{min-height:92px; font-weight:400; font-size:15.5px; resize:vertical}
+.campo input:focus,.campo textarea:focus,.campo select:focus{
+  border-color:var(--bosque); box-shadow:0 0 0 3px rgba(69,107,82,.14); outline:none}
+.campo input::placeholder,.campo textarea::placeholder{color:#9AA99D}
+
+.yosoy{display:flex; align-items:center; gap:13px; width:100%;
+  padding:15px 17px; margin-bottom:12px; cursor:pointer; text-align:left;
+  background:var(--salvia); border:1px solid var(--linea-luz);
+  border-radius:16px; font-family:var(--cuerpo); color:var(--tinta);
+  transition:background .25s var(--suave)}
+.yosoy:hover{background:#D3E0D2}
+.yosoy__ico{width:38px; height:38px; flex:none; border-radius:50%;
+  background:var(--hondo); color:#fff; display:grid; place-items:center;
+  font-weight:700; font-size:15px; font-family:var(--cuerpo)}
+.yosoy__txt{min-width:0; flex:1}
+.yosoy__txt b{display:block; font-size:15.5px; font-weight:600}
+.yosoy__txt span{display:block; font-size:13.5px; color:var(--humo);
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+.err{min-height:22px; margin-top:10px; font-size:14.5px;
+  color:var(--alarma); font-weight:600}
+
+/* ---------- El magnet ya entregado ---------- */
+.marco-video{position:relative; width:100%; aspect-ratio:16/9;
+  background:var(--hondo); border-radius:16px; overflow:hidden}
+.marco-video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.marco-doc{width:100%; height:min(72dvh,640px); border:1px solid var(--hueso);
+  border-radius:16px; background:var(--salvia)}
+.marco-foto{display:block; width:100%; height:auto; border-radius:16px;
+  border:1px solid var(--hueso)}
+
+/* ---------- El candado ---------- */
+.llave{position:fixed; right:10px; bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  z-index:60; width:40px; height:40px; border-radius:50%;
+  display:grid; place-items:center; cursor:pointer;
+  background:rgba(255,255,255,.82); border:1px solid var(--hueso);
+  color:var(--humo); opacity:.5; transition:opacity .3s var(--suave)}
+.llave:hover{opacity:1}
+
+/* ---------- El panel ---------- */
+.panel{position:fixed; inset:0; z-index:90; background:var(--papel);
+  overflow-y:auto; display:none}
+.panel.abierto{display:block}
+.panel__cab{position:sticky; top:0; z-index:5; display:flex; align-items:center;
+  gap:12px; padding:calc(14px + env(safe-area-inset-top,0px)) 18px 14px;
+  background:var(--nieve); border-bottom:1px solid var(--hueso)}
+.panel__cab h2{flex:1; font-size:21px}
+.panel__x{background:none; border:0; cursor:pointer; color:var(--humo);
+  padding:8px; line-height:0}
+
+.pestanas{display:flex; gap:6px; padding:12px 18px 0; background:var(--nieve);
+  border-bottom:1px solid var(--hueso); overflow-x:auto}
+.pestana{flex:none; background:none; border:0; cursor:pointer;
+  font-family:var(--cuerpo); font-size:15px; font-weight:600; color:var(--humo);
+  padding:10px 14px; border-radius:11px 11px 0 0; border-bottom:3px solid transparent}
+.pestana.activa{color:var(--hondo); border-bottom-color:var(--hondo);
+  background:var(--salvia)}
+
+.fila{display:flex; align-items:center; gap:12px; padding:15px 0;
+  border-bottom:1px solid var(--hueso)}
+.fila:last-child{border-bottom:0}
+.fila__txt{min-width:0; flex:1}
+.fila__txt b{display:block; font-size:16px; font-weight:600; line-height:1.3}
+.fila__txt span{display:block; font-size:13.5px; color:var(--humo);
+  overflow:hidden; text-overflow:ellipsis}
+.fila__acc{flex:none; display:flex; gap:7px}
+
+/* Un magnet y su enlace son una sola cosa: la línea va debajo
+   de los dos, no entre ellos. */
+.mg{padding-bottom:14px; margin-bottom:4px; border-bottom:1px solid var(--hueso)}
+.mg:last-child{border-bottom:0; margin-bottom:0}
+
+/* El embudo: una barra por peldaño, para ver de un vistazo
+   dónde se cae el bulto de la gente. */
+.emb{padding:18px 0; border-bottom:1px solid var(--hueso)}
+.emb:last-child{border-bottom:0; padding-bottom:0}
+.emb__t{font-size:16px; font-weight:600; line-height:1.3; margin-bottom:12px}
+.pel{margin-bottom:9px}
+.pel__barra{height:9px; border-radius:999px; background:var(--salvia); overflow:hidden}
+.pel__barra i{display:block; height:100%; border-radius:999px;
+  background:var(--vivo); transition:width .5s var(--seda)}
+.pel__txt{font-size:13.5px; color:var(--humo); margin-top:5px}
+.pel__txt b{font-size:15px; font-weight:700; color:var(--tinta);
+  font-variant-numeric:tabular-nums}
+.pel__cae{color:var(--alarma); font-weight:600}
+/* El escalón donde se va más gente de golpe */
+.pel--fuga .pel__barra i{background:var(--alarma)}
+.pel--fuga .pel__txt{color:var(--alarma)}
+.pel--fuga .pel__txt b{color:var(--alarma)}
+
+.pastilla{display:inline-block; padding:4px 11px; border-radius:999px;
+  font-size:12px; font-weight:700; letter-spacing:.02em; white-space:nowrap}
+.pastilla--nuevo{background:var(--salvia); color:var(--hondo)}
+.pastilla--repitio{background:#CFE2D2; color:var(--hondo)}
+.pastilla--caliente{background:var(--hondo); color:#fff}
+
+/* La cabecera de una lista: en el teléfono no caben el título y
+   los dos botones en la misma línea, así que se apilan. */
+.fila--cab{flex-direction:column; align-items:stretch; gap:12px}
+.fila--cab .fila__acc{display:flex; gap:8px}
+.fila--cab .fila__acc .btn{flex:1}
+@media(min-width:520px){
+  .fila--cab{flex-direction:row; align-items:center}
+  .fila--cab .fila__acc .btn{flex:none}
+}
+
+/* El resumen por filas y no en tabla: una tabla de cuatro
+   columnas no cabe en un móvil y se corta la última, que es
+   justo la que más importa. */
+.rm{padding:16px 0; border-bottom:1px solid var(--hueso)}
+.rm:last-child{border-bottom:0}
+.rm__t{font-size:16px; font-weight:600; line-height:1.3; margin-bottom:9px}
+.rm__n{display:flex; flex-wrap:wrap; gap:7px}
+.rm__n span{display:inline-flex; align-items:baseline; gap:5px;
+  padding:5px 12px; border-radius:999px; background:var(--salvia);
+  font-size:13.5px; color:var(--humo)}
+.rm__n b{font-size:16px; font-weight:700; color:var(--hondo);
+  font-variant-numeric:tabular-nums}
+.rm__n span.gana{background:var(--hondo); color:#fff}
+.rm__n span.gana b{color:#fff}
+
+.tabla{width:100%; border-collapse:collapse; font-size:14.5px}
+.tabla th{text-align:left; font-size:11.5px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--humo); padding:0 10px 9px 0;
+  border-bottom:1px solid var(--hueso); white-space:nowrap}
+.tabla td{padding:12px 10px 12px 0; border-bottom:1px solid var(--hueso);
+  vertical-align:top}
+.tabla tr:last-child td{border-bottom:0}
+.tabla .num{text-align:right; font-variant-numeric:tabular-nums; font-weight:600}
+
+.aviso{border:1px solid var(--ambar-bor); background:var(--ambar-fon);
+  border-radius:16px; padding:16px 17px; margin-bottom:16px}
+.aviso b{display:block; font-size:12px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ambar-txt); margin-bottom:6px}
+.aviso p{font-size:14.5px; line-height:1.55; color:var(--tinta)}
+
+.vacio{text-align:center; padding:44px 10px; color:var(--humo); font-size:15.5px}
+
+.enlace-copiar{display:flex; gap:8px; align-items:center; margin-top:10px}
+.enlace-copiar input{flex:1; min-width:0; min-height:46px; padding:10px 13px;
+  font-size:13.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  background:var(--salvia); border:1px solid var(--hueso); border-radius:11px;
+  color:var(--tinta)}
+
+.cargando{display:grid; place-items:center; min-height:70dvh; color:var(--humo)}
+.gira{width:30px; height:30px; border-radius:50%;
+  border:3px solid var(--hueso); border-top-color:var(--hondo);
+  animation:gira 1s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;
+    animation-iteration-count:1 !important; transition-duration:.01ms !important}
+}
+
+@media(min-width:620px){
+  .envoltura{padding:36px 24px 60px}
+  .tarjeta{padding:32px 30px}
+  .magnet__cuerpo{padding:30px 30px 32px}
+}
+
+</style>
+</head>
+<body>
+
+<!-- Mientras se pregunta por el magnet -->
+<div class="cargando" id="cargando"><i class="gira"></i></div>
+
+<!-- ============================================================
+     LA CARA DEL CLIENTE
+     Enseña UN magnet, el del enlace, y ninguno más.
+     ============================================================ -->
+<main class="envoltura" id="cliente" hidden>
+  <div class="marca">
+    <span class="marca__gota" aria-hidden="true">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.6c3.6 4.2 6.2 7.9 6.2 11.2A6.2 6.2 0 0 1 12 20a6.2 6.2 0 0 1-6.2-6.2C5.8 10.5 8.4 6.8 12 2.6z"/>
+      </svg>
+    </span>
+    <span class="marca__txt" id="marcaNombre">David Montenegro</span>
+  </div>
+
+  <article class="tarjeta tarjeta--pegada">
+    <img class="magnet__portada" id="mPortada" alt="" hidden>
+    <div class="magnet__cuerpo">
+      <p class="magnet__tipo" id="mTipo">Descarga gratuita</p>
+      <h1 class="magnet__titulo" id="mTitulo"></h1>
+      <p class="sub" id="mTexto"></p>
+
+      <!-- El formulario: solo mientras no haya dado el correo -->
+      <div id="puerta" style="margin-top:24px">
+        <button class="yosoy" id="btnYoSoy" type="button" hidden>
+          <span class="yosoy__ico" id="yoIni">A</span>
+          <span class="yosoy__txt">
+            <b>Soy yo, entrar directo</b>
+            <span id="yoCorreo"></span>
+          </span>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+               style="flex:none;color:var(--bosque)"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+
+        <div id="formNuevo">
+          <div class="campo" id="cNombre">
+            <label for="fNombre">Tu nombre</label>
+            <input type="text" id="fNombre" autocomplete="given-name" placeholder="Nombre">
+          </div>
+          <div class="campo" id="cApellido">
+            <label for="fApellido">Tu apellido</label>
+            <input type="text" id="fApellido" autocomplete="family-name" placeholder="Apellido">
+          </div>
+          <div class="campo">
+            <label for="fCorreo">Tu correo electrónico</label>
+            <input type="email" id="fCorreo" autocomplete="email" inputmode="email"
+                   placeholder="tucorreo@ejemplo.com">
+          </div>
+          <button class="btn" id="btnDame" type="button">Ver el contenido</button>
+          <p class="err" id="errCliente"></p>
+          <button class="enlace" id="btnYaDi" type="button">
+            Ya te di mi correo antes
+          </button>
+          <button class="enlace" id="btnSoyNuevo" type="button" hidden>
+            Es la primera vez, poner mi nombre
+          </button>
+          <p class="nota-chica" style="margin-top:12px">
+            Te escribiré de vez en cuando con información útil y novedades.
+            Puedes salirte cuando quieras.
+          </p>
+        </div>
+      </div>
+
+      <!-- El magnet, una vez entregado -->
+      <div id="entregado" hidden style="margin-top:22px">
+        <div id="visor"></div>
+        <div id="descargar" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </article>
+
+  <p class="nota-chica" style="text-align:center" id="pie"></p>
+</main>
+
+<!-- Sin enlace, o enlace que no existe: no se enseña nada más -->
+<main class="envoltura" id="vacio" hidden>
+  <div class="marca">
+    <span class="marca__gota" aria-hidden="true">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.6c3.6 4.2 6.2 7.9 6.2 11.2A6.2 6.2 0 0 1 12 20a6.2 6.2 0 0 1-6.2-6.2C5.8 10.5 8.4 6.8 12 2.6z"/>
+      </svg>
+    </span>
+    <span class="marca__txt">David Montenegro</span>
+  </div>
+  <div class="tarjeta">
+    <h1 style="font-size:28px">Aquí no hay nada que ver</h1>
+    <p class="sub" id="vacioTxt">
+      Este enlace no lleva a ningún sitio. Si te lo mandé yo,
+      revisa que esté completo.
+    </p>
+  </div>
+</main>
+
+<button class="llave" id="btnLlave" type="button" aria-label="Entrar al panel">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="10.5" width="16" height="10.5" rx="2.4"/>
+    <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/>
+  </svg>
+</button>
+
+<!-- ============================================================
+     EL PANEL · solo David
+     ============================================================ -->
+<section class="panel" id="panel" aria-hidden="true">
+  <header class="panel__cab">
+    <h2>Mi CRM</h2>
+    <button class="panel__x" id="panelX" type="button" aria-label="Cerrar">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </header>
+
+  <!-- Contraseña -->
+  <div class="envoltura" id="pasoClave">
+    <div class="tarjeta">
+      <h3 style="font-size:23px">Tu contraseña</h3>
+      <p class="sub" style="margin-bottom:18px">Solo para ti.</p>
+      <div class="campo">
+        <input type="password" id="fClave" autocomplete="current-password"
+               placeholder="Contraseña">
+      </div>
+      <button class="btn" id="btnEntrar" type="button">Entrar</button>
+      <p class="err" id="errClave"></p>
+    </div>
+  </div>
+
+  <!-- Ya dentro -->
+  <div id="pasoDentro" hidden>
+    <nav class="pestanas">
+      <button class="pestana activa" data-pes="magnets" type="button">Magnets</button>
+      <button class="pestana" data-pes="correos" type="button">Correos</button>
+      <button class="pestana" data-pes="resumen" type="button">Resumen</button>
+    </nav>
+    <div class="envoltura" id="panelCuerpo"></div>
+  </div>
+</section>
+
+<script id="datos" type="application/json">
+{
+  "marca": "David Montenegro",
+  "script": "https://script.google.com/macros/s/AKfycbzxVFvI91eVDysWz1MjlenhKVWsx2KeC1Mqa7rYwhT0CX9kOlbEVJ3IvF4jGl585pCM/exec",
+  "clave": "aquafeel-clave-2026",
+  "base": "https://citasdavidmontenegro.com/micrm.html",
+  "agenda": "https://citasdavidmontenegro.com/agenda.html",
+  "cierreTitulo": "¿Lo vemos juntos?",
+  "cierreTexto": "Veinte minutos por videollamada para mirar el agua de tu casa y qué te conviene de verdad. Sin compromiso.",
+  "cierreBoton": "Agendar mi videollamada",
+  "pdfLib": "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js",
+  "pdfWorker": "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"
+}
+</script>
+<script>
+/* ============================================================
+   MI CRM · el motor
+   Dos caras en un solo archivo: la del cliente (un magnet, el
+   del enlace, y ninguno más) y la de David (magnets, correos y
+   resumen), detrás del candado.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  const D = JSON.parse(document.getElementById("datos").textContent);
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  const vacio = s => !s || !String(s).trim();
+  const plural = (n, una) => n + " " + una + (n === 1 ? "" : "s");
+  const menosMov = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Lo que el navegador recuerda de esta persona, en SU teléfono.
+     Nunca sale de ahí: sirve para no hacerle escribir dos veces. */
+  const RECUERDO = "micrm.yo";
+  const PENDIENTE = "micrm.pendiente";
+  const leerLocal = k => {
+    try { return JSON.parse(localStorage.getItem(k) || "null"); }
+    catch (e) { return null; }
+  };
+  const guardarLocal = (k, v) => {
+    try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {}
+  };
+
+  /* ──────────────────────────────────────────────────────────
+     Hablar con el Apps Script.
+     text/plain a propósito: así el navegador no hace la pregunta
+     previa de permisos, que es la que rompe estas llamadas.
+     ────────────────────────────────────────────────────────── */
+  async function pedir(cuerpo, intentos) {
+    intentos = intentos === undefined ? 2 : intentos;
+    if (vacio(D.script)) return { ok: false, error: "sin-script" };
+    for (let i = 0; i <= intentos; i++) {
+      try {
+        const r = await fetch(D.script, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(Object.assign({ clave: D.clave }, cuerpo))
+        });
+        const t = await r.text();
+        return JSON.parse(t);
+      } catch (e) {
+        if (i === intentos) return { ok: false, error: String(e) };
+        await new Promise(r => setTimeout(r, 500 * (i + 1)));
+      }
+    }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     LA CARA DEL CLIENTE
+     ────────────────────────────────────────────────────────── */
+  let MAGNET = null;
+  let YA_ENTREGADO = false;
+  let QUIEN = "";
+
+  const codigoDelEnlace = () => {
+    const p = new URLSearchParams(location.search);
+    return (p.get("r") || p.get("m") || "").trim().toLowerCase();
+  };
+
+  function mostrarPantalla(cual) {
+    $("cargando").hidden = cual !== "cargando";
+    $("cliente").hidden = cual !== "cliente";
+    $("vacio").hidden = cual !== "vacio";
+  }
+
+  function pintarMagnet(m) {
+    MAGNET = m;
+    document.title = m.titulo + " · " + D.marca;
+    $("marcaNombre").textContent = D.marca;
+    $("mTitulo").textContent = m.titulo;
+    $("mTexto").textContent = m.texto || "";
+    $("mTexto").hidden = vacio(m.texto);
+    /* Cada magnet manda en sus propios textos. Si no le pones
+       alguno, cae en el de siempre y no queda un hueco. */
+    $("btnDame").textContent = m.boton || "Ver el contenido";
+    $("mTipo").textContent =
+      m.tipo === "youtube" ? "Video" :
+      m.tipo === "foto" ? "Imagen" : "Documento";
+
+    if (!vacio(m.portada)) {
+      const img = $("mPortada");
+      img.src = m.portada;
+      img.hidden = false;
+      img.onerror = () => { img.hidden = true; };
+    }
+    $("pie").textContent = D.marca;
+    mostrarPantalla("cliente");
+    prepararPuerta();
+    /* Se cuenta que alguien abrió el enlace, antes de pedirle
+       nada. Sin esto no se sabe cuánta gente llega y se va sin
+       dejar el correo, que suele ser la caída más grande. */
+    pedir({ tipo: "abrio", codigo: m.codigo }, 0);
+  }
+
+  /* La puerta: nombre y correo. Si ya entró desde este teléfono,
+     se le ofrece pasar de un toque. */
+  function prepararPuerta() {
+    const yo = leerLocal(RECUERDO);
+    if (yo && yo.email) {
+      $("yoIni").textContent = (yo.nombre || yo.email).trim()[0].toUpperCase();
+      $("yoCorreo").textContent = yo.email;
+      $("btnYoSoy").hidden = false;
+      $("formNuevo").hidden = true;
+    }
+  }
+
+  const correoValido = c =>
+    /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(String(c || "").trim());
+
+  /* Erratas que se escriben solas al teclear rápido. */
+  const DEDAZOS = {
+    "gmai.com": "gmail.com", "gmial.com": "gmail.com", "gmail.co": "gmail.com",
+    "gmail.con": "gmail.com", "hotmai.com": "hotmail.com", "hotmial.com": "hotmail.com",
+    "hotmail.con": "hotmail.com", "yaho.com": "yahoo.com", "yahooo.com": "yahoo.com",
+    "icloud.con": "icloud.com", "iclod.com": "icloud.com", "outlok.com": "outlook.com"
+  };
+  function sugerencia(correo) {
+    const d = String(correo).split("@")[1];
+    return d && DEDAZOS[d.toLowerCase()] ? DEDAZOS[d.toLowerCase()] : null;
+  }
+
+  async function entrar(datos) {
+    const err = $("errCliente");
+    err.textContent = "";
+    const email = String(datos.email || "").trim().toLowerCase();
+
+    if (!correoValido(email)) {
+      err.textContent = "Ese correo no parece válido. Revísalo.";
+      return;
+    }
+    const sug = sugerencia(email);
+    if (sug && !datos.insistio) {
+      err.textContent = '¿Quisiste decir @' + sug + "? Corrígelo o toca otra vez para seguir.";
+      datos.insistio = true;
+      $("btnDame").dataset.insistio = "1";
+      return;
+    }
+
+    $("btnDame").disabled = true;
+    $("btnYoSoy").disabled = true;
+
+    const lead = {
+      tipo: "lead",
+      codigo: MAGNET.codigo,
+      nombre: String(datos.nombre || "").trim(),
+      apellido: String(datos.apellido || "").trim(),
+      email: email
+    };
+    guardarLocal(RECUERDO, { nombre: lead.nombre, apellido: lead.apellido, email: email });
+    QUIEN = email;
+
+    /* Se guarda, pero pase lo que pase se entrega el contenido:
+       perder el apunte es malo, dejar a la persona sin lo que vino
+       a buscar es peor. Si falló, queda apuntado aquí y se reintenta
+       la próxima vez que abra la app. */
+    const res = await pedir(lead);
+    avisarPaso("correo");
+    if (!res || !res.ok) {
+      const cola = leerLocal(PENDIENTE) || [];
+      cola.push(lead);
+      guardarLocal(PENDIENTE, cola.slice(-20));
+    }
+    entregar(MAGNET);
+  }
+
+  /* Un apunte de por dónde va. Se manda y se olvida: si falla,
+     no pasa nada, la persona no se entera de nada. */
+  function avisarPaso(paso) {
+    if (!QUIEN || !MAGNET) return;
+    pedir({ tipo: "paso", email: QUIEN, codigo: MAGNET.codigo, paso: paso }, 0);
+  }
+
+  async function reintentarPendientes() {
+    const cola = leerLocal(PENDIENTE);
+    if (!cola || !cola.length) return;
+    const quedan = [];
+    for (const l of cola) {
+      const r = await pedir(l, 0);
+      if (!r || !r.ok) quedan.push(l);
+    }
+    guardarLocal(PENDIENTE, quedan);
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     ENTREGAR EL MAGNET
+     Siempre dentro de la app. Así se sabe cuándo llega al final,
+     que es lo que hace aparecer el botón de agendar.
+     ────────────────────────────────────────────────────────── */
+  function entregar(m) {
+    if (YA_ENTREGADO) return;
+    YA_ENTREGADO = true;
+    $("puerta").hidden = true;
+    $("entregado").hidden = false;
+    const visor = $("visor");
+    visor.innerHTML = "";
+
+    if (m.tipo === "youtube") verVideo(m, visor);
+    else if (m.tipo === "foto") verFoto(m, visor);
+    else verDocumento(m, visor);
+
+    pintarDescarga(m);
+  }
+
+  /* --- Video --- */
+  const idDeYouTube = u => {
+    const s = String(u || "");
+    let x = s.match(/[?&]v=([\w-]{6,})/) || s.match(/youtu\.be\/([\w-]{6,})/) ||
+            s.match(/\/embed\/([\w-]{6,})/) || s.match(/\/shorts\/([\w-]{6,})/);
+    if (x) return x[1];
+    return /^[\w-]{6,}$/.test(s.trim()) ? s.trim() : "";
+  };
+
+  function verVideo(m, visor) {
+    const id = idDeYouTube(m.fuente);
+    if (!id) { visor.innerHTML = '<p class="err">Este video no está bien puesto.</p>'; return; }
+    const marco = document.createElement("div");
+    marco.className = "marco-video";
+    marco.innerHTML = '<div id="tocadiscos"></div>';
+    visor.appendChild(marco);
+
+    /* La API de YouTube avisa cuando el video termina. Es lo que
+       destapa el botón de agendar. */
+    const arranca = () => {
+      new YT.Player("tocadiscos", {
+        videoId: id,
+        host: "https://www.youtube-nocookie.com",
+        playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+        events: {
+          onStateChange: ev => {
+            if (ev.data === YT.PlayerState.PLAYING) avisarPaso("empezo");
+            if (ev.data === YT.PlayerState.ENDED) alFinal();
+          },
+          onReady: ev => {
+            /* Hay teléfonos donde ENDED no llega. Se vigila también
+               el tiempo: a la mitad y al 92%. */
+            const reloj = setInterval(() => {
+              try {
+                const d = ev.target.getDuration();
+                if (!d) return;
+                const parte = ev.target.getCurrentTime() / d;
+                if (parte > 0.45) avisarPaso("mitad");
+                if (parte > 0.92) { clearInterval(reloj); alFinal(); }
+              } catch (e) { clearInterval(reloj); }
+            }, 2000);
+          }
+        }
+      });
+    };
+
+    if (window.YT && window.YT.Player) arranca();
+    else {
+      window.onYouTubeIframeAPIReady = arranca;
+      const s = document.createElement("script");
+      s.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(s);
+    }
+  }
+
+  /* --- Foto --- */
+  function verFoto(m, visor) {
+    const img = document.createElement("img");
+    img.className = "marco-foto";
+    img.src = m.fuente; img.alt = m.titulo;
+    visor.appendChild(img);
+    vigilarFinal(visor);
+  }
+
+  /* --- Documento (PDF hoja por hoja, dentro de la app) --- */
+  function verDocumento(m, visor) {
+    const esPdf = /\.pdf(\?|$)/i.test(m.fuente || "");
+    if (!esPdf) {
+      /* Word y compañía no se pueden dibujar aquí. Se entrega el
+         archivo y el botón sale enseguida: sin hojas que contar,
+         esconderlo solo serviría para que nadie lo viera. */
+      visor.innerHTML = '<p class="sub">Tu documento está listo abajo.</p>';
+      alFinal();
+      return;
+    }
+    const aviso = document.createElement("p");
+    aviso.className = "nota-chica";
+    aviso.textContent = "Cargando el documento…";
+    visor.appendChild(aviso);
+
+    cargarPdfJs().then(() => {
+      const pdfjs = window.pdfjsLib;
+      pdfjs.GlobalWorkerOptions.workerSrc = D.pdfWorker;
+      return pdfjs.getDocument(m.fuente).promise;
+    }).then(async doc => {
+      aviso.remove();
+      const ancho = Math.min(visor.clientWidth || 600, 900);
+      for (let n = 1; n <= doc.numPages; n++) {
+        const pag = await doc.getPage(n);
+        const base = pag.getViewport({ scale: 1 });
+        /* Se dibuja al doble para que no se vea borroso en pantallas
+           de teléfono, pero se muestra al ancho de la columna. */
+        const escala = (ancho / base.width) * Math.min(devicePixelRatio || 1, 2);
+        const vista = pag.getViewport({ scale: escala });
+        const lienzo = document.createElement("canvas");
+        lienzo.width = vista.width; lienzo.height = vista.height;
+        lienzo.style.width = "100%"; lienzo.style.height = "auto";
+        lienzo.style.display = "block";
+        lienzo.style.borderRadius = "14px";
+        lienzo.style.border = "1px solid var(--hueso)";
+        lienzo.style.marginBottom = "12px";
+        lienzo.style.background = "#fff";
+        visor.appendChild(lienzo);
+        await pag.render({ canvasContext: lienzo.getContext("2d"), viewport: vista }).promise;
+      }
+      /* Dónde se queda la gente: pasar de la primera hoja, llegar
+         a la del medio, y llegar al final. */
+      const hojas = visor.querySelectorAll("canvas");
+      if (hojas.length > 1) mirar(hojas[1], "empezo");
+      if (hojas.length > 2) mirar(hojas[Math.floor(hojas.length / 2)], "mitad");
+      vigilarFinal(visor);
+    }).catch(() => {
+      /* Si no se puede dibujar, no se deja a nadie colgado. */
+      aviso.textContent = "";
+      visor.innerHTML = '<p class="sub">Tu documento está listo abajo.</p>';
+      alFinal();
+    });
+  }
+
+  function cargarPdfJs() {
+    if (window.pdfjsLib) return Promise.resolve();
+    return new Promise((ok, mal) => {
+      const s = document.createElement("script");
+      s.src = D.pdfLib; s.onload = ok; s.onerror = mal;
+      document.head.appendChild(s);
+    });
+  }
+
+  /* El centinela: un trocito invisible al final del contenido.
+     Cuando entra en pantalla, es que la persona llegó abajo. */
+  /* Avisa una vez cuando ese trozo se ve de verdad.
+     Se pide que esté casi entero en pantalla y no que asome: en
+     un teléfono alto, la hoja siguiente ya asoma sin deslizar, y
+     entonces todo el mundo saldría como que la leyó. */
+  function mirar(nodo, paso) {
+    if (!nodo || !("IntersectionObserver" in window)) return;
+    const ojo = new IntersectionObserver(e => {
+      if (e.some(x => x.intersectionRatio >= 0.6)) { ojo.disconnect(); avisarPaso(paso); }
+    }, { threshold: [0.6] });
+    ojo.observe(nodo);
+  }
+
+  function vigilarFinal(visor) {
+    const marca = document.createElement("div");
+    marca.style.height = "1px";
+    visor.appendChild(marca);
+    if (!("IntersectionObserver" in window)) { alFinal(); return; }
+    const ojo = new IntersectionObserver(e => {
+      if (e.some(x => x.isIntersecting)) { ojo.disconnect(); alFinal(); }
+    }, { rootMargin: "0px 0px -40px 0px" });
+    ojo.observe(marca);
+  }
+
+  function pintarDescarga(m) {
+    const caja = $("descargar");
+    caja.innerHTML = "";
+    if (m.tipo === "youtube" || vacio(m.fuente)) return;
+    const a = document.createElement("a");
+    a.className = "btn btn--claro";
+    a.href = m.fuente;
+    a.setAttribute("download", "");
+    a.target = "_blank"; a.rel = "noopener";
+    a.textContent = "Descargar para guardarlo";
+    caja.appendChild(a);
+  }
+
+  /* El botón de agendar, solo al llegar al final. */
+  let FINAL_HECHO = false;
+  function alFinal() {
+    if (FINAL_HECHO) return;
+    FINAL_HECHO = true;
+    const caja = document.createElement("div");
+    caja.style.marginTop = "26px";
+    caja.style.paddingTop = "24px";
+    caja.style.borderTop = "1px solid var(--hueso)";
+    const m = MAGNET || {};
+    const h = document.createElement("h3");
+    h.style.fontSize = "24px";
+    h.textContent = m.cierret || D.cierreTitulo;
+    const p = document.createElement("p");
+    p.className = "sub";
+    p.style.marginBottom = "18px";
+    p.textContent = m.cierrep || D.cierreTexto;
+    const a = document.createElement("a");
+    a.className = "btn";
+    a.href = D.agenda + (D.agenda.indexOf("?") >= 0 ? "&" : "?") +
+             "de=" + encodeURIComponent(m.codigo || "");
+    a.textContent = m.cierreb || D.cierreBoton;
+    /* Llegó hasta el final: eso ya distingue al que se quedó a
+       medias del que se lo vio entero. */
+    avisarPaso("empezo");
+    avisarPaso("mitad");
+    avisarPaso("final");
+    a.addEventListener("click", () => avisarPaso("tocoagendar"));
+    caja.appendChild(h); caja.appendChild(p); caja.appendChild(a);
+    $("entregado").appendChild(caja);
+    if (!menosMov) caja.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     ARRANQUE
+     ────────────────────────────────────────────────────────── */
+  async function arrancar() {
+    conectarPuerta();
+    conectarPanel();
+    reintentarPendientes();
+
+    const codigo = codigoDelEnlace();
+    if (!codigo) { mostrarPantalla("vacio"); return; }
+
+    const res = await pedir({ tipo: "magnet", codigo: codigo });
+    if (res && res.ok && res.magnet) pintarMagnet(res.magnet);
+    else {
+      $("vacioTxt").textContent = (res && res.error === "sin-script")
+        ? "Falta conectar la app. Entra con tu contraseña y pega la dirección de tu Apps Script."
+        : "Este enlace no lleva a ningún sitio. Si te lo mandé yo, revisa que esté completo.";
+      mostrarPantalla("vacio");
+    }
+  }
+
+  function conectarPuerta() {
+    $("btnDame").addEventListener("click", () => {
+      entrar({
+        nombre: $("fNombre").value,
+        apellido: $("fApellido").value,
+        email: $("fCorreo").value,
+        insistio: $("btnDame").dataset.insistio === "1"
+      });
+    });
+    $("btnYoSoy").addEventListener("click", () => {
+      const yo = leerLocal(RECUERDO) || {};
+      entrar({ nombre: yo.nombre, apellido: yo.apellido, email: yo.email, insistio: true });
+    });
+    /* "Ya te di mi correo": no se le pide el nombre otra vez. */
+    $("btnYaDi").addEventListener("click", () => {
+      $("cNombre").hidden = true; $("cApellido").hidden = true;
+      $("btnYaDi").hidden = true; $("btnSoyNuevo").hidden = false;
+      $("fCorreo").focus();
+    });
+    $("btnSoyNuevo").addEventListener("click", () => {
+      $("cNombre").hidden = false; $("cApellido").hidden = false;
+      $("btnYaDi").hidden = false; $("btnSoyNuevo").hidden = true;
+    });
+    $("fCorreo").addEventListener("keydown", e => {
+      if (e.key === "Enter") $("btnDame").click();
+    });
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     EL PANEL
+     ────────────────────────────────────────────────────────── */
+  let PASS = "";
+  let DATOS = { magnets: [], leads: [], vistas: {} };
+  let PESTANA = "magnets";
+
+  function conectarPanel() {
+    $("btnLlave").addEventListener("click", () => {
+      $("panel").classList.add("abierto");
+      $("panel").setAttribute("aria-hidden", "false");
+      setTimeout(() => $("fClave").focus(), 120);
+    });
+    $("panelX").addEventListener("click", cerrarPanel);
+    $("btnEntrar").addEventListener("click", entrarPanel);
+    $("fClave").addEventListener("keydown", e => {
+      if (e.key === "Enter") entrarPanel();
+    });
+    document.querySelectorAll(".pestana").forEach(b => {
+      b.addEventListener("click", () => {
+        document.querySelectorAll(".pestana").forEach(x => x.classList.remove("activa"));
+        b.classList.add("activa");
+        PESTANA = b.getAttribute("data-pes");
+        pintarPanel();
+      });
+    });
+  }
+
+  function cerrarPanel() {
+    $("panel").classList.remove("abierto");
+    $("panel").setAttribute("aria-hidden", "true");
+  }
+
+  async function entrarPanel() {
+    const err = $("errClave");
+    err.textContent = "";
+    const p = $("fClave").value;
+    if (vacio(p)) { err.textContent = "Escribe tu contraseña."; return; }
+    $("btnEntrar").disabled = true;
+    const res = await pedir({ tipo: "panel", pass: p });
+    $("btnEntrar").disabled = false;
+    if (!res || !res.ok) {
+      err.textContent = res && res.error === "pass"
+        ? "Esa contraseña no es."
+        : "No se pudo conectar. Revisa la dirección del Apps Script.";
+      return;
+    }
+    PASS = p;
+    $("fClave").value = "";
+    DATOS = { magnets: res.magnets || [], leads: res.leads || [], vistas: res.vistas || {} };
+    $("pasoClave").hidden = true;
+    $("pasoDentro").hidden = false;
+    pintarPanel();
+  }
+
+  async function recargar() {
+    const res = await pedir({ tipo: "panel", pass: PASS });
+    if (res && res.ok) DATOS = { magnets: res.magnets || [], leads: res.leads || [],
+                                 vistas: res.vistas || {} };
+    pintarPanel();
+  }
+
+  function pintarPanel() {
+    const c = $("panelCuerpo");
+    if (PESTANA === "magnets") pintarMagnets(c);
+    else if (PESTANA === "correos") pintarCorreos(c);
+    else pintarResumen(c);
+  }
+
+  /* --- Pestaña: magnets --- */
+  function enlaceDe(m) {
+    return D.base + "?r=" + encodeURIComponent(m.codigo);
+  }
+
+  function pintarMagnets(c) {
+    let h = '<div class="tarjeta">' +
+      '<div class="fila fila--cab" style="padding-top:0;border-bottom:0">' +
+      '<div class="fila__txt"><b>Tus magnets</b>' +
+      '<span>' + plural(DATOS.magnets.length, 'magnet') + ' en total</span></div>' +
+      '<div class="fila__acc"><button class="btn btn--chico" data-nuevo="1">Añadir</button></div>' +
+      '</div>';
+
+    if (!DATOS.magnets.length) {
+      h += '<p class="vacio">Todavía no tienes ninguno.<br>Toca Añadir para crear el primero.</p>';
+    }
+    DATOS.magnets.forEach((m, i) => {
+      h += '<div class="mg"><div class="fila" style="border-bottom:0">' +
+        '<div class="fila__txt"><b>' + esc(m.titulo) + '</b>' +
+        '<span>' + esc(m.codigo) + ' · ' +
+        (m.tipo === "youtube" ? "Video" : m.tipo === "foto" ? "Imagen" : "Documento") +
+        (m.activo === false ? " · apagado" : "") + '</span></div>' +
+        '<div class="fila__acc">' +
+        '<button class="btn btn--chico btn--claro" data-edi="' + i + '">Editar</button>' +
+        '</div></div>' +
+        '<div class="enlace-copiar">' +
+        '<input type="text" readonly value="' + esc(enlaceDe(m)) + '" data-enl="' + i + '">' +
+        '<button class="btn btn--chico" data-copia="' + i + '">Copiar</button>' +
+        '</div></div>';
+    });
+    h += "</div>";
+    c.innerHTML = h;
+
+    c.querySelector("[data-nuevo]").addEventListener("click", () => editarMagnet(-1));
+    c.querySelectorAll("[data-edi]").forEach(b =>
+      b.addEventListener("click", () => editarMagnet(+b.getAttribute("data-edi"))));
+    c.querySelectorAll("[data-copia]").forEach(b =>
+      b.addEventListener("click", () => {
+        const i = b.getAttribute("data-copia");
+        copiar(enlaceDe(DATOS.magnets[i]), b);
+      }));
+  }
+
+  function editarMagnet(i) {
+    const nuevo = i < 0;
+    const m = nuevo
+      ? { codigo: "", titulo: "", texto: "", tipo: "youtube", fuente: "", portada: "",
+          boton: "", cierret: "", cierrep: "", cierreb: "", activo: true }
+      : Object.assign({}, DATOS.magnets[i]);
+    const c = $("panelCuerpo");
+    c.innerHTML =
+      '<div class="tarjeta">' +
+      '<h3 style="font-size:22px;margin-bottom:16px">' +
+        (nuevo ? "Nuevo magnet" : "Editar magnet") + '</h3>' +
+      '<div class="campo"><label for="eTitulo">Título</label>' +
+      '<input type="text" id="eTitulo" value="' + esc(m.titulo) + '" placeholder="La guía del agua de tu casa"></div>' +
+      '<div class="campo"><label for="eTexto">Una línea de qué es</label>' +
+      '<textarea id="eTexto" placeholder="Qué hay en el agua que tomas y qué puedes hacer.">' + esc(m.texto) + '</textarea></div>' +
+      '<div class="campo"><label for="eTipo">Qué es</label>' +
+      '<select id="eTipo">' +
+      '<option value="youtube"' + (m.tipo === "youtube" ? " selected" : "") + '>Video de YouTube</option>' +
+      '<option value="doc"' + (m.tipo === "doc" ? " selected" : "") + '>PDF o documento</option>' +
+      '<option value="foto"' + (m.tipo === "foto" ? " selected" : "") + '>Imagen</option>' +
+      '</select></div>' +
+      '<div class="campo"><label for="eFuente" id="lFuente">Enlace de YouTube</label>' +
+      '<input type="text" id="eFuente" value="' + esc(m.fuente) + '"></div>' +
+      '<div class="campo"><label for="ePortada">Portada (opcional)</label>' +
+      '<input type="text" id="ePortada" value="' + esc(m.portada) + '" placeholder="recursos/portada.jpg"></div>' +
+      '<div class="campo"><label for="eBoton">Texto del botón</label>' +
+      '<input type="text" id="eBoton" value="' + esc(m.boton || "") + '" placeholder="Ver el contenido"></div>' +
+      '<p style="font-size:14.5px;color:var(--humo);margin:18px 0 10px;' +
+        'padding-top:16px;border-top:1px solid var(--hueso)">' +
+        'Lo que sale al terminarlo</p>' +
+      '<div class="campo"><label for="eCierreT">Título</label>' +
+      '<input type="text" id="eCierreT" value="' + esc(m.cierret || "") + '" placeholder="' + esc(D.cierreTitulo) + '"></div>' +
+      '<div class="campo"><label for="eCierreP">Texto</label>' +
+      '<textarea id="eCierreP" placeholder="' + esc(D.cierreTexto) + '">' + esc(m.cierrep || "") + '</textarea></div>' +
+      '<div class="campo"><label for="eCierreB">Botón</label>' +
+      '<input type="text" id="eCierreB" value="' + esc(m.cierreb || "") + '" placeholder="' + esc(D.cierreBoton) + '"></div>' +
+      '<p class="nota-chica" style="margin:-6px 0 18px">' +
+        'Si dejas alguno vacío, sale el de siempre.</p>' +
+      '<div class="campo"><label for="eCodigo">Código del enlace</label>' +
+      '<input type="text" id="eCodigo" value="' + esc(m.codigo) + '" placeholder="guia-del-agua"></div>' +
+      '<p class="nota-chica" style="margin:-6px 0 16px">' +
+        'Solo minúsculas, números y guiones. Si ya lo pegaste en ManyChat, no lo cambies.</p>' +
+      '<label style="display:flex;gap:10px;align-items:center;margin-bottom:20px;font-size:15.5px">' +
+      '<input type="checkbox" id="eActivo"' + (m.activo === false ? "" : " checked") +
+      ' style="width:21px;height:21px;accent-color:var(--vivo)"> Encendido</label>' +
+      '<button class="btn" id="eGuardar">Guardar</button>' +
+      '<p class="err" id="eErr"></p>' +
+      '<div style="display:flex;gap:9px;margin-top:10px">' +
+      '<button class="btn btn--chico btn--claro" id="eVolver">Volver</button>' +
+      (nuevo ? "" : '<button class="btn btn--chico btn--peligro" id="eBorrar">Borrar</button>') +
+      '</div></div>';
+
+    const etiqueta = () => {
+      const t = $("eTipo").value;
+      $("lFuente").textContent = t === "youtube" ? "Enlace de YouTube"
+        : t === "foto" ? "Nombre del archivo de la imagen"
+        : "Nombre del archivo (lo que subiste a GitHub)";
+      $("eFuente").placeholder = t === "youtube" ? "https://youtu.be/..."
+        : t === "foto" ? "recursos/infografia.jpg" : "recursos/guia-del-agua.pdf";
+    };
+    etiqueta();
+    $("eTipo").addEventListener("change", etiqueta);
+
+    $("eVolver").addEventListener("click", pintarPanel);
+    if (!nuevo) $("eBorrar").addEventListener("click", async () => {
+      if (!confirm("¿Borrar este magnet? El enlace dejará de funcionar.")) return;
+      const lista = DATOS.magnets.slice();
+      lista.splice(i, 1);
+      await guardarMagnets(lista);
+    });
+
+    $("eGuardar").addEventListener("click", async () => {
+      const err = $("eErr");
+      err.textContent = "";
+      const limpio = $("eCodigo").value.trim().toLowerCase()
+        .normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "");
+      if (vacio($("eTitulo").value)) { err.textContent = "Ponle un título."; return; }
+      if (vacio($("eFuente").value)) { err.textContent = "Falta el enlace o el archivo."; return; }
+      if (vacio(limpio)) { err.textContent = "Falta el código del enlace."; return; }
+      const choca = DATOS.magnets.some((x, j) => j !== i && x.codigo === limpio);
+      if (choca) { err.textContent = "Ya tienes otro magnet con ese código."; return; }
+
+      const nuevoM = {
+        codigo: limpio,
+        titulo: $("eTitulo").value.trim(),
+        texto: $("eTexto").value.trim(),
+        tipo: $("eTipo").value,
+        fuente: $("eFuente").value.trim(),
+        portada: $("ePortada").value.trim(),
+        boton: $("eBoton").value.trim(),
+        cierret: $("eCierreT").value.trim(),
+        cierrep: $("eCierreP").value.trim(),
+        cierreb: $("eCierreB").value.trim(),
+        activo: $("eActivo").checked
+      };
+      const lista = DATOS.magnets.slice();
+      if (nuevo) lista.push(nuevoM); else lista[i] = nuevoM;
+      await guardarMagnets(lista);
+    });
+  }
+
+  async function guardarMagnets(lista) {
+    const res = await pedir({ tipo: "guardarMagnets", pass: PASS, magnets: lista });
+    if (!res || !res.ok) { alert("No se pudo guardar. Inténtalo otra vez."); return; }
+    DATOS.magnets = lista;
+    PESTANA = "magnets";
+    pintarPanel();
+  }
+
+  /* --- Pestaña: correos --- */
+  const estadoDe = l => {
+    const n = (l.magnets || []).length;
+    if (n >= 3) return ["Muy interesado", "caliente"];
+    if (n === 2) return ["Repitió", "repitio"];
+    return ["Nuevo", "nuevo"];
+  };
+
+  function pintarCorreos(c) {
+    const leads = DATOS.leads.slice().sort((a, b) =>
+      (b.ultima || "").localeCompare(a.ultima || ""));
+    let h = '<div class="tarjeta">' +
+      '<div class="fila fila--cab" style="padding-top:0">' +
+      '<div class="fila__txt"><b>Tus correos</b><span>' +
+      plural(leads.length, 'persona') + '</span></div>' +
+      '<div class="fila__acc">' +
+      '<button class="btn btn--chico btn--claro" id="cCopiar">Copiar todo</button>' +
+      '<button class="btn btn--chico" id="cCsv">Descargar</button>' +
+      '</div></div>';
+
+    if (!leads.length) h += '<p class="vacio">Todavía no ha entrado nadie.</p>';
+    leads.forEach((l, i) => {
+      const [txt, clase] = estadoDe(l);
+      const nom = ((l.nombre || "") + " " + (l.apellido || "")).trim() || "(sin nombre)";
+      h += '<div class="fila" data-lead="' + i + '" style="cursor:pointer">' +
+        '<div class="fila__txt"><b>' + esc(nom) + '</b>' +
+        '<span>' + esc(l.email) + ' · ' + plural((l.magnets || []).length, 'magnet') +
+        (l.progreso === "agendo" ? " · agendó"
+         : l.progreso === "pidio" || !l.progreso ? " · no terminó" : "") +
+        '</span></div>' +
+        '<div class="fila__acc"><span class="pastilla pastilla--' + clase + '">' + txt + '</span></div>' +
+        '</div>';
+    });
+    h += "</div>";
+    c.innerHTML = h;
+
+    $("cCopiar").addEventListener("click", () => {
+      const t = leads.map(l =>
+        ((l.nombre || "") + " " + (l.apellido || "")).trim() + "\t" + l.email).join("\n");
+      copiar(t, $("cCopiar"));
+    });
+    $("cCsv").addEventListener("click", () => bajarCsv(leads));
+    c.querySelectorAll("[data-lead]").forEach(f =>
+      f.addEventListener("click", () => verLead(leads[+f.getAttribute("data-lead")])));
+  }
+
+  /* Lo que la app ve sola, sin que David marque nada. */
+  /* Dicho como lo que importa: dónde se quedó y qué no hizo. */
+  const PASOS = {
+    correo: "Dejó su correo y no llegó a abrir el contenido",
+    empezo: "Lo empezó y lo dejó enseguida",
+    mitad: "Llegó a la mitad y no siguió",
+    final: "Se lo vio entero, pero no tocó agendar",
+    tocoagendar: "Tocó agendar y no llegó a reservar",
+    agendo: "Agendó la videollamada"
+  };
+  /* El orden de los peldaños. Solo se sube: quien ya agendó no
+     vuelve atrás por abrir otro magnet después. */
+  const ESCALERA = ["correo", "empezo", "mitad", "final", "tocoagendar", "agendo"];
+
+  const ESTADOS = [
+    ["pidio", "Pidió magnet"], ["escrito", "Le escribí"], ["agendo", "Agendó cita"],
+    ["vino", "Vino a la llamada"], ["compro", "Compró"]
+  ];
+
+  function verLead(l) {
+    const [txt, clase] = estadoDe(l);
+    const nom = ((l.nombre || "") + " " + (l.apellido || "")).trim() || "(sin nombre)";
+    const c = $("panelCuerpo");
+    c.innerHTML = '<div class="tarjeta">' +
+      '<h3 style="font-size:23px">' + esc(nom) + '</h3>' +
+      '<p class="sub" style="margin-bottom:6px">' + esc(l.email) + '</p>' +
+      '<p><span class="pastilla pastilla--' + clase + '">' + txt + '</span></p>' +
+      '<div class="fila" style="margin-top:14px"><div class="fila__txt">' +
+      '<b>Magnets que pidió</b><span>' +
+      esc((l.magnets || []).join(" · ") || "ninguno") + '</span></div></div>' +
+      '<div class="fila"><div class="fila__txt"><b>Primera vez</b>' +
+      '<span>' + esc(l.primera || "-") + '</span></div></div>' +
+      '<div class="fila"><div class="fila__txt"><b>Última vez</b>' +
+      '<span>' + esc(l.ultima || "-") + '</span></div></div>' +
+      '<div class="fila" style="border-bottom:0"><div class="fila__txt"><b>Hasta dónde llegó</b>' +
+      '<span>' + esc(PASOS[l.progreso] || PASOS.correo) + '</span></div></div>' +
+      '<p style="font-size:14.5px;color:var(--humo);margin:18px 0 9px">¿En qué punto está?</p>' +
+      '<div id="lEstados" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px"></div>' +
+      '<div class="campo"><label for="lNota">Tus notas</label>' +
+      '<textarea id="lNota" placeholder="Lo que quieras apuntar">' + esc(l.nota || "") + '</textarea></div>' +
+      '<button class="btn" id="lGuardar">Guardar</button>' +
+      '<p class="err" id="lErr"></p>' +
+      '<button class="btn btn--chico btn--claro" id="lVolver" style="margin-top:10px">Volver</button>' +
+      '</div>';
+
+    let estado = l.estado || "pidio";
+    const pintarEstados = () => {
+      $("lEstados").innerHTML = ESTADOS.map(([k, t]) =>
+        '<button class="btn btn--chico ' + (k === estado ? "" : "btn--claro") +
+        '" data-est="' + k + '">' + t + '</button>').join("");
+      $("lEstados").querySelectorAll("[data-est]").forEach(b =>
+        b.addEventListener("click", () => { estado = b.getAttribute("data-est"); pintarEstados(); }));
+    };
+    pintarEstados();
+
+    $("lVolver").addEventListener("click", pintarPanel);
+    $("lGuardar").addEventListener("click", async () => {
+      $("lGuardar").disabled = true;
+      const res = await pedir({
+        tipo: "actualizarLead", pass: PASS,
+        email: l.email, estado: estado, nota: $("lNota").value
+      });
+      $("lGuardar").disabled = false;
+      if (!res || !res.ok) { $("lErr").textContent = "No se pudo guardar."; return; }
+      l.estado = estado; l.nota = $("lNota").value;
+      pintarPanel();
+    });
+  }
+
+  function bajarCsv(leads) {
+    const cab = ["Nombre", "Apellido", "Correo", "Magnets", "Cuantos",
+                 "Estado", "Interes", "HastaDonde", "Primera", "Ultima", "Nota"];
+    const fila = v => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
+    const filas = leads.map(l => [
+      l.nombre, l.apellido, l.email, (l.magnets || []).join("; "),
+      (l.magnets || []).length, l.estado || "pidio", estadoDe(l)[0],
+      PASOS[l.progreso] || PASOS.correo, l.primera, l.ultima, l.nota
+    ].map(fila).join(","));
+    /* El BOM del principio es lo que hace que Excel respete las tildes. */
+    const texto = "﻿" + cab.map(fila).join(",") + "\n" + filas.join("\n");
+    const url = URL.createObjectURL(new Blob([texto], { type: "text/csv;charset=utf-8" }));
+    const a = document.createElement("a");
+    a.href = url; a.download = "mis-correos.csv";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+
+  /* --- Pestaña: resumen --- */
+  /* El embudo: cada peldaño y cuánta gente lo pasa. Lo que se
+     busca aquí es el escalón donde se cae la mayoría. */
+  const PELDANOS = [
+    ["abrio", "Abrieron el enlace"],
+    ["correo", "Dejaron su correo"],
+    ["empezo", "Lo empezaron"],
+    ["mitad", "Llegaron a la mitad"],
+    ["final", "Lo terminaron"],
+    ["tocoagendar", "Tocaron agendar"],
+    ["agendo", "Agendaron"]
+  ];
+
+  function pintarResumen(c) {
+    const porMagnet = {};
+    const nuevo = titulo => {
+      const o = { titulo: titulo, abrio: 0 };
+      ESCALERA.forEach(k => { o[k] = 0; });
+      return o;
+    };
+    DATOS.magnets.forEach(m => { porMagnet[m.codigo] = nuevo(m.titulo); });
+    Object.keys(DATOS.vistas || {}).forEach(k => {
+      if (!porMagnet[k]) porMagnet[k] = nuevo(k);
+      porMagnet[k].abrio = Number(DATOS.vistas[k]) || 0;
+    });
+    DATOS.leads.forEach(l => {
+      const hasta = ESCALERA.indexOf(l.progreso || "correo");
+      (l.magnets || []).forEach(cod => {
+        if (!porMagnet[cod]) porMagnet[cod] = nuevo(cod);
+        /* Quien llegó a un peldaño pasó por todos los de antes. */
+        ESCALERA.forEach((k, i) => { if (i <= hasta) porMagnet[cod][k]++; });
+      });
+    });
+    /* Quien dejó su correo abrió el enlace por fuerza. Si la
+       cuenta de aperturas es menor, es que se empezó a contar
+       más tarde: se sube al mínimo que tiene que ser, y así el
+       embudo no sale al revés. */
+    Object.keys(porMagnet).forEach(k => {
+      porMagnet[k].abrio = Math.max(porMagnet[k].abrio, porMagnet[k].correo);
+    });
+    const filas = Object.keys(porMagnet).map(k => porMagnet[k])
+      .sort((a, b) => b.abrio - a.abrio || b.correo - a.correo);
+
+    let h = '<div class="tarjeta">' +
+      '<h3 style="font-size:22px;margin-bottom:4px">Dónde se te cae la gente</h3>' +
+      '<p class="nota-chica" style="margin-bottom:6px">' +
+      'Cada magnet, paso a paso. El escalón marcado en rojo es donde ' +
+      'pierdes más gente de golpe: ahí es donde hay que tocar.</p>';
+
+    if (!filas.length) h += '<p class="vacio">Todavía no hay datos.</p>';
+
+    filas.forEach(f => {
+      /* El peldaño donde más gente se queda por el camino. */
+      let peor = -1, caidaPeor = 0;
+      for (let i = 1; i < PELDANOS.length; i++) {
+        const de = f[PELDANOS[i - 1][0]], a = f[PELDANOS[i][0]];
+        if (de > 0 && de - a > caidaPeor) { caidaPeor = de - a; peor = i; }
+      }
+      h += '<div class="emb"><div class="emb__t">' + esc(f.titulo) + '</div>';
+      PELDANOS.forEach((pel, i) => {
+        const n = f[pel[0]];
+        const arriba = i === 0 ? n : f[PELDANOS[0][0]];
+        /* Con cero no se pinta nada: una rayita mínima haría creer
+           que algo llegó hasta ahí. */
+        const ancho = (n > 0 && arriba > 0) ? Math.max(2, Math.round(n / arriba * 100)) : 0;
+        const antes = i === 0 ? null : f[PELDANOS[i - 1][0]];
+        const cae = antes !== null && antes > 0 ? antes - n : 0;
+        h += '<div class="pel' + (i === peor ? " pel--fuga" : "") + '">' +
+          '<div class="pel__barra"><i style="width:' + ancho + '%"></i></div>' +
+          '<div class="pel__txt"><b>' + n + '</b> ' + pel[1] +
+          (cae > 0 ? ' <span class="pel__cae">se fueron ' + cae + '</span>' : "") +
+          '</div></div>';
+      });
+      h += '</div>';
+    });
+    h += "</div>";
+
+    /* La conexión, por si algún día cambia la dirección del script. */
+    h += '<div class="tarjeta">' +
+      '<h3 style="font-size:20px;margin-bottom:12px">Conexión</h3>' +
+      '<div class="campo"><label for="rScript">Dirección de tu Apps Script</label>' +
+      '<input type="text" id="rScript" value="' + esc(D.script) + '"></div>' +
+      '<div class="campo"><label for="rAgenda">Tu página de citas</label>' +
+      '<input type="text" id="rAgenda" value="' + esc(D.agenda) + '"></div>' +
+      '<button class="btn btn--chico" id="rBajar">Descargar copia de seguridad</button>' +
+      '<p class="nota-chica" style="margin-top:10px">' +
+      'Si cambias algo aquí, descarga la copia y súbela a GitHub. Si no, se pierde al recargar.</p>' +
+      '</div>';
+    c.innerHTML = h;
+
+    $("rBajar").addEventListener("click", () => {
+      D.script = $("rScript").value.trim();
+      D.agenda = $("rAgenda").value.trim();
+      document.getElementById("datos").textContent = JSON.stringify(D, null, 2);
+      const url = URL.createObjectURL(new Blob(
+        ["<!DOCTYPE html>\n" + document.documentElement.outerHTML],
+        { type: "text/html" }));
+      const a = document.createElement("a");
+      a.href = url; a.download = "micrm.html";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    });
+  }
+
+  /* Copiar: el portapapeles moderno falla dentro de la app
+     instalada en algunos iPhone, así que hay plan B. */
+  function copiar(texto, boton) {
+    const avisar = () => {
+      const antes = boton.textContent;
+      boton.textContent = "Copiado";
+      setTimeout(() => { boton.textContent = antes; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(avisar).catch(() => viejo());
+    } else viejo();
+    function viejo() {
+      const t = document.createElement("textarea");
+      t.value = texto; t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); avisar(); } catch (e) {}
+      t.remove();
+    }
+  }
+
+  arrancar();
+})();
+
+</script>
+
+</body>
+
+</html>
