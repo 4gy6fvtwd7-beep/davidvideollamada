@@ -472,6 +472,15 @@ a{color:var(--bosque)}
      text/plain a propósito: así el navegador no hace la pregunta
      previa de permisos, que es la que rompe estas llamadas.
      ────────────────────────────────────────────────────────── */
+  /* Si en Apps Script hay publicada una versión vieja, contesta "ok" a
+     todo sin guardar nada. Antes la app se lo creía y parecía que había
+     guardado. Esto es lo que se le dice a David cuando eso pasa. */
+  const AVISO_VIEJO =
+    "No se guardó nada: en tu Apps Script está publicada una versión vieja. " +
+    "Entra a Apps Script → Implementar → Administrar implementaciones → " +
+    "el lápiz ✏️ → en Versión elige «Nueva versión» → Implementar. " +
+    "Luego vuelve aquí y repítelo.";
+
   async function pedir(cuerpo, intentos) {
     intentos = intentos === undefined ? 2 : intentos;
     if (vacio(D.script)) return { ok: false, error: "sin-script" };
@@ -483,7 +492,11 @@ a{color:var(--bosque)}
           body: JSON.stringify(Object.assign({ clave: D.clave }, cuerpo))
         });
         const t = await r.text();
-        return JSON.parse(t);
+        const res = JSON.parse(t);
+        /* Mi CRM nunca contesta con "version". Si viene, es que respondió
+           el código viejo publicado, que ignora lo que le pedimos. */
+        if (res && res.version !== undefined) return { ok: false, error: "viejo" };
+        return res;
       } catch (e) {
         if (i === intentos) return { ok: false, error: String(e) };
         await new Promise(r => setTimeout(r, 500 * (i + 1)));
@@ -860,9 +873,13 @@ a{color:var(--bosque)}
     const res = await pedir({ tipo: "magnet", codigo: codigo });
     if (res && res.ok && res.magnet) pintarMagnet(res.magnet);
     else {
-      $("vacioTxt").textContent = (res && res.error === "sin-script")
-        ? "Falta conectar la app. Entra con tu contraseña y pega la dirección de tu Apps Script."
-        : "Este enlace no lleva a ningún sitio. Si te lo mandé yo, revisa que esté completo.";
+      $("vacioTxt").textContent =
+        (res && res.error === "sin-script")
+          ? "Falta conectar la app. Entra con tu contraseña y pega la dirección de tu Apps Script."
+          : (res && res.error === "viejo")
+            ? "Falta publicar la última versión en Apps Script: Implementar → "
+              + "Administrar implementaciones → ✏️ → Nueva versión → Implementar."
+            : "Este enlace no lleva a ningún sitio. Si te lo mandé yo, revisa que esté completo.";
       mostrarPantalla("vacio");
     }
   }
@@ -937,9 +954,11 @@ a{color:var(--bosque)}
     const res = await pedir({ tipo: "panel", pass: p });
     $("btnEntrar").disabled = false;
     if (!res || !res.ok) {
-      err.textContent = res && res.error === "pass"
-        ? "Esa contraseña no es."
-        : "No se pudo conectar. Revisa la dirección del Apps Script.";
+      err.textContent = res && res.error === "viejo"
+        ? AVISO_VIEJO
+        : res && res.error === "pass"
+          ? "Esa contraseña no es."
+          : "No se pudo conectar. Revisa la dirección del Apps Script.";
       return;
     }
     PASS = p;
@@ -1113,6 +1132,10 @@ a{color:var(--bosque)}
     const res = await pedir({ tipo: "guardarMagnets", pass: PASS, magnets: lista });
     if (!res || !res.ok) {
       const e = $("eErr");
+      if (res && res.error === "viejo") {
+        if (e) e.textContent = AVISO_VIEJO; else alert(AVISO_VIEJO);
+        return;
+      }
       const porque = res && res.error === "pass"
         ? "Vuelve a entrar con tu contraseña y repítelo."
         : "Revisa que tengas internet y dale otra vez.";
@@ -1234,7 +1257,11 @@ a{color:var(--bosque)}
         email: l.email, estado: estado, nota: $("lNota").value
       });
       $("lGuardar").disabled = false;
-      if (!res || !res.ok) { $("lErr").textContent = "No se pudo guardar."; return; }
+      if (!res || !res.ok) {
+        $("lErr").textContent = res && res.error === "viejo"
+          ? AVISO_VIEJO : "No se pudo guardar.";
+        return;
+      }
       l.estado = estado; l.nota = $("lNota").value;
       pintarPanel();
     });
