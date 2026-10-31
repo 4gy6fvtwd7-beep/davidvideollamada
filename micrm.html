@@ -96,6 +96,14 @@ a{color:var(--bosque)}
 
 /* El porqué de pedir el correo. Va antes de las casillas, con el
    fondo de la marca, para que se lea y no parezca letra pequeña. */
+/* Una hoja del documento. El borde y las esquinas van aquí y no en
+   el lienzo, porque una hoja larga se dibuja en varios trozos y
+   tienen que verse como una sola hoja. font-size:0 quita el hueco
+   que el navegador deja entre trozos. */
+.hoja{position:relative; overflow:hidden; border-radius:14px;
+  border:1px solid var(--hueso); background:#fff; margin-bottom:12px;
+  font-size:0; line-height:0}
+
 .porque{background:var(--salvia); border:1px solid var(--hueso);
   border-radius:14px; padding:15px 16px; margin:0 0 20px}
 .porque b{display:block; font-size:14px; color:var(--hondo);
@@ -801,39 +809,52 @@ a{color:var(--bosque)}
          agendar quedan puestos aunque una hoja tarde o falle al
          dibujarse: antes, un PDF pesado dejaba a la persona sin el
          botón de agendar, que es justo lo que no puede pasar. */
+      /* Al doble de puntos que la pantalla, para que se lea nítido.
+         Y cada hoja se dibuja en trozos de alto fijo: una hoja larga
+         en un solo lienzo se pasa del tamaño que aguanta el teléfono
+         y sale borrosa o en blanco. Troceada, cada pedazo es pequeño
+         y la calidad no baja ni un punto. */
+      const DPR = Math.min(window.devicePixelRatio || 1, 2);
+      const ALTO_TROZO = 2800;
+
       for (let n = 1; n <= total; n++) {
         const pag = await doc.getPage(n);
         const base = pag.getViewport({ scale: 1 });
-        /* Se dibuja al doble para que no se vea borroso en pantallas
-           de teléfono, pero se muestra al ancho de la columna. Con un
-           tope de puntos: una hoja muy larga reventaba la memoria del
-           teléfono y se quedaba en blanco. */
-        let escala = (ancho / base.width) * Math.min(devicePixelRatio || 1, 2);
-        const TOPE = 4500000;
-        const puntos = base.width * escala * base.height * escala;
-        if (puntos > TOPE) escala *= Math.sqrt(TOPE / puntos);
-
+        const escala = (ancho / base.width) * DPR;
         const vista = pag.getViewport({ scale: escala });
+
         const caja = document.createElement("div");
-        caja.style.position = "relative";
-        const lienzo = document.createElement("canvas");
-        lienzo.width = vista.width; lienzo.height = vista.height;
-        lienzo.style.width = "100%"; lienzo.style.height = "auto";
-        lienzo.style.display = "block";
-        lienzo.style.borderRadius = "14px";
-        lienzo.style.border = "1px solid var(--hueso)";
-        lienzo.style.marginBottom = "12px";
-        lienzo.style.background = "#fff";
-        caja.appendChild(lienzo);
+        caja.className = "hoja";
+        const trozos = [];
+        const cuantos = Math.max(1, Math.ceil(vista.height / ALTO_TROZO));
+        for (let k = 0; k < cuantos; k++) {
+          const desde = k * ALTO_TROZO;
+          const alto = Math.min(ALTO_TROZO, vista.height - desde);
+          const lienzo = document.createElement("canvas");
+          lienzo.width = Math.round(vista.width);
+          lienzo.height = Math.round(alto);
+          lienzo.style.width = "100%";
+          lienzo.style.height = "auto";
+          lienzo.style.display = "block";
+          caja.appendChild(lienzo);
+          trozos.push({ lienzo: lienzo, desde: desde });
+        }
         visor.appendChild(caja);
-        hojas.push({ caja: caja, lienzo: lienzo, pag: pag, vista: vista });
+        hojas.push({ caja: caja, pag: pag, vista: vista, trozos: trozos });
       }
 
       ponerSitios(visor, hojas, total);
 
       for (const h of hojas) {
-        await h.pag.render({ canvasContext: h.lienzo.getContext("2d"),
-                             viewport: h.vista }).promise;
+        for (const t of h.trozos) {
+          /* El trozo se dibuja subiendo la hoja entera: así cada
+             pedazo cae en su sitio sin volver a escalar nada. */
+          await h.pag.render({
+            canvasContext: t.lienzo.getContext("2d"),
+            viewport: h.vista,
+            transform: [1, 0, 0, 1, 0, -t.desde]
+          }).promise;
+        }
       }
     }).catch(() => {
       /* Si no se puede dibujar, no se deja a nadie colgado. */
