@@ -94,6 +94,14 @@ a{color:var(--bosque)}
 .sub{font-size:16px; color:var(--humo); line-height:1.6; margin-top:10px}
 .nota-chica{font-size:13.5px; color:var(--humo); line-height:1.55}
 
+/* El porqué de pedir el correo. Va antes de las casillas, con el
+   fondo de la marca, para que se lea y no parezca letra pequeña. */
+.porque{background:var(--salvia); border:1px solid var(--hueso);
+  border-radius:14px; padding:15px 16px; margin:0 0 20px}
+.porque b{display:block; font-size:14px; color:var(--hondo);
+  margin-bottom:5px}
+.porque p{margin:0; font-size:14.5px; line-height:1.58; color:var(--tinta)}
+
 /* ---------- La cara del cliente ---------- */
 .magnet__portada{display:block; width:100%; height:auto; aspect-ratio:16/9;
   object-fit:cover; background:var(--salvia); border-bottom:1px solid var(--hueso)}
@@ -312,13 +320,18 @@ a{color:var(--bosque)}
         </button>
 
         <div id="formNuevo">
-          <div class="campo" id="cNombre">
-            <label for="fNombre">Tu nombre</label>
-            <input type="text" id="fNombre" autocomplete="given-name" placeholder="Nombre">
+          <!-- Quien llega por un mensaje directo no sabe por qué se
+               le piden datos. Dicho antes de las casillas, no después. -->
+          <div class="porque" id="porque">
+            <b>Por qué te pido esto</b>
+            <p>El contenido se abre aquí mismo y es gratis. Te pido tu correo
+               por una sola razón: para poder mandarte de vez en cuando cosas
+               útiles sobre el agua de tu casa. Nada de spam, y te sales
+               cuando quieras.</p>
           </div>
-          <div class="campo" id="cApellido">
-            <label for="fApellido">Tu apellido</label>
-            <input type="text" id="fApellido" autocomplete="family-name" placeholder="Apellido">
+          <div class="campo" id="cNombre">
+            <label for="fNombre">Tu nombre y apellido</label>
+            <input type="text" id="fNombre" autocomplete="name" placeholder="Nombre y apellido">
           </div>
           <div class="campo">
             <label for="fCorreo">Tu correo electrónico</label>
@@ -566,6 +579,17 @@ a{color:var(--bosque)}
   const correoValido = c =>
     /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(String(c || "").trim());
 
+  /* Una sola casilla para el nombre entero: la gente lo escribe de
+     corrido y dos casillas eran un paso de más. La primera palabra
+     es el nombre y el resto el apellido. */
+  function partirNombre(txt) {
+    const t = String(txt || "").trim().replace(/\s+/g, " ");
+    if (!t) return { nombre: "", apellido: "" };
+    const i = t.indexOf(" ");
+    return i < 0 ? { nombre: t, apellido: "" }
+                 : { nombre: t.slice(0, i), apellido: t.slice(i + 1) };
+  }
+
   /* Erratas que se escriben solas al teclear rápido. */
   const DEDAZOS = {
     "gmai.com": "gmail.com", "gmial.com": "gmail.com", "gmail.co": "gmail.com",
@@ -624,9 +648,25 @@ a{color:var(--bosque)}
 
   /* Un apunte de por dónde va. Se manda y se olvida: si falla,
      no pasa nada, la persona no se entera de nada. */
-  function avisarPaso(paso) {
+  /* "donde" es el sitio exacto, en palabras: "Hoja 3 de 8",
+     "Minuto 4 de 12". El peldaño dice en qué tramo se quedó; esto
+     dice en qué punto, que es lo que de verdad se puede arreglar. */
+  let DONDE_VISTO = "";
+  function avisarPaso(paso, donde) {
     if (!QUIEN || !MAGNET) return;
-    pedir({ tipo: "paso", email: QUIEN, codigo: MAGNET.codigo, paso: paso }, 0);
+    if (donde) DONDE_VISTO = donde;
+    pedir({ tipo: "paso", email: QUIEN, codigo: MAGNET.codigo,
+            paso: paso, donde: donde || "" }, 0);
+  }
+
+  /* Un apunte de sitio sin cambiar de peldaño: se repite mucho
+     (cada hoja, cada medio minuto de video) y solo interesa el más
+     lejano, así que no se manda el mismo dos veces. */
+  function avisarDonde(donde) {
+    if (!QUIEN || !MAGNET || !donde || donde === DONDE_VISTO) return;
+    DONDE_VISTO = donde;
+    pedir({ tipo: "paso", email: QUIEN, codigo: MAGNET.codigo,
+            paso: "correo", donde: donde }, 0);
   }
 
   async function reintentarPendientes() {
@@ -686,19 +726,25 @@ a{color:var(--bosque)}
         playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
         events: {
           onStateChange: ev => {
-            if (ev.data === YT.PlayerState.PLAYING) avisarPaso("empezo");
-            if (ev.data === YT.PlayerState.ENDED) alFinal();
+            if (ev.data === YT.PlayerState.PLAYING) avisarPaso("empezo", "Le dio al play");
+            if (ev.data === YT.PlayerState.ENDED) alFinal("Se vio el video entero");
           },
           onReady: ev => {
             /* Hay teléfonos donde ENDED no llega. Se vigila también
                el tiempo: a la mitad y al 92%. */
+            const minuto = s => Math.max(1, Math.round(s / 60));
             const reloj = setInterval(() => {
               try {
                 const d = ev.target.getDuration();
                 if (!d) return;
-                const parte = ev.target.getCurrentTime() / d;
-                if (parte > 0.45) avisarPaso("mitad");
-                if (parte > 0.92) { clearInterval(reloj); alFinal(); }
+                const va = ev.target.getCurrentTime();
+                const parte = va / d;
+                /* El minuto exacto donde va, para saber en qué parte
+                   del video se cae la gente. */
+                const donde = "Minuto " + minuto(va) + " de " + minuto(d);
+                if (parte > 0.45) avisarPaso("mitad", donde);
+                else avisarDonde(donde);
+                if (parte > 0.92) { clearInterval(reloj); alFinal(donde); }
               } catch (e) { clearInterval(reloj); }
             }, 2000);
           }
@@ -721,7 +767,7 @@ a{color:var(--bosque)}
     img.className = "marco-foto";
     img.src = m.fuente; img.alt = m.titulo;
     visor.appendChild(img);
-    vigilarFinal(visor);
+    vigilarFinal(visor, "Vio la imagen entera");
   }
 
   /* --- Documento (PDF hoja por hoja, dentro de la app) --- */
@@ -732,7 +778,7 @@ a{color:var(--bosque)}
          archivo y el botón sale enseguida: sin hojas que contar,
          esconderlo solo serviría para que nadie lo viera. */
       visor.innerHTML = '<p class="sub">Tu documento está listo abajo.</p>';
-      alFinal();
+      alFinal("Se le entregó el archivo para descargar");
       return;
     }
     const aviso = document.createElement("p");
@@ -765,17 +811,26 @@ a{color:var(--bosque)}
         visor.appendChild(lienzo);
         await pag.render({ canvasContext: lienzo.getContext("2d"), viewport: vista }).promise;
       }
-      /* Dónde se queda la gente: pasar de la primera hoja, llegar
-         a la del medio, y llegar al final. */
+      /* Dónde se queda la gente, hoja por hoja. Así no es "se fue
+         a la mitad": es "se fue en la hoja 3 de 8", que ya dice qué
+         hoja hay que arreglar. */
       const hojas = visor.querySelectorAll("canvas");
-      if (hojas.length > 1) mirar(hojas[1], "empezo");
-      if (hojas.length > 2) mirar(hojas[Math.floor(hojas.length / 2)], "mitad");
-      vigilarFinal(visor);
+      const total = hojas.length;
+      hojas.forEach(function (hoja, i) {
+        const num = i + 1;
+        mirar(hoja, function () {
+          const donde = "Hoja " + num + " de " + total;
+          if (num === 1) avisarDonde(donde);
+          else if (num * 2 <= total) avisarPaso("empezo", donde);
+          else avisarPaso("mitad", donde);
+        });
+      });
+      vigilarFinal(visor, "Hoja " + total + " de " + total);
     }).catch(() => {
       /* Si no se puede dibujar, no se deja a nadie colgado. */
       aviso.textContent = "";
       visor.innerHTML = '<p class="sub">Tu documento está listo abajo.</p>';
-      alFinal();
+      alFinal("No se pudo dibujar el documento; se entregó para descargar");
     });
   }
 
@@ -794,21 +849,21 @@ a{color:var(--bosque)}
      Se pide que esté casi entero en pantalla y no que asome: en
      un teléfono alto, la hoja siguiente ya asoma sin deslizar, y
      entonces todo el mundo saldría como que la leyó. */
-  function mirar(nodo, paso) {
+  function mirar(nodo, alVerlo) {
     if (!nodo || !("IntersectionObserver" in window)) return;
     const ojo = new IntersectionObserver(e => {
-      if (e.some(x => x.intersectionRatio >= 0.6)) { ojo.disconnect(); avisarPaso(paso); }
+      if (e.some(x => x.intersectionRatio >= 0.6)) { ojo.disconnect(); alVerlo(); }
     }, { threshold: [0.6] });
     ojo.observe(nodo);
   }
 
-  function vigilarFinal(visor) {
+  function vigilarFinal(visor, donde) {
     const marca = document.createElement("div");
     marca.style.height = "1px";
     visor.appendChild(marca);
-    if (!("IntersectionObserver" in window)) { alFinal(); return; }
+    if (!("IntersectionObserver" in window)) { alFinal(donde); return; }
     const ojo = new IntersectionObserver(e => {
-      if (e.some(x => x.isIntersecting)) { ojo.disconnect(); alFinal(); }
+      if (e.some(x => x.isIntersecting)) { ojo.disconnect(); alFinal(donde); }
     }, { rootMargin: "0px 0px -40px 0px" });
     ojo.observe(marca);
   }
@@ -828,7 +883,7 @@ a{color:var(--bosque)}
 
   /* El botón de agendar, solo al llegar al final. */
   let FINAL_HECHO = false;
-  function alFinal() {
+  function alFinal(donde) {
     if (FINAL_HECHO) return;
     FINAL_HECHO = true;
     const caja = document.createElement("div");
@@ -852,8 +907,9 @@ a{color:var(--bosque)}
        medias del que se lo vio entero. */
     avisarPaso("empezo");
     avisarPaso("mitad");
-    avisarPaso("final");
-    a.addEventListener("click", () => avisarPaso("tocoagendar"));
+    avisarPaso("final", donde || "Lo vio entero");
+    a.addEventListener("click", () =>
+      avisarPaso("tocoagendar", "Tocó agendar, en la pregunta de la inversión"));
     caja.appendChild(h); caja.appendChild(p); caja.appendChild(a);
     $("entregado").appendChild(caja);
     if (!menosMov) caja.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -886,9 +942,10 @@ a{color:var(--bosque)}
 
   function conectarPuerta() {
     $("btnDame").addEventListener("click", () => {
+      const quien = partirNombre($("fNombre").value);
       entrar({
-        nombre: $("fNombre").value,
-        apellido: $("fApellido").value,
+        nombre: quien.nombre,
+        apellido: quien.apellido,
         email: $("fCorreo").value,
         insistio: $("btnDame").dataset.insistio === "1"
       });
@@ -899,12 +956,12 @@ a{color:var(--bosque)}
     });
     /* "Ya te di mi correo": no se le pide el nombre otra vez. */
     $("btnYaDi").addEventListener("click", () => {
-      $("cNombre").hidden = true; $("cApellido").hidden = true;
+      $("cNombre").hidden = true;
       $("btnYaDi").hidden = true; $("btnSoyNuevo").hidden = false;
       $("fCorreo").focus();
     });
     $("btnSoyNuevo").addEventListener("click", () => {
-      $("cNombre").hidden = false; $("cApellido").hidden = false;
+      $("cNombre").hidden = false;
       $("btnYaDi").hidden = false; $("btnSoyNuevo").hidden = true;
     });
     $("fCorreo").addEventListener("keydown", e => {
@@ -1199,14 +1256,17 @@ a{color:var(--bosque)}
   const PASOS = {
     correo: "Dejó su correo y no llegó a abrir el contenido",
     empezo: "Lo empezó y lo dejó enseguida",
-    mitad: "Llegó a la mitad y no siguió",
+    mitad: "Iba por la mitad y lo dejó",
     final: "Se lo vio entero, pero no tocó agendar",
-    tocoagendar: "Tocó agendar y no llegó a reservar",
+    tocoagendar: "Se quedó en la pregunta de la inversión",
+    decide: "Se quedó en la pregunta de con quién decide",
+    datos: "Se quedó eligiendo el día o poniendo sus datos",
     agendo: "Agendó la videollamada"
   };
   /* El orden de los peldaños. Solo se sube: quien ya agendó no
      vuelve atrás por abrir otro magnet después. */
-  const ESCALERA = ["correo", "empezo", "mitad", "final", "tocoagendar", "agendo"];
+  const ESCALERA = ["correo", "empezo", "mitad", "final",
+                    "tocoagendar", "decide", "datos", "agendo"];
 
   const ESTADOS = [
     ["pidio", "Pidió magnet"], ["escrito", "Le escribí"], ["agendo", "Agendó cita"],
@@ -1228,8 +1288,11 @@ a{color:var(--bosque)}
       '<span>' + esc(l.primera || "-") + '</span></div></div>' +
       '<div class="fila"><div class="fila__txt"><b>Última vez</b>' +
       '<span>' + esc(l.ultima || "-") + '</span></div></div>' +
-      '<div class="fila" style="border-bottom:0"><div class="fila__txt"><b>Hasta dónde llegó</b>' +
+      '<div class="fila"><div class="fila__txt"><b>Hasta dónde llegó</b>' +
       '<span>' + esc(PASOS[l.progreso] || PASOS.correo) + '</span></div></div>' +
+      '<div class="fila" style="border-bottom:0"><div class="fila__txt">' +
+      '<b>El punto exacto</b><span>' +
+      esc(l.donde || "Todavía no se sabe") + '</span></div></div>' +
       '<p style="font-size:14.5px;color:var(--humo);margin:18px 0 9px">¿En qué punto está?</p>' +
       '<div id="lEstados" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px"></div>' +
       '<div class="campo"><label for="lNota">Tus notas</label>' +
@@ -1269,12 +1332,14 @@ a{color:var(--bosque)}
 
   function bajarCsv(leads) {
     const cab = ["Nombre", "Apellido", "Correo", "Magnets", "Cuantos",
-                 "Estado", "Interes", "HastaDonde", "Primera", "Ultima", "Nota"];
+                 "Estado", "Interes", "HastaDonde", "PuntoExacto",
+                 "Primera", "Ultima", "Nota"];
     const fila = v => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
     const filas = leads.map(l => [
       l.nombre, l.apellido, l.email, (l.magnets || []).join("; "),
       (l.magnets || []).length, l.estado || "pidio", estadoDe(l)[0],
-      PASOS[l.progreso] || PASOS.correo, l.primera, l.ultima, l.nota
+      PASOS[l.progreso] || PASOS.correo, l.donde || "",
+      l.primera, l.ultima, l.nota
     ].map(fila).join(","));
     /* El BOM del principio es lo que hace que Excel respete las tildes. */
     const texto = "﻿" + cab.map(fila).join(",") + "\n" + filas.join("\n");
@@ -1294,7 +1359,9 @@ a{color:var(--bosque)}
     ["empezo", "Lo empezaron"],
     ["mitad", "Llegaron a la mitad"],
     ["final", "Lo terminaron"],
-    ["tocoagendar", "Tocaron agendar"],
+    ["tocoagendar", "Llegaron a la pregunta de la inversión"],
+    ["decide", "Pasaron a con quién deciden"],
+    ["datos", "Llegaron al día y sus datos"],
     ["agendo", "Agendaron"]
   ];
 

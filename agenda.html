@@ -997,6 +997,40 @@ document.addEventListener("click", e => {
    ════════════════════════════════════════════════════════════ */
 const Citas = {
   activa() { return !vacio(D.citas && D.citas.url); },
+
+  /* ── De dónde viene esta cita ──
+     Si llegó desde un lead magnet, el enlace trae ?de=<codigo>.
+     El correo NO viaja en la dirección: se lee del recuerdo que Mi
+     CRM dejó en este mismo teléfono, que es la misma web. */
+  de() {
+    try {
+      const v = new URLSearchParams(location.search).get("de") || "";
+      return v.trim().slice(0, 60);
+    } catch (e) { return ""; }
+  },
+  deCorreo() {
+    try {
+      const yo = JSON.parse(localStorage.getItem("micrm.yo") || "null");
+      return yo && yo.email ? String(yo.email).trim().toLowerCase() : "";
+    } catch (e) { return ""; }
+  },
+
+  /* Apunta en Mi CRM en qué pregunta va. Se manda y se olvida: si
+     falla, la persona no se entera y la cita sigue igual. */
+  ultimoPaso: "",
+  avisar(paso, donde) {
+    const de = this.de(), correo = this.deCorreo();
+    if (!this.activa() || !de || !correo || paso === this.ultimoPaso) return;
+    this.ultimoPaso = paso;
+    try {
+      fetch(D.citas.url.trim(), {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ clave: D.citas.clave, tipo: "paso",
+          email: correo, codigo: de, paso: paso, donde: donde || "" })
+      }).catch(function () {});
+    } catch (e) {}
+  },
   async enviar(datos) {
     if (!this.activa()) return { ok: false, error: "sin-url" };
     try {
@@ -1309,6 +1343,13 @@ const Form = (function () {
 
     if (paso === 2) refrescarHoras();
 
+    /* El punto exacto donde se queda la gente, para Mi CRM. Sin
+       esto el embudo solo decía "tocó agendar" y se perdía en qué
+       pregunta se caían. */
+    if (paso === 0) Citas.avisar("tocoagendar", "En la pregunta de la inversión");
+    else if (paso === 1) Citas.avisar("decide", "En la pregunta de con quién decide");
+    else if (paso === 2) Citas.avisar("datos", "Eligiendo el día y poniendo sus datos");
+
     if (paso === 0) {
       h += '<h2>' + escapar(tx("p1t","Agenda tu cita")) + '</h2>' +
         '<p class="sub">' + escapar(tx("p1s","Solo dos cositas antes de que escojas el día de tu cita.")) + '</p>' +
@@ -1452,6 +1493,9 @@ const Form = (function () {
       antes: "Decide con: " + (R.decide || "-"),
       presupuesto: R.inversion || "-",
       extra: "Agendado desde el enlace directo",
+      /* Para que Mi CRM marque solo que esta persona sí agendó. */
+      de: Citas.de(),
+      deEmail: Citas.deCorreo(),
       video: ""
     });
 
