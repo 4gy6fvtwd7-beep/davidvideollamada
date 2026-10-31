@@ -94,8 +94,6 @@ a{color:var(--bosque)}
 .sub{font-size:16px; color:var(--humo); line-height:1.6; margin-top:10px}
 .nota-chica{font-size:13.5px; color:var(--humo); line-height:1.55}
 
-/* El porqué de pedir el correo. Va antes de las casillas, con el
-   fondo de la marca, para que se lea y no parezca letra pequeña. */
 /* Una hoja del documento. El borde y las esquinas van aquí y no en
    el lienzo, porque una hoja larga se dibuja en varios trozos y
    tienen que verse como una sola hoja. font-size:0 quita el hueco
@@ -104,11 +102,55 @@ a{color:var(--bosque)}
   border:1px solid var(--hueso); background:#fff; margin-bottom:12px;
   font-size:0; line-height:0}
 
-.porque{background:var(--salvia); border:1px solid var(--hueso);
-  border-radius:14px; padding:15px 16px; margin:0 0 20px}
-.porque b{display:block; font-size:14px; color:var(--hondo);
-  margin-bottom:5px}
-.porque p{margin:0; font-size:14.5px; line-height:1.58; color:var(--tinta)}
+/* ---------- La puerta con la imagen del magnet ----------
+   La imagen manda: ocupa la pantalla entera y los datos se piden
+   encima, abajo del todo. El degradado nace de la propia imagen
+   para que la caja no parezca pegada con cinta. */
+.puertafoto{min-height:100dvh; background:#EEF2EA;
+  display:flex; flex-direction:column; align-items:center}
+/* La imagen, entera, a todo el ancho y SIN TOCAR: ni recortada por
+   los lados ni difuminada por abajo. Los colores son los suyos. */
+.puertafoto__img{display:block; width:100%; max-width:520px; height:auto}
+/* El formulario va debajo de la foto, nunca encima. */
+.puertafoto__caja{width:100%; max-width:520px; flex:1;
+  background:#F7FAF5;
+  padding:15px 18px calc(18px + env(safe-area-inset-bottom))}
+/* En la portada el candado se va arriba: abajo estorbaría al botón
+   y le robaría el sitio que necesita el formulario. */
+body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
+.puertafoto__caja > *{max-width:430px; margin-left:auto; margin-right:auto}
+.puertafoto__nota{font-size:14px; line-height:1.45; color:var(--humo);
+  margin:0 0 11px; text-align:center}
+.puertafoto__campo{display:block; width:100%; min-height:52px;
+  background:var(--nieve); border:1px solid var(--hueso); border-radius:14px;
+  padding:13px 16px; font-family:inherit; font-size:16px; color:var(--tinta);
+  margin-bottom:9px; -webkit-appearance:none}
+.puertafoto__campo:focus{outline:none; border-color:var(--vivo);
+  box-shadow:0 0 0 3px rgba(91,145,105,.18)}
+.puertafoto__campo::placeholder{color:#9AA99D}
+.puertafoto .err{text-align:center; min-height:0; margin-top:7px}
+.puertafoto .btn{min-height:56px}
+
+/* "Continuar con tu-correo": solo sale a quien ya estuvo aquí.
+   Abajo a la izquierda y pequeño, para que no compita con el botón. */
+.yavine{display:block; background:none; border:0; padding:7px 2px 0;
+  margin:2px 0 0; cursor:pointer; font-family:inherit; font-size:13.5px;
+  color:var(--bosque); text-decoration:underline; text-align:left;
+  max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.yavine:hover{color:var(--hondo)}
+
+/* En la laptop y la tablet, la misma columna: la foto y debajo el
+   formulario, centrados, en vez de una imagen gigante estirada. */
+@media (min-width: 560px){
+  /* La columna se estrecha lo justo para que la foto Y el
+     formulario quepan de una vez, sin tener que bajar. */
+  .puertafoto{padding:22px 16px 30px; justify-content:center;
+    --ancho:min(520px, calc((100dvh - 330px) / 1.5))}
+  .puertafoto__img{max-width:var(--ancho); border-radius:20px 20px 0 0}
+  .puertafoto__caja{max-width:var(--ancho); flex:0 0 auto;
+    border-radius:0 0 20px 20px; padding-bottom:24px;
+    box-shadow:0 18px 44px rgba(53,81,63,.13)}
+}
 
 /* ---------- La cara del cliente ---------- */
 .magnet__portada{display:block; width:100%; height:auto; aspect-ratio:16/9;
@@ -297,16 +339,30 @@ a{color:var(--bosque)}
      LA CARA DEL CLIENTE
      Enseña UN magnet, el del enlace, y ninguno más.
      ============================================================ -->
-<main class="envoltura" id="cliente" hidden>
-  <div class="marca">
-    <span class="marca__gota" aria-hidden="true">
-      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2.6c3.6 4.2 6.2 7.9 6.2 11.2A6.2 6.2 0 0 1 12 20a6.2 6.2 0 0 1-6.2-6.2C5.8 10.5 8.4 6.8 12 2.6z"/>
-      </svg>
-    </span>
-    <span class="marca__txt" id="marcaNombre">David Montenegro</span>
+<!-- ============================================================
+     LA PUERTA CON LA IMAGEN DEL MAGNET
+     Cuando el magnet trae su propia portada, la imagen es la
+     pantalla entera y los datos se piden encima, abajo. Sin
+     títulos ni explicaciones: la imagen ya lo dice todo.
+     ============================================================ -->
+<main class="puertafoto" id="puertaFoto" hidden>
+  <img class="puertafoto__img" id="pfImg" alt="">
+  <div class="puertafoto__caja">
+    <p class="puertafoto__nota">Llena esta información para que seas el primero
+      en recibir más listas como estas.</p>
+    <input class="puertafoto__campo" type="text" id="pfNombre"
+           autocomplete="given-name" placeholder="Tu nombre">
+    <input class="puertafoto__campo" type="email" id="pfCorreo"
+           autocomplete="email" inputmode="email" placeholder="Tu correo electrónico">
+    <button class="btn" id="pfBoton" type="button" disabled>Ver la lista</button>
+    <p class="err" id="pfErr"></p>
+    <button class="yavine" id="pfYaVine" type="button" hidden>
+      Continuar con <span id="pfYaCorreo"></span>
+    </button>
   </div>
+</main>
 
+<main class="envoltura" id="cliente" hidden>
   <article class="tarjeta tarjeta--pegada">
     <img class="magnet__portada" id="mPortada" alt="" hidden>
     <div class="magnet__cuerpo">
@@ -316,48 +372,25 @@ a{color:var(--bosque)}
 
       <!-- El formulario: solo mientras no haya dado el correo -->
       <div id="puerta" style="margin-top:24px">
-        <button class="yosoy" id="btnYoSoy" type="button" hidden>
-          <span class="yosoy__ico" id="yoIni">A</span>
-          <span class="yosoy__txt">
-            <b>Soy yo, entrar directo</b>
-            <span id="yoCorreo"></span>
-          </span>
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
-               style="flex:none;color:var(--bosque)"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-
         <div id="formNuevo">
-          <!-- Quien llega por un mensaje directo no sabe por qué se
-               le piden datos. Dicho antes de las casillas, no después. -->
-          <div class="porque" id="porque">
-            <b>Por qué te pido esto</b>
-            <p>El contenido se abre aquí mismo y es gratis. Te pido tu correo
-               por una sola razón: para poder mandarte de vez en cuando cosas
-               útiles sobre el agua de tu casa. Nada de spam, y te sales
-               cuando quieras.</p>
-          </div>
+          <p class="nota-chica" id="porque" style="margin-bottom:18px">
+            Llena esta información para que seas el primero en recibir
+            más listas como estas.
+          </p>
           <div class="campo" id="cNombre">
-            <label for="fNombre">Tu nombre y apellido</label>
-            <input type="text" id="fNombre" autocomplete="name" placeholder="Nombre y apellido">
+            <label for="fNombre">Tu nombre</label>
+            <input type="text" id="fNombre" autocomplete="given-name" placeholder="Tu nombre">
           </div>
           <div class="campo">
             <label for="fCorreo">Tu correo electrónico</label>
             <input type="email" id="fCorreo" autocomplete="email" inputmode="email"
                    placeholder="tucorreo@ejemplo.com">
           </div>
-          <button class="btn" id="btnDame" type="button">Ver el contenido</button>
+          <button class="btn" id="btnDame" type="button" disabled>Ver el contenido</button>
           <p class="err" id="errCliente"></p>
-          <button class="enlace" id="btnYaDi" type="button">
-            Ya te di mi correo antes
+          <button class="yavine" id="btnYaVine" type="button" hidden>
+            Continuar con <span id="yaCorreo2"></span>
           </button>
-          <button class="enlace" id="btnSoyNuevo" type="button" hidden>
-            Es la primera vez, poner mi nombre
-          </button>
-          <p class="nota-chica" style="margin-top:12px">
-            Te escribiré de vez en cuando con información útil y novedades.
-            Puedes salirte cuando quieras.
-          </p>
         </div>
       </div>
 
@@ -368,20 +401,10 @@ a{color:var(--bosque)}
       </div>
     </div>
   </article>
-
-  <p class="nota-chica" style="text-align:center" id="pie"></p>
 </main>
 
 <!-- Sin enlace, o enlace que no existe: no se enseña nada más -->
 <main class="envoltura" id="vacio" hidden>
-  <div class="marca">
-    <span class="marca__gota" aria-hidden="true">
-      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2.6c3.6 4.2 6.2 7.9 6.2 11.2A6.2 6.2 0 0 1 12 20a6.2 6.2 0 0 1-6.2-6.2C5.8 10.5 8.4 6.8 12 2.6z"/>
-      </svg>
-    </span>
-    <span class="marca__txt">David Montenegro</span>
-  </div>
   <div class="tarjeta">
     <h1 style="font-size:28px">Aquí no hay nada que ver</h1>
     <p class="sub" id="vacioTxt">
@@ -541,30 +564,39 @@ a{color:var(--bosque)}
     $("cargando").hidden = cual !== "cargando";
     $("cliente").hidden = cual !== "cliente";
     $("vacio").hidden = cual !== "vacio";
+    $("puertaFoto").hidden = cual !== "foto";
   }
+
+  /* Si el magnet trae portada, la imagen ES la pantalla y los datos
+     se piden encima. Si no, se queda la tarjeta de siempre. */
+  let CON_FOTO = false;
 
   function pintarMagnet(m) {
     MAGNET = m;
-    document.title = m.titulo + " · " + D.marca;
-    $("marcaNombre").textContent = D.marca;
+    document.title = m.titulo;
     $("mTitulo").textContent = m.titulo;
     $("mTexto").textContent = m.texto || "";
     $("mTexto").hidden = vacio(m.texto);
     /* Cada magnet manda en sus propios textos. Si no le pones
        alguno, cae en el de siempre y no queda un hueco. */
     $("btnDame").textContent = m.boton || "Ver el contenido";
+    $("pfBoton").textContent = m.boton || "Ver la lista";
     $("mTipo").textContent =
       m.tipo === "youtube" ? "Video" :
       m.tipo === "foto" ? "Imagen" : "Documento";
 
-    if (!vacio(m.portada)) {
-      const img = $("mPortada");
+    CON_FOTO = !vacio(m.portada);
+    if (CON_FOTO) {
+      const img = $("pfImg");
       img.src = m.portada;
-      img.hidden = false;
-      img.onerror = () => { img.hidden = true; };
+      img.alt = m.titulo;
+      /* Si la imagen no carga, no se deja a nadie delante de una
+         pantalla en blanco: se cae a la tarjeta normal. */
+      img.onerror = () => { CON_FOTO = false; mostrarPantalla("cliente"); };
+      mostrarPantalla("foto");
+    } else {
+      mostrarPantalla("cliente");
     }
-    $("pie").textContent = D.marca;
-    mostrarPantalla("cliente");
     prepararPuerta();
     /* Se cuenta que alguien abrió el enlace, antes de pedirle
        nada. Sin esto no se sabe cuánta gente llega y se va sin
@@ -572,16 +604,32 @@ a{color:var(--bosque)}
     pedir({ tipo: "abrio", codigo: m.codigo }, 0);
   }
 
-  /* La puerta: nombre y correo. Si ya entró desde este teléfono,
-     se le ofrece pasar de un toque. */
+  /* La puerta: nombre y correo. A quien ya estuvo aquí no se le
+     pregunta nada: la app lo reconoce sola y le ofrece seguir con
+     el correo que dejó la otra vez. */
   function prepararPuerta() {
     const yo = leerLocal(RECUERDO);
-    if (yo && yo.email) {
-      $("yoIni").textContent = (yo.nombre || yo.email).trim()[0].toUpperCase();
-      $("yoCorreo").textContent = yo.email;
-      $("btnYoSoy").hidden = false;
-      $("formNuevo").hidden = true;
-    }
+    if (!yo || !yo.email) return;
+    [["pfYaVine", "pfYaCorreo"], ["btnYaVine", "yaCorreo2"]].forEach(([b, c]) => {
+      $(c).textContent = yo.email;
+      $(b).hidden = false;
+    });
+  }
+
+  /* El botón se ve desde el principio, pero no se puede tocar hasta
+     que las dos casillas tienen algo. Verlo apagado dice qué falta;
+     que aparezca de la nada, no. Si el correo está mal escrito el
+     botón sí se enciende: así al tocarlo se le puede DECIR qué pasa,
+     en vez de dejarlo adivinando por qué no responde. */
+  function vigilarCasillas(nombre, correo, boton) {
+    const mirar = () => {
+      $(boton).disabled = vacio($(nombre).value) || vacio($(correo).value);
+    };
+    ["input", "change", "blur"].forEach(e => {
+      $(nombre).addEventListener(e, mirar);
+      $(correo).addEventListener(e, mirar);
+    });
+    mirar();
   }
 
   const correoValido = c =>
@@ -611,7 +659,8 @@ a{color:var(--bosque)}
   }
 
   async function entrar(datos) {
-    const err = $("errCliente");
+    const err = $(datos.err || "errCliente");
+    const boton = $(datos.boton || "btnDame");
     err.textContent = "";
     const email = String(datos.email || "").trim().toLowerCase();
 
@@ -623,12 +672,11 @@ a{color:var(--bosque)}
     if (sug && !datos.insistio) {
       err.textContent = '¿Quisiste decir @' + sug + "? Corrígelo o toca otra vez para seguir.";
       datos.insistio = true;
-      $("btnDame").dataset.insistio = "1";
+      boton.dataset.insistio = "1";
       return;
     }
 
-    $("btnDame").disabled = true;
-    $("btnYoSoy").disabled = true;
+    boton.disabled = true;
 
     const lead = {
       tipo: "lead",
@@ -696,6 +744,9 @@ a{color:var(--bosque)}
   function entregar(m) {
     if (YA_ENTREGADO) return;
     YA_ENTREGADO = true;
+    /* Se deja la puerta y se pasa al contenido. Si entró por la
+       imagen, aquí es donde se cambia de pantalla. */
+    mostrarPantalla("cliente");
     $("puerta").hidden = true;
     $("entregado").hidden = false;
     const visor = $("visor");
@@ -1016,31 +1067,31 @@ a{color:var(--bosque)}
   }
 
   function conectarPuerta() {
-    $("btnDame").addEventListener("click", () => {
-      const quien = partirNombre($("fNombre").value);
-      entrar({
-        nombre: quien.nombre,
-        apellido: quien.apellido,
-        email: $("fCorreo").value,
-        insistio: $("btnDame").dataset.insistio === "1"
+    /* Las dos puertas —la de la imagen y la tarjeta de siempre—
+       hacen lo mismo. Se conectan igual y no se duplica nada. */
+    [["fNombre", "fCorreo", "btnDame", "btnYaVine", "errCliente"],
+     ["pfNombre", "pfCorreo", "pfBoton", "pfYaVine", "pfErr"]
+    ].forEach(([nombre, correo, boton, yavine, err]) => {
+      vigilarCasillas(nombre, correo, boton);
+      $(boton).addEventListener("click", () => {
+        const quien = partirNombre($(nombre).value);
+        entrar({
+          nombre: quien.nombre,
+          apellido: quien.apellido,
+          email: $(correo).value,
+          insistio: $(boton).dataset.insistio === "1",
+          boton: boton, err: err
+        });
       });
-    });
-    $("btnYoSoy").addEventListener("click", () => {
-      const yo = leerLocal(RECUERDO) || {};
-      entrar({ nombre: yo.nombre, apellido: yo.apellido, email: yo.email, insistio: true });
-    });
-    /* "Ya te di mi correo": no se le pide el nombre otra vez. */
-    $("btnYaDi").addEventListener("click", () => {
-      $("cNombre").hidden = true;
-      $("btnYaDi").hidden = true; $("btnSoyNuevo").hidden = false;
-      $("fCorreo").focus();
-    });
-    $("btnSoyNuevo").addEventListener("click", () => {
-      $("cNombre").hidden = false;
-      $("btnYaDi").hidden = false; $("btnSoyNuevo").hidden = true;
-    });
-    $("fCorreo").addEventListener("keydown", e => {
-      if (e.key === "Enter") $("btnDame").click();
+      $(correo).addEventListener("keydown", e => {
+        if (e.key === "Enter" && !$(boton).disabled) $(boton).click();
+      });
+      /* Quien ya estuvo aquí entra de un toque, sin escribir nada. */
+      $(yavine).addEventListener("click", () => {
+        const yo = leerLocal(RECUERDO) || {};
+        entrar({ nombre: yo.nombre, apellido: yo.apellido, email: yo.email,
+                 insistio: true, boton: boton, err: err });
+      });
     });
   }
 
