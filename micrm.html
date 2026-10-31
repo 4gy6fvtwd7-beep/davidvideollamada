@@ -793,13 +793,29 @@ a{color:var(--bosque)}
     }).then(async doc => {
       aviso.remove();
       const ancho = Math.min(visor.clientWidth || 600, 900);
-      for (let n = 1; n <= doc.numPages; n++) {
+      const total = doc.numPages;
+      const hojas = [];
+
+      /* Primero se crean todas las hojas con su tamaño, y DESPUÉS se
+         dibujan. Así los avisos de "por dónde va" y el botón de
+         agendar quedan puestos aunque una hoja tarde o falle al
+         dibujarse: antes, un PDF pesado dejaba a la persona sin el
+         botón de agendar, que es justo lo que no puede pasar. */
+      for (let n = 1; n <= total; n++) {
         const pag = await doc.getPage(n);
         const base = pag.getViewport({ scale: 1 });
         /* Se dibuja al doble para que no se vea borroso en pantallas
-           de teléfono, pero se muestra al ancho de la columna. */
-        const escala = (ancho / base.width) * Math.min(devicePixelRatio || 1, 2);
+           de teléfono, pero se muestra al ancho de la columna. Con un
+           tope de puntos: una hoja muy larga reventaba la memoria del
+           teléfono y se quedaba en blanco. */
+        let escala = (ancho / base.width) * Math.min(devicePixelRatio || 1, 2);
+        const TOPE = 4500000;
+        const puntos = base.width * escala * base.height * escala;
+        if (puntos > TOPE) escala *= Math.sqrt(TOPE / puntos);
+
         const vista = pag.getViewport({ scale: escala });
+        const caja = document.createElement("div");
+        caja.style.position = "relative";
         const lienzo = document.createElement("canvas");
         lienzo.width = vista.width; lienzo.height = vista.height;
         lienzo.style.width = "100%"; lienzo.style.height = "auto";
@@ -808,24 +824,17 @@ a{color:var(--bosque)}
         lienzo.style.border = "1px solid var(--hueso)";
         lienzo.style.marginBottom = "12px";
         lienzo.style.background = "#fff";
-        visor.appendChild(lienzo);
-        await pag.render({ canvasContext: lienzo.getContext("2d"), viewport: vista }).promise;
+        caja.appendChild(lienzo);
+        visor.appendChild(caja);
+        hojas.push({ caja: caja, lienzo: lienzo, pag: pag, vista: vista });
       }
-      /* Dónde se queda la gente, hoja por hoja. Así no es "se fue
-         a la mitad": es "se fue en la hoja 3 de 8", que ya dice qué
-         hoja hay que arreglar. */
-      const hojas = visor.querySelectorAll("canvas");
-      const total = hojas.length;
-      hojas.forEach(function (hoja, i) {
-        const num = i + 1;
-        mirar(hoja, function () {
-          const donde = "Hoja " + num + " de " + total;
-          if (num === 1) avisarDonde(donde);
-          else if (num * 2 <= total) avisarPaso("empezo", donde);
-          else avisarPaso("mitad", donde);
-        });
-      });
-      vigilarFinal(visor, "Hoja " + total + " de " + total);
+
+      ponerSitios(visor, hojas, total);
+
+      for (const h of hojas) {
+        await h.pag.render({ canvasContext: h.lienzo.getContext("2d"),
+                             viewport: h.vista }).promise;
+      }
     }).catch(() => {
       /* Si no se puede dibujar, no se deja a nadie colgado. */
       aviso.textContent = "";
@@ -849,12 +858,57 @@ a{color:var(--bosque)}
      Se pide que esté casi entero en pantalla y no que asome: en
      un teléfono alto, la hoja siguiente ya asoma sin deslizar, y
      entonces todo el mundo saldría como que la leyó. */
-  function mirar(nodo, alVerlo) {
+  /* Una marca es un pelo de un píxel: pedirle que se vea "entera"
+     no sirve, basta con que suba hasta la parte de arriba de la
+     pantalla. Así no cuenta lo que solo asoma por abajo. */
+  function verMarca(nodo, alVerlo) {
     if (!nodo || !("IntersectionObserver" in window)) return;
     const ojo = new IntersectionObserver(e => {
-      if (e.some(x => x.intersectionRatio >= 0.6)) { ojo.disconnect(); alVerlo(); }
-    }, { threshold: [0.6] });
+      if (e.some(x => x.isIntersecting)) { ojo.disconnect(); alVerlo(); }
+    }, { rootMargin: "0px 0px -35% 0px" });
     ojo.observe(nodo);
+  }
+
+  /* Los sitios por los que pasa la lectura. Con varias hojas, cada
+     hoja es un sitio. Con una sola hoja larguísima —lo normal en una
+     infografía— se reparten por dentro, para que el embudo diga "va
+     por el 60%" y no el inútil "hoja 1 de 1". */
+  function ponerSitios(visor, hojas, total) {
+    hojas.forEach(function (h, i) {
+      const num = i + 1;
+      const alto = h.caja.getBoundingClientRect().height || 1;
+      const larga = alto > (window.innerHeight || 700) * 1.8;
+      const trozos = larga ? [0, 0.25, 0.5, 0.75] : [0];
+      trozos.forEach(function (t) {
+        const marca = document.createElement("div");
+        marca.style.position = "absolute";
+        marca.style.left = "0"; marca.style.right = "0";
+        marca.style.height = "1px";
+        marca.style.top = (t * 100) + "%";
+        marca.style.pointerEvents = "none";
+        h.caja.appendChild(marca);
+        /* Qué parte del documento entero lleva leída en ese punto. */
+        const parte = (i + t) / total;
+        const texto = textoSitio(num, total, t);
+        verMarca(marca, function () {
+          if (parte < 0.15) avisarDonde(texto);
+          else if (parte < 0.5) avisarPaso("empezo", texto);
+          else avisarPaso("mitad", texto);
+        });
+      });
+    });
+    vigilarFinal(visor, textoSitio(total, total, 1));
+  }
+
+  function textoSitio(num, total, t) {
+    const pct = Math.round(t * 100);
+    if (total > 1) {
+      return "Hoja " + num + " de " + total +
+             (pct > 0 && pct < 100 ? " · " + pct + "%" : "");
+    }
+    if (pct >= 100) return "Llegó al final del documento";
+    if (pct <= 0) return "Empezó el documento";
+    return "Va por el " + pct + "% del documento";
   }
 
   function vigilarFinal(visor, donde) {
@@ -909,7 +963,7 @@ a{color:var(--bosque)}
     avisarPaso("mitad");
     avisarPaso("final", donde || "Lo vio entero");
     a.addEventListener("click", () =>
-      avisarPaso("tocoagendar", "Tocó agendar, en la pregunta de la inversión"));
+      avisarPaso("tocoagendar", "Tocó agendar y se fue a la página de citas"));
     caja.appendChild(h); caja.appendChild(p); caja.appendChild(a);
     $("entregado").appendChild(caja);
     if (!menosMov) caja.scrollIntoView({ behavior: "smooth", block: "nearest" });
