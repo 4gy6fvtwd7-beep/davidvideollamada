@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="10 productos que tienes en casa más dañinos para la salud de tus niños que el helado y las golosinas, versus sus opciones saludables.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Hogar sano para tus niños</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Figtree:ital,wght@0,400..900;1,400..900&display=swap">
+<style>
+/* Layout: one phone-width column; each ficha = animated "stage" (his Remotion grid page) + text boxes. Paper and dark stages alternate like his reels. */
+:root{
+  --paper:#F1F4EE; --salvia:#DEE8DD; --hondo:#35513F; --bosque:#456B52; --vivo:#5B9169; --vivo-luz:#86C79A;
+  --hueso:#C5D4C4; --humo:#5F7265; --ink:#243329; --nieve:#FFFFFF; --num:#94B69B;
+  --err:#A83B28; --err-luz:#EF6A50; --err-bg:#F7ECE8; --ambar:#F2C75C; --dark:#0F1512; --dark2:#16201A;
+  --serif:"Fraunces", Georgia, serif; --sans:"Figtree","Segoe UI",system-ui,sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.6;font-weight:500;-webkit-font-smoothing:antialiased}
+.serif{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:700}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+b{font-weight:800;color:var(--ink)}
+i{font-style:italic}
+a{color:inherit}
+
+/* progress */
+.progress{position:fixed;inset:0 0 auto;height:calc(4px + env(safe-area-inset-top,0px));z-index:20;pointer-events:none;background:transparent}
+.progress span{position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--vivo);transform-origin:left;transform:scaleX(0)}
+
+/* bands */
+.band{padding-block:56px}
+.band.dark{background:var(--dark);color:#E6EEE5}
+.band.dark b{color:var(--nieve)}
+.band.hondo{background:var(--hondo);color:#E6EEE5}
+.band.hondo b{color:var(--nieve)}
+
+/* grid paper, the grid never moves */
+.grid{position:relative;overflow:hidden;background-color:var(--paper);
+  background-image:linear-gradient(rgba(53,81,63,.22) 1.5px,transparent 1.5px),linear-gradient(90deg,rgba(53,81,63,.22) 1.5px,transparent 1.5px),linear-gradient(rgba(53,81,63,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(53,81,63,.12) 1px,transparent 1px);
+  background-size:96px 96px,96px 96px,24px 24px,24px 24px}
+.grid::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 50% 42%,rgba(222,232,221,.85) 0%,rgba(241,244,238,0) 65%),radial-gradient(ellipse at 50% 50%,rgba(241,244,238,0) 60%,rgba(197,212,196,.55) 100%)}
+.grid.dk{background-color:var(--dark);
+  background-image:linear-gradient(rgba(222,232,221,.13) 1.5px,transparent 1.5px),linear-gradient(90deg,rgba(222,232,221,.13) 1.5px,transparent 1.5px),linear-gradient(rgba(222,232,221,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(222,232,221,.07) 1px,transparent 1px)}
+.grid.dk::after{background:radial-gradient(ellipse 80% 60% at 50% 42%,var(--glow,rgba(91,145,105,.22)) 0%,rgba(15,21,18,0) 62%),radial-gradient(ellipse at 50% 50%,rgba(15,21,18,0) 55%,rgba(8,12,10,.85) 100%)}
+.grid > *{position:relative;z-index:1}
+
+/* HERO */
+.hero{padding-block:calc(28px + env(safe-area-inset-top,0px)) 0}
+.hero .stage{border-radius:0 0 32px 32px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.pill{border-radius:999px;padding:8px 16px}
+h1{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:700;font-size:clamp(40px,10.5vw,62px);line-height:1.02;letter-spacing:-.01em;margin:18px 0 10px;text-wrap:balance}
+.sub{font-family:var(--serif);font-style:italic;font-weight:500;font-variation-settings:"SOFT" 60,"opsz" 72;font-size:clamp(22px,5.6vw,30px);line-height:1.2;margin:0}
+.byline{display:flex;align-items:center;gap:12px;margin-top:22px;font-size:15px;color:var(--humo)}
+.byline .dot{width:42px;height:42px;border-radius:50%;background:var(--hondo);color:var(--nieve);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:18px;flex:none}
+.byline strong{display:block;color:var(--ink);font-size:16px;line-height:1.2}
+
+/* stage */
+.stage{position:relative;width:100%;max-width:100%;aspect-ratio:5/4;border-radius:28px}
+.stage svg.art{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.stage.f{aspect-ratio:25/27}
+.stage.f svg.art{inset:auto 0 0 0;height:auto;aspect-ratio:5/4}
+.stitle{position:absolute;z-index:3;left:16px;right:16px;top:12px;display:flex;align-items:center;gap:12px}
+.stitle .tt{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:700;font-size:clamp(21px,5.6vw,28px);line-height:1.08;color:var(--ink);text-wrap:balance;min-width:0}
+.stage.dk .stitle .tt{color:var(--nieve)}
+.stage .num{flex:none;font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:800;font-size:clamp(54px,14vw,84px);line-height:.9;color:var(--num);font-variant-numeric:tabular-nums}
+.stage.dk .num{color:rgba(134,199,154,.55)}
+.chip{position:absolute;z-index:4;display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:10px 16px 11px;border-radius:20px;background:var(--nieve);color:var(--ink);box-shadow:0 14px 34px rgba(36,51,41,.22);max-width:58%;line-height:1.15}
+.chip .big{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:800;font-size:clamp(26px,7vw,40px);line-height:1;font-variant-numeric:tabular-nums}
+.chip small{font-size:clamp(12px,3.2vw,15px);font-weight:700;color:var(--humo);margin-top:4px}
+.chip.red .big{color:var(--err)}
+.chip.red{border:2px solid #F0C7BC}
+.chip.green{background:var(--hondo);color:var(--nieve)}
+.chip.green small{color:#CFE3D2}
+.chip.mini{padding:7px 12px;border-radius:14px}
+.chip.mini .big{font-size:clamp(17px,4.6vw,22px)}
+.chip.mini small{font-size:12px}
+
+/* ficha text */
+.ficha{padding-block:48px 8px}
+.kicker{margin:26px 0 6px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--bosque)}
+.ficha h2{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:700;font-size:clamp(25px,6.6vw,33px);line-height:1.12;margin:24px 0 12px;text-wrap:balance}
+.lead{font-size:19px;margin:0 0 22px;color:var(--ink)}
+.label{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px}
+.label svg{width:26px;height:26px;flex:none}
+.sci{padding:4px 0 22px}
+.sci .label{color:var(--bosque)}
+.sci p{margin:0;color:#34463A}
+.src{display:block;margin-top:10px;font-size:13.5px;color:var(--humo);font-weight:600}
+.stat{display:flex;align-items:flex-end;gap:10px;margin:2px 0 16px}
+.stat .n{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:800;font-size:clamp(46px,13vw,68px);line-height:.9;color:var(--hondo);font-variant-numeric:tabular-nums}
+.stat .u{font-size:15px;font-weight:700;color:var(--humo);line-height:1.25;padding-bottom:6px;max-width:15ch}
+.stat svg{width:52px;height:40px;flex:none;align-self:center;overflow:visible}
+.box{border-radius:22px;padding:20px 20px 22px;margin:0 0 16px}
+.box p{margin:0}
+.danger{background:var(--err-bg);color:#4A2A22}
+.danger .label{color:var(--err)}
+.danger b{color:#7E2A1C}
+.danger .row{display:flex;gap:14px;align-items:flex-start}
+.danger .organ{width:64px;height:64px;flex:none;border-radius:18px;background:#FBF6F3;display:grid;place-items:center}
+.danger .organ svg{width:48px;height:48px;overflow:visible}
+.swap{background:var(--salvia);color:#22392B}
+.swap .label{color:var(--hondo)}
+.swap .where{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:15.5px;font-weight:700;color:var(--bosque)}
+.swap .where svg{width:20px;height:20px;flex:none;margin-top:2px}
+.hl{background-image:linear-gradient(transparent 58%,rgba(91,145,105,.32) 58%);background-repeat:no-repeat;background-size:100% 100%}
+.danger .hl{background-image:linear-gradient(transparent 58%,rgba(239,106,80,.28) 58%)}
+.sep{height:1.5px;background:var(--hueso);margin:34px 0 0}
+
+/* intro */
+.intro p{margin:0 0 16px}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:26px 0 8px}
+.why div{background:var(--nieve);border:2px solid var(--hueso);border-radius:20px;padding:14px 12px;text-align:center;font-size:14px;font-weight:700;line-height:1.3;color:var(--humo);min-width:0}
+.why svg{width:46px;height:46px;display:block;margin:0 auto 8px;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.legend svg{width:16px;height:16px}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:800;letter-spacing:.06em;padding:7px 12px;border-radius:999px}
+
+/* cierre cards */
+.closer{border-radius:28px;padding:30px 24px 28px;background:var(--hondo);color:#E6EEE5;margin:40px 0 0}
+.closer .label{color:#CFE3D2}
+.closer .say{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 40,"opsz" 144;font-weight:600;font-size:clamp(25px,6.6vw,32px);line-height:1.18;margin:6px 0 18px;color:var(--nieve);text-wrap:pretty}
+.closer .next{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:#CFE3D2;font-size:15px;letter-spacing:.04em}
+.closer .next svg{width:22px;height:22px}
+
+/* water part */
+.part{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--vivo-luz)}
+.h2xl{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:700;font-size:clamp(34px,9vw,50px);line-height:1.03;margin:12px 0 18px;text-wrap:balance}
+.band.dark p{color:#C9D6CB}
+.wcards{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+.wcard{background:var(--dark2);border:1.5px solid rgba(222,232,221,.14);border-radius:22px;padding:18px 18px 20px;display:grid;grid-template-columns:62px minmax(0,1fr);gap:14px;align-items:start}
+.wcard .ic{width:62px;height:62px;border-radius:18px;background:rgba(134,199,154,.12);display:grid;place-items:center}
+.wcard .ic svg{width:46px;height:46px;overflow:visible}
+.wcard h3{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:700;font-size:23px;line-height:1.1;margin:2px 0 8px;color:var(--nieve)}
+.wcard p{margin:0;font-size:16.5px}
+.wcard .src{color:#8FA597}
+.quote{margin:30px 0 0;padding:24px 22px;border-radius:24px;background:rgba(239,106,80,.12);border:1.5px solid rgba(239,106,80,.35);font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 40,"opsz" 144;font-weight:600;font-size:clamp(23px,6vw,29px);line-height:1.2;color:#FFE3DA}
+.signs-band{background:var(--salvia)}
+.signs-band .sgn{background:var(--nieve)}
+.signs-band .sgn p,.signs-band .sgn b{color:var(--ink)}
+.signs h3{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:700;font-size:clamp(25px,6.6vw,32px);line-height:1.1;margin:0 0 16px;color:var(--ink);text-wrap:balance}
+.sgrid{display:grid;gap:12px}
+.sgn{background:var(--paper);color:var(--ink);border-radius:22px;padding:16px 16px 18px;display:grid;grid-template-columns:76px minmax(0,1fr);gap:14px;align-items:center}
+.sgn .art{width:76px;height:76px;border-radius:18px;background:var(--salvia);display:grid;place-items:center;position:relative}
+.sgn .art svg{width:60px;height:60px;overflow:visible}
+.sgn .art i{position:absolute;top:-8px;left:-8px;width:28px;height:28px;border-radius:50%;background:var(--hondo);color:var(--nieve);font-style:normal;font-family:var(--serif);font-weight:800;display:grid;place-items:center;font-size:15px}
+.sgn p{margin:0;font-size:16px}
+
+/* filters */
+.vs{display:grid;gap:14px;margin-top:24px}
+.col{border-radius:24px;padding:20px 18px}
+.col.no{background:var(--err-bg)}
+.col.si{background:var(--salvia)}
+.col h3{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:700;font-size:24px;margin:0 0 12px}
+.col.no h3{color:var(--err)}
+.col.si h3{color:var(--hondo)}
+.col h3 svg{width:34px;height:34px;flex:none}
+.it{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:12px 0;border-top:1.5px solid rgba(36,51,41,.1)}
+.it:first-of-type{border-top:0}
+.it svg{width:26px;height:26px;margin-top:2px}
+.it p{margin:0;font-size:16.5px}
+.it strong{display:block;font-size:17.5px;font-weight:800;color:var(--ink)}
+.epa{font-size:16px;margin:0 0 6px;color:#2B4434}
+.punch{margin:26px 0 0;font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 40,"opsz" 144;font-weight:700;font-size:clamp(25px,6.6vw,32px);line-height:1.15;color:var(--hondo);text-wrap:balance}
+
+/* call */
+.bridge p{margin:0 0 14px}
+.bridge .calm{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 40,"opsz" 144;font-weight:700;font-size:clamp(28px,7.4vw,38px);line-height:1.1;margin:0 0 14px;color:var(--hondo)}
+.call{margin-top:30px;border-radius:30px;padding:26px 20px 28px;background-color:var(--dark);color:#DCE7DD;position:relative;overflow:hidden}
+.call .eyebrow{color:var(--dark);background:var(--ambar)}
+.call h2{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 144;font-weight:700;font-size:clamp(32px,8.6vw,46px);line-height:1.03;margin:16px 0 12px;color:var(--nieve);text-wrap:balance}
+.call p{margin:0 0 16px;color:#C9D6CB}
+.steps{list-style:none;margin:18px 0 6px;padding:0;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start;background:rgba(222,232,221,.06);border:1.5px solid rgba(222,232,221,.12);border-radius:18px;padding:14px 14px 14px 12px;font-size:16.5px;color:#DCE7DD}
+.steps li span{width:40px;height:40px;border-radius:50%;background:var(--vivo);color:var(--nieve);display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:19px}
+.free{font-weight:800;color:var(--vivo-luz)!important;margin-top:14px!important}
+.cta{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;margin-top:18px;padding:20px 22px;border-radius:999px;background:var(--vivo);color:var(--nieve);text-decoration:none;font-family:var(--sans);font-weight:800;font-size:19px;letter-spacing:.01em;box-shadow:0 18px 40px rgba(91,145,105,.45),inset 0 -3px 0 rgba(0,0,0,.12);transition:transform .2s ease,background .2s ease}
+.cta:hover{background:#4E8560;transform:translateY(-2px)}
+.cta:focus-visible{outline:3px solid var(--ambar);outline-offset:4px}
+.cta svg{width:24px;height:24px}
+.cta-note{text-align:center;font-size:14.5px;color:#A9BCAD!important;margin:12px 0 0!important}
+.pulse{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 18px 40px rgba(91,145,105,.45),0 0 0 0 rgba(134,199,154,.55)}50%{box-shadow:0 18px 40px rgba(91,145,105,.45),0 0 0 14px rgba(134,199,154,0)}}
+.end p{margin:0 0 12px}
+.end .last{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 40,"opsz" 144;font-weight:700;font-size:clamp(26px,7vw,34px);line-height:1.12;color:var(--hondo);margin-top:22px;text-wrap:balance}
+details{margin-top:36px;border-top:1.5px solid var(--hueso);padding-top:16px}
+summary{cursor:pointer;font-weight:800;color:var(--bosque);font-size:15px;letter-spacing:.04em}
+details ol{padding-left:20px;font-size:14px;color:var(--humo);line-height:1.5}
+details li{margin-bottom:6px}
+.disc{font-size:13.5px;color:var(--humo);margin-top:18px}
+
+/* floating cta */
+.float{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:15;transform:translate(-50%,140%);transition:transform .45s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;background:var(--hondo);color:var(--nieve);text-decoration:none;font-weight:800;font-size:16px;box-shadow:0 14px 34px rgba(36,51,41,.35);white-space:nowrap}
+.float.show{transform:translate(-50%,0)}
+.float svg{width:20px;height:20px}
+.float:focus-visible{outline:3px solid var(--ambar);outline-offset:3px}
+
+/* ===== motion (rest state is fully visible; .play replays the entrance) ===== */
+.pop,.stamp,.bob,.blink,.flick,.steam,.shed,.drift,.wig,.drip,.floaty,.waft,.fall,.breathe,.throb,.squirt,.stream,.shake{transform-box:fill-box;transform-origin:center}
+.play .pop{animation:pop .6s cubic-bezier(.34,1.56,.64,1) both;animation-delay:var(--d,0ms)}
+.play .rise{animation:rise .55s cubic-bezier(.16,1,.3,1) both;animation-delay:var(--d,0ms)}
+.play .w{animation:wordIn .55s cubic-bezier(.16,1,.3,1) both;animation-delay:var(--d,0ms)}
+.play .draw{animation:draw .9s cubic-bezier(.65,0,.35,1) both;animation-delay:var(--d,0ms)}
+.play .stamp{animation:stamp .5s cubic-bezier(.2,1.5,.4,1) both;animation-delay:var(--d,0ms)}
+.play .hl{animation:hl 1s cubic-bezier(.65,0,.35,1) both;animation-delay:var(--d,300ms)}
+.draw{stroke-dasharray:1;stroke-dashoffset:0}
+.w{display:inline-block}
+@keyframes pop{0%{opacity:0;transform:scale(.4)}60%{opacity:1}100%{opacity:1;transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes wordIn{from{opacity:0;transform:translateY(.45em) scale(.7);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes stamp{0%{opacity:0;transform:scale(2.6) rotate(-12deg)}100%{opacity:1;transform:scale(1) rotate(-12deg)}}
+@keyframes hl{from{background-size:0% 100%}to{background-size:100% 100%}}
+.bob{animation:bob 3.2s ease-in-out infinite;animation-delay:var(--b,0s)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.blink{animation:blink 3.4s infinite;animation-delay:var(--b,0s)}
+@keyframes blink{0%,95%,100%{transform:scaleY(1)}97%{transform:scaleY(.12)}}
+.flick{animation:flick .22s ease-in-out infinite alternate;transform-origin:center bottom}
+@keyframes flick{from{transform:scaleY(.86)}to{transform:scaleY(1.08)}}
+.steam{animation:steam 2.6s ease-in-out infinite;animation-delay:var(--b,0s)}
+@keyframes steam{0%{opacity:0;transform:translateY(10px)}35%{opacity:.9}100%{opacity:0;transform:translateY(-26px)}}
+.shed{animation:shed 3.4s cubic-bezier(.3,.6,.4,1) infinite;animation-delay:var(--b,0s)}
+@keyframes shed{0%{opacity:0;transform:translate(0,0) scale(.4)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,60px),var(--dy,-20px)) scale(1)}}
+.drift{animation:drift 5s ease-in-out infinite;animation-delay:var(--b,0s)}
+@keyframes drift{0%{opacity:0;transform:translate(0,10px) scale(.7)}25%{opacity:1}100%{opacity:0;transform:translate(var(--dx,80px),var(--dy,-40px)) scale(1.15)}}
+.wig{animation:wig 1.4s ease-in-out infinite alternate;animation-delay:var(--b,0s)}
+@keyframes wig{from{transform:rotate(-9deg) translateX(-2px)}to{transform:rotate(9deg) translateX(2px)}}
+.drip{animation:drip 2.8s cubic-bezier(.5,0,.8,.5) infinite;animation-delay:var(--b,0s)}
+@keyframes drip{0%{opacity:0;transform:translateY(-6px) scale(.5)}20%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(90px) scale(1)}}
+.floaty{animation:floaty 4.5s ease-in-out infinite;animation-delay:var(--b,0s)}
+@keyframes floaty{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(6px,-10px) rotate(14deg)}}
+.waft{animation:waft 2.4s ease-in-out infinite;animation-delay:var(--b,0s)}
+@keyframes waft{0%{opacity:0;transform:translateX(-12px)}40%{opacity:1}100%{opacity:0;transform:translateX(26px)}}
+.fall{animation:fall 4.8s linear infinite;animation-delay:var(--b,0s)}
+@keyframes fall{0%{opacity:0;transform:translate(0,-10px)}15%{opacity:.9}100%{opacity:0;transform:translate(var(--dx,10px),140px)}}
+.breathe{animation:breathe 2.2s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.throb{animation:throb 1.6s ease-in-out infinite}
+@keyframes throb{0%,100%{opacity:1}50%{opacity:.55}}
+.squirt{animation:squirt 1.6s cubic-bezier(.2,.6,.4,1) infinite;animation-delay:var(--b,0s)}
+@keyframes squirt{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,-90px),var(--dy,30px))}}
+.stream{animation:stream .5s linear infinite}
+@keyframes stream{from{stroke-dashoffset:0}to{stroke-dashoffset:-24}}
+.shake{animation:shake 2.6s ease-in-out infinite}
+@keyframes shake{0%,82%,100%{transform:rotate(0)}86%{transform:rotate(-7deg)}90%{transform:rotate(6deg)}94%{transform:rotate(-4deg)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (min-width:640px){.vs{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.band{padding-block:72px}}
+</style>
+
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span id="bar"></span></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero band dark grid dk" style="--glow:rgba(239,106,80,.16)">
+  <div class="wrap scene">
+    <span class="eyebrow pill rise" style="background:var(--ambar);color:var(--dark)">Guía gratis · Para padres</span>
+    <h1 class="split" style="color:var(--nieve)">10 productos que tienes en casa más dañinos para la salud de tus niños que el helado y las golosinas</h1>
+    <p class="sub rise" style="--d:700ms;color:#CFE3D2">versus sus opciones saludables</p>
+  </div>
+  <div class="wrap" style="margin-top:22px">
+    <div class="stage grid dk scene" id="st-hero" style="--glow:rgba(242,199,92,.16)" aria-label="Un helado y un caramelo con un sello rojo que dice NO">
+    </div>
+  </div>
+</header>
+
+<!-- ============ INTRO ============ -->
+<section class="band intro">
+  <div class="wrap scene">
+    <div class="byline rise"><span class="dot">D</span><span><strong>David Montenegro</strong>Especialista en bienestar</span></div>
+    <p class="rise" style="margin-top:26px;font-size:20px">En el video te hablé de 3: <b>los detergentes con olor a frutas, las sartenes antiadherentes y los desinfectantes multiusos.</b></p>
+    <p class="rise" style="--d:120ms">Aquí tienes <b>10 más</b>. De cada uno te digo qué químico tiene, quién lo demostró, qué le puede hacer a tu hijo con los años y con qué cambiarlo. Casi todos los cambios son baratos, y algunos son gratis.</p>
+    <p class="rise" style="--d:220ms;color:var(--humo)">¿Por qué a ellos les afecta más que a ti?</p>
+    <div class="why" id="why"></div>
+  </div>
+</section>
+
+<main>
+<!-- 01 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid scene" id="st1" aria-label="Biberón de plástico caliente soltando partículas hacia un bebé"><div class="stitle"><span class="num">01</span><span class="tt">Biberones de plástico calentados</span></div>
+  </div>
+  <h2 class="split scene">Al preparar la fórmula con agua a 70 °C, un biberón de plástico puede soltar hasta 16 millones de partículas de plástico por litro.</h2>
+  <p class="lead">Casi todos los biberones son de polipropileno, un plástico que parece inofensivo. El problema empieza con el calor.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n" style="font-size:clamp(38px,10vw,54px);white-space:nowrap">+1 millón</span><span class="u">de microplásticos al día traga de media un bebé de biberón</span></div>
+    <p class="rise" style="--d:200ms">El <b>Trinity College Dublin</b>, la universidad más prestigiosa de Irlanda, probó 10 biberones. Al preparar la fórmula con agua a 70 °C soltaron hasta <b>16 millones de partículas de plástico por litro</b>. Con agua a 95 °C, hasta <span class="hl"><b>55 millones</b></span>. Y esterilizarlos hirviendo subió la cantidad un <b>35 %</b>.</p>
+    <span class="src">Nature Food, 2020</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="heart"></svg></span><p>Todavía se estudia qué hacen en un cuerpo tan pequeño. Pero en adultos ya se han encontrado microplásticos dentro de las arterias, y quienes los tenían sufrieron <span class="hl"><b>4,5 veces más infartos, derrames o muertes</b></span> en los 3 años siguientes (New England Journal of Medicine, 2024).</p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Biberones de vidrio o de acero inoxidable.</b> Si usas los de plástico: prepara la fórmula en un recipiente de vidrio, deja que se enfríe y pásala al biberón ya frío. Nunca lo calientes en el microondas.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: Target, Walmart o Amazon (busca “glass baby bottles”).</p>
+  </div>
+  <div class="sep"></div>
+</div></article>
+
+<!-- 02 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid dk scene" id="st2" style="--glow:rgba(239,106,80,.18)" aria-label="Un tazón de snacks de arroz con arsénico y plomo camino del cerebro"><div class="stitle"><span class="num">02</span><span class="tt">Cereal, galletas y snacks de arroz</span></div>
+  </div>
+  <h2 class="split scene">El 95 % de 168 comidas de bebé analizadas tenía metales tóxicos.</h2>
+  <p class="lead">Los “puffs”, las galletitas de arroz y el cereal de arroz parecen la comida más sana para un bebé. Pero el arroz absorbe del suelo mucho más arsénico que otros granos.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n count" data-to="95" data-suffix=" %">95 %</span><span class="u">de las comidas de bebé analizadas tenía al menos un metal tóxico</span></div>
+    <p class="rise" style="--d:200ms">La organización <b>Healthy Babies Bright Futures</b> analizó 168 comidas de bebé de 61 marcas: arsénico, plomo, cadmio o mercurio. <b>4 de cada 7 cereales de arroz</b> pasaban el límite de arsénico que propone la FDA. En 2021, un informe del <b>Congreso de EE.UU.</b> encontró snacks de arroz para bebé con <span class="hl"><b>más del doble</b></span> del límite que la FDA pone al cereal de arroz.</p>
+    <span class="src">Healthy Babies Bright Futures, 2019 · Subcomité del Congreso de EE.UU., 2021</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="brain"></svg></span><p>Estos metales afectan el desarrollo del cerebro. Un análisis calculó que los niños de 0 a 2 años de EE.UU. pierden en conjunto <span class="hl"><b>más de 11 millones de puntos de coeficiente intelectual</b></span> por el arsénico y el plomo de su comida. <b>Una quinta parte, por la comida de arroz.</b></p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Cereal de avena o multigrano, y snacks sin arroz.</b> Para la dentición, un guineo congelado o un pepino frío. En promedio tienen <b>un 80 % menos de metales tóxicos</b>.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: en cualquier supermercado.</p>
+  </div>
+  <div class="sep"></div>
+</div></article>
+
+<!-- 03 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid scene" id="st3" aria-label="Estufa de gas encendida soltando gases hacia un niño con los pulmones irritados"><div class="stitle"><span class="num">03</span><span class="tt">La estufa de gas</span></div>
+  </div>
+  <h2 class="split scene">Cocinar con gas está detrás del 12,7 % del asma infantil en EE.UU.</h2>
+  <p class="lead">Cocinar con gas suelta gases que se quedan en el aire de la casa, justo donde juegan los niños mientras tú cocinas.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n count" data-to="12.7" data-dec="1" data-suffix=" %">12,7 %</span><span class="u">del asma de los niños en EE.UU. se debe a cocinar con gas</span></div>
+    <p class="rise" style="--d:200ms">Un estudio de 2022 calculó que cocinar con gas está detrás de <b>1 de cada 8 casos de asma infantil</b> en EE.UU. Es más o menos lo mismo que se atribuye a <span class="hl"><b>ser fumador pasivo</b></span>. Los niños de casas con estufa de gas tenían un <b>34 % más de probabilidad</b> de tener asma.</p>
+    <span class="src">International Journal of Environmental Research and Public Health, 2022</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="lungs"></svg></span><p><b>Asma.</b> Los bronquios se inflaman y se cierran, y a tu hijo le cuesta respirar. Es una enfermedad que muchos niños arrastran durante años.</p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Enciende siempre la campana</b> (mejor si saca el aire afuera) y abre una ventana mientras cocinas. Si puedes, cocina con una <b>placa de inducción portátil</b> o eléctrica.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: placas de inducción en Walmart, Target o Amazon.</p>
+  </div>
+  <div class="sep"></div>
+</div></article>
+
+<!-- 04 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid dk scene" id="st4" style="--glow:rgba(91,145,105,.25)" aria-label="Patito de goma con una lupa que muestra bacterias dentro"><div class="stitle"><span class="num">04</span><span class="tt">El patito y los juguetes de baño con agujero</span></div>
+  </div>
+  <h2 class="split scene">El 80 % de los juguetes de baño analizados tenía por dentro bacterias que pueden enfermar a tu hijo.</h2>
+  <p class="lead">Ese agujerito por el que sale el agua es la puerta de entrada a un mundo que no ves.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n count" data-to="80" data-suffix=" %">80 %</span><span class="u">de los juguetes tenía bacterias que pueden causar enfermedades</span></div>
+    <p class="rise" style="--d:200ms">Investigadores del instituto suizo <b>Eawag</b>, de la universidad <b>ETH Zúrich</b> y de la <b>Universidad de Illinois</b> abrieron juguetes de baño usados. Dentro había entre <b>5 y 75 millones de microbios por centímetro cuadrado</b>, como <i>Legionella</i> y <i>Pseudomonas aeruginosa</i>, y casi el <b>60 %</b> tenía hongos. Se alimentan del propio plástico y del jabón, el sudor y la orina del agua del baño.</p>
+    <span class="src">Eawag · ETH Zúrich · Universidad de Illinois, 2018</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="eye"></svg></span><p>Cuando tu hijo aprieta el juguete y se echa el agua en la cara, según los propios investigadores puede acabar con <span class="hl"><b>infecciones de ojos, de oídos o de estómago</b></span>.</p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Juguetes de baño sin agujero</b>, o que se abran para lavarlos por dentro. Si ya tienes, tapa el agujero con pegamento caliente y sécalos después de cada baño.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: Target o Amazon (busca “mold free bath toys”).</p>
+  </div>
+  <div class="sep"></div>
+</div></article>
+
+<!-- 05 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid scene" id="st5" aria-label="Loción y talco con fragancia soltando ftalatos hacia un bebé"><div class="stitle"><span class="num">05</span><span class="tt">Champú, loción y talco de bebé con fragancia</span></div>
+  </div>
+  <h2 class="split scene">El 81 % de 163 bebés analizados tenía en su cuerpo 7 ftalatos o más.</h2>
+  <p class="lead">Ese “olor a bebé” casi siempre viene de una fragancia. Y las fragancias pueden esconder ftalatos: los mismos disruptores hormonales del detergente del video.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n count" data-to="163">163</span><span class="u">bebés analizados. Todos tenían al menos un ftalato</span></div>
+    <p class="rise" style="--d:200ms">La <b>Universidad de Washington</b> y el <b>Hospital Infantil de Seattle</b> analizaron la orina de 163 bebés. El <b>81 %</b> tenía 7 ftalatos o más. Los bebés a los que les ponían <b>loción, talco o champú</b> tenían más, y <span class="hl"><b>cuantos más productos, más ftalatos</b></span>. El efecto era más fuerte en los menores de 8 meses.</p>
+    <span class="src">Pediatrics, 2008</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="hormone"></svg></span><p>Los ftalatos <b>imitan o bloquean las hormonas</b>, y un bebé está en plena etapa de desarrollo. Su piel es más fina que la tuya, y lo que le pones encima entra en su cuerpo.</p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Usa menos productos</b> y elige los que digan <b>“fragrance-free”</b> (sin fragancia). Ojo: “unscented” a veces lleva fragancia para tapar el olor. El talco no hace falta.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: Target, Walmart o Amazon.</p>
+  </div>
+  <div class="sep"></div>
+</div></article>
+
+<!-- 06 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid dk scene" id="st6" style="--glow:rgba(239,106,80,.18)" aria-label="Paquete de toallitas húmedas y un niño con sarpullido en la cara"><div class="stitle"><span class="num">06</span><span class="tt">Toallitas húmedas con conservantes</span></div>
+  </div>
+  <h2 class="split scene">Los 6 niños de un estudio con un sarpullido que no se curaba sanaron al dejar sus toallitas húmedas.</h2>
+  <p class="lead">Las usas en la cara, en las manos y en el pañal, varias veces al día. Algunas llevan un conservante que da alergia.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n">6 de 6</span><span class="u">niños se curaron al dejar sus toallitas</span></div>
+    <p class="rise" style="--d:200ms">La revista <b>Pediatrics</b> publicó el caso de 6 niños con un sarpullido rojo en la cara y alrededor del trasero que <b>no se curaba con cremas, antibióticos ni corticoides</b>. Lo confundían con eccema, impétigo o psoriasis. La causa era la <span class="hl"><b>metilisotiazolinona</b></span>, un conservante de sus toallitas. Al dejar de usarlas, el sarpullido desapareció en los 6.</p>
+    <span class="src">Pediatrics, 2014</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="skin"></svg></span><p><b>Dermatitis alérgica:</b> piel roja, con picor y escamas que vuelve una y otra vez, y semanas de tratamientos que no sirven porque la causa sigue ahí.</p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Agua tibia con un paño de algodón</b>, o toallitas de solo agua y sin perfume. En la etiqueta, evita “methylisothiazolinone” y “methylchloroisothiazolinone”. Muchas marcas ya lo quitaron, pero sigue en algunos productos.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: Target, Walmart o Amazon (busca “water wipes”).</p>
+  </div>
+  <div class="sep"></div>
+</div></article>
+
+<!-- 07 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid scene" id="st7" aria-label="Ambientador en spray soltando una nube hacia un bebé con dolor de barriga"><div class="stitle"><span class="num">07</span><span class="tt">Ambientadores y aerosoles</span></div>
+  </div>
+  <h2 class="split scene">En las casas que usaban ambientador todos los días, los bebés tenían un 32 % más de diarrea.</h2>
+  <p class="lead">Sprays, enchufables, varitas: el olor que llena tu casa también lo respira tu bebé todo el día.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n count" data-to="14000" data-sep="1">14.000</span><span class="u">madres y sus bebés seguidos en el estudio</span></div>
+    <p class="rise" style="--d:200ms">La <b>Universidad de Bristol</b>, en el Reino Unido, siguió a 14.000 madres y a sus bebés. En las casas donde se usaba ambientador <b>todos los días</b>, los bebés tenían un <span class="hl"><b>32 % más de diarrea</b></span> y más dolor de oídos que donde se usaba una vez por semana o menos. Las madres tenían casi un <b>10 % más de dolores de cabeza</b> y un <b>26 % más de riesgo de depresión</b>.</p>
+    <span class="src">Estudio ALSPAC, Universidad de Bristol, 2004</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="belly"></svg></span><p>Los ambientadores sueltan <b>compuestos volátiles</b>: químicos que se evaporan y se quedan flotando en el aire que respira tu bebé, horas después de que dejas de olerlos.</p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Abre las ventanas</b>, ventila después de cocinar y pon un cuenco con bicarbonato donde haya olores. Lo dijo la propia investigadora: <span class="hl"><b>exprimir un limón</b></span> refresca el aire igual de bien.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: en tu cocina. Es gratis.</p>
+  </div>
+  <div class="sep"></div>
+</div></article>
+
+<!-- 08 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid dk scene" id="st8" style="--glow:rgba(167,123,234,.20)" aria-label="Mordedor de bebé goteando BPA y una etiqueta BPA free tachada"><div class="stitle"><span class="num">08</span><span class="tt">Mordedores de plástico y gel</span></div>
+  </div>
+  <h2 class="split scene">Los 59 mordedores analizados tenían BPA, incluso los que decían “BPA free”.</h2>
+  <p class="lead">Lo muerde durante horas, justo cuando le duelen las encías.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n count" data-to="59">59</span><span class="u">mordedores analizados. Los 59 tenían BPA</span></div>
+    <p class="rise" style="--d:200ms">Un estudio publicado en <i>Environmental Science &amp; Technology</i> analizó 59 mordedores comprados en EE.UU. <b>Todos tenían BPA</b>, <span class="hl"><b>incluso los que decían “BPA free” o “no tóxico”</b></span>. La mayoría tenía también parabenos y antibacterianos como el triclosán, y esos químicos pasaban al agua.</p>
+    <span class="src">Environmental Science &amp; Technology, 2016</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="hormone"></svg></span><p>Son <b>disruptores endocrinos</b>: interfieren con las hormonas. En animales se relacionan con daños en el desarrollo, en la reproducción y en el sistema nervioso.</p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Un paño húmedo metido en el congelador</b>, un pepino frío o un mordedor de caucho natural o de madera sin barnizar.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: Amazon o tiendas de bebé (busca “natural rubber teether”).</p>
+  </div>
+  <div class="sep"></div>
+</div></article>
+
+<!-- 09 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid scene" id="st9" aria-label="Tazón de melamina con sopa caliente y un riñón con piedras"><div class="stitle"><span class="num">09</span><span class="tt">Platos y vasos de melamina</span></div>
+  </div>
+  <h2 class="split scene">Comer sopa caliente en un tazón de melamina dejó más de 6 veces más melamina en la orina.</h2>
+  <p class="lead">La melamina es un plástico duro y brillante: el de los platos, vasos y tazones de colores para niños que no se rompen. Si debajo dice “melamine”, lo es. Con comida caliente o ácida, la sueltan.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n">× 6</span><span class="u">más melamina en la orina tras una sopa caliente</span></div>
+    <p class="rise" style="--d:200ms">La <b>Universidad Médica de Kaohsiung</b>, en Taiwán, dio sopa caliente de fideos a 12 adultos, primero en tazones de melamina y luego en tazones de cerámica. Con la melamina, en su orina apareció <span class="hl"><b>más de 6 veces más melamina</b></span>.</p>
+    <span class="src">JAMA Internal Medicine, 2013</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="kidney"></svg></span><p>Estudios anteriores relacionan tomar melamina en pequeñas dosis durante mucho tiempo con <b>piedras en los riñones</b>, en niños y en adultos.</p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Platos de acero inoxidable para niños</b>, de vidrio templado o de cerámica. Nunca calientes comida en melamina. Y ojo con los platos “de bambú”: muchos llevan melamina para pegar las fibras.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: Target, IKEA o Amazon.</p>
+  </div>
+  <div class="sep"></div>
+</div></article>
+
+<!-- 10 -->
+<article class="ficha"><div class="wrap">
+  <div class="stage f grid dk scene" id="st10" style="--glow:rgba(242,199,92,.16)" aria-label="Silla de auto con espuma por dentro soltando polvo al piso donde juega un bebé"><div class="stitle"><span class="num">10</span><span class="tt">Espuma con retardantes de llama</span></div>
+  </div>
+  <h2 class="split scene">El 80 % de 101 productos de bebé con espuma tenía retardantes de llama.</h2>
+  <p class="lead">La espuma de la silla del auto, el colchón del moisés o la almohada de lactancia suele llevar químicos para que no arda. Con el uso, pasan al polvo de la casa.</p>
+  <div class="sci scene">
+    <p class="label rise"><svg viewBox="0 0 40 40" data-i="flask"></svg>Lo que dice la ciencia</p>
+    <div class="stat rise" style="--d:100ms"><span class="n count" data-to="101">101</span><span class="u">productos de bebé con espuma analizados</span></div>
+    <p class="rise" style="--d:200ms">Investigadores de la <b>Universidad de Duke</b> analizaron sillas de auto, colchones de moisés, almohadas de lactancia, tronas y coches. El <b>80 %</b> tenía retardantes de llama, entre ellos <span class="hl"><b>TDCPP y TCEP, dos posibles cancerígenos</b></span>.</p>
+    <span class="src">Environmental Science &amp; Technology, 2011</span>
+  </div>
+  <div class="box danger scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="warn"></svg>Lo que puede causar a largo plazo</p>
+    <div class="row rise" style="--d:120ms"><span class="organ"><svg viewBox="0 0 200 200" data-i="hand"></svg></span><p>Ese polvo se queda en el piso, <b>donde tu bebé gatea y se mete las manos en la boca</b>. Por eso los niños pequeños son los más expuestos.</p></div>
+  </div>
+  <div class="box swap scene"><p class="label rise"><svg viewBox="0 0 40 40" data-i="leaf"></svg>La mejor opción</p>
+    <p class="rise" style="--d:120ms"><b>Nunca dejes de usar la silla del auto:</b> es lo que lo protege. Al comprar, busca productos que digan <b>“no added flame retardants”</b> (sin retardantes añadidos); varias marcas ya los fabrican así. Aspira con filtro HEPA y lávale las manos antes de comer.</p>
+    <p class="where rise" style="--d:200ms"><svg viewBox="0 0 40 40" data-i="bag"></svg>Dónde conseguirlo: Target, Amazon o tiendas de bebé.</p>
+  </div>
+
+  <div class="closer scene">
+    <p class="label rise">Antes de cerrar esto…</p>
+    <p class="say rise" style="--d:120ms">Hay algo que tu hijo usa más que estas 10 cosas juntas. Con eso le preparas el biberón, lo bañas cada noche y lo toma todo el día. Y casi nadie sabe qué tiene.</p>
+    <a class="next rise" style="--d:260ms" href="#agua">Sigue bajando <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a>
+  </div>
+</div></article>
+</main>
+
+<!-- ============ PARTE 2 · AGUA ============ -->
+<section class="band dark" id="agua">
+  <div class="wrap">
+    <div class="scene">
+      <p class="part rise">Parte 2 · Lo más importante</p>
+      <h2 class="h2xl split" style="color:var(--nieve)">Lo que tu hijo usa más que estas 10 cosas juntas: el agua.</h2>
+    </div>
+    <div class="stage grid dk scene" id="stW" style="--glow:rgba(89,183,232,.22)" aria-label="Grifo llenando un biberón; alrededor aparecen plomo, cloro, PFAS, microplásticos y cal"></div>
+    <div class="scene" style="margin-top:26px">
+      <p class="rise" style="font-size:20px;color:#E6EEE5">Con ella preparas su biberón y su comida. Con ella lo bañas. Y él, para su tamaño, <b>toma mucha más agua que tú</b>.</p>
+      <p class="rise" style="--d:120ms">Las plantas de tratamiento hacen un trabajo importante: quitan la tierra y matan las bacterias. Pero no están hechas para quitar todo lo que hoy llega a tu grifo:</p>
+    </div>
+    <div class="wcards">
+      <div class="wcard scene"><span class="ic pop"><svg viewBox="0 0 200 200" data-i="pipe"></svg></span><div class="rise"><h3>Plomo</h3><p>La planta no controla las tuberías viejas de tu calle ni de tu casa, que pueden soltar plomo. Los CDC son claros: <b>no existe un nivel de plomo en la sangre que sea seguro para un niño</b>. Incluso niveles bajos se relacionan con retrasos en el desarrollo y problemas para aprender. La Academia Americana de Pediatría avisa: los bebés que toman fórmula preparada con agua del grifo corren más riesgo. Y hervirla no lo quita: <b>lo concentra</b>.</p><span class="src">CDC · Academia Americana de Pediatría</span></div></div>
+      <div class="wcard scene"><span class="ic pop"><svg viewBox="0 0 200 200" data-i="drops"></svg></span><div class="rise"><h3>Agua dura y eccema</h3><p>El agua dura tiene mucho calcio y magnesio, y es muy común en EE.UU. El <b>King’s College de Londres</b> estudió a 1.300 bebés de 3 meses: los que vivían en zonas de agua dura tenían <b>hasta un 87 % más riesgo de eccema</b>.</p><span class="src">Journal of Allergy and Clinical Immunology, 2016</span></div></div>
+      <div class="wcard scene"><span class="ic pop"><svg viewBox="0 0 200 200" data-i="tub"></svg></span><div class="rise"><h3>Cloro y trihalometanos</h3><p>La planta echa cloro a propósito para matar bacterias. Al reaccionar con restos de hojas y tierra forma <b>trihalometanos</b>: la EPA advierte que tomarlos por encima del límite durante años puede dañar el hígado y los riñones y subir el riesgo de cáncer. En el baño caliente se respiran con el vapor y entran por la piel: ducharse puede llegar a <b>duplicar su nivel en la sangre</b>.</p><span class="src">EPA · Environmental Health Perspectives</span></div></div>
+      <div class="wcard scene"><span class="ic pop"><svg viewBox="0 0 200 200" data-i="pfas"></svg></span><div class="rise"><h3>PFAS, los “químicos eternos”</h3><p>Los mismos químicos de las sartenes del video llegan al agua, y una planta normal no los puede quitar. Las <b>Academias Nacionales de Ciencias de EE.UU.</b> encontraron pruebas sólidas que los relacionan con <b>problemas en el desarrollo de los niños</b> expuestos antes y después de nacer. Y en un estudio en las Islas Feroe, los niños con más PFAS en la sangre <b>respondían peor a sus vacunas</b>.</p><span class="src">Academias Nacionales de Ciencias, 2022</span></div></div>
+      <div class="wcard scene"><span class="ic pop"><svg viewBox="0 0 200 200" data-i="micro"></svg></span><div class="rise"><h3>Microplásticos</h3><p>El <b>94 %</b> del agua del grifo analizada en EE.UU. tenía fibras de plástico. Las mismas partículas que sueltan los biberones del punto 1.</p><span class="src">Orb Media con la Universidad de Minnesota, 2017</span></div></div>
+    </div>
+    <p class="quote scene"><span class="rise" style="display:block">Lo peor: nada de esto se ve, se huele ni se nota en el sabor. Tu hijo puede llevar toda la vida tomándola sin que lo sepas.</span></p>
+
+  </div>
+</section>
+<section class="band signs-band">
+  <div class="wrap">
+    <div class="signs scene">
+      <h3 class="split">3 señales que puedes ver hoy en tu casa</h3>
+      <div class="sgrid">
+        <div class="sgn rise" style="--d:100ms"><span class="art"><i>1</i><svg viewBox="0 0 200 200" data-i="glass"></svg></span><p><b>Manchas blancas</b> en vasos, grifos o en la puerta de la ducha. Son los minerales del agua dura: si se pegan al vidrio, también se pegan a la piel de tu hijo.</p></div>
+        <div class="sgn rise" style="--d:220ms"><span class="art"><i>2</i><svg viewBox="0 0 200 200" data-i="skin"></svg></span><p><b>Piel reseca, rojiza o con eccema</b> que mejora y vuelve, sobre todo después del baño.</p></div>
+        <div class="sgn rise" style="--d:340ms"><span class="art"><i>3</i><svg viewBox="0 0 200 200" data-i="babynose"></svg></span><p><b>Olor a cloro</b>, como a piscina, al abrir el agua caliente. Si lo hueles, tu hijo lo respira en cada baño.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="band dark">
+  <div class="wrap">
+    <div class="closer scene" style="background:var(--paper);color:var(--ink);margin-top:0">
+      <p class="label rise" style="color:var(--err)">Antes de comprar cualquier filtro…</p>
+      <p class="say rise" style="--d:120ms;color:var(--ink)">Sé que ahora quieres salir corriendo a comprar uno. Pero lee esto antes: la mayoría de los filtros que venden no quitan estos químicos, y ninguno de jarra protege el baño de tu hijo.</p>
+      <a class="next rise" style="--d:260ms;color:var(--bosque)" href="#solucion">Te digo cuáles sí funcionan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTE 3 · SOLUCIÓN ============ -->
+<section class="band" id="solucion">
+  <div class="wrap">
+    <div class="scene">
+      <p class="part rise" style="color:var(--bosque)">Parte 3 · La solución</p>
+      <h2 class="h2xl split">No todos los filtros protegen a tus hijos.</h2>
+      <p class="rise" style="--d:200ms">Esto es lo que encontraron los estudios:</p>
+    </div>
+    <div class="vs">
+      <div class="col no scene">
+        <h3 class="rise"><svg viewBox="0 0 200 200" data-i="cross"></svg>No funciona</h3>
+        <div class="it rise" style="--d:100ms"><svg viewBox="0 0 200 200" data-i="cross"></svg><p><strong>Jarras y filtros de grifo o de nevera</strong>Quitan el sabor a cloro, pero con los PFAS fallan: en un estudio de la <b>Universidad de Duke</b> quitaron solo el 73 % de media, y de forma impredecible. Y no protegen el baño.</p></div>
+        <div class="it rise" style="--d:200ms"><svg viewBox="0 0 200 200" data-i="cross"></svg><p><strong>Hervir el agua</strong>Mata bacterias, pero no quita químicos ni metales. El plomo se queda más concentrado.</p></div>
+        <div class="it rise" style="--d:300ms"><svg viewBox="0 0 200 200" data-i="cross"></svg><p><strong>Agua embotellada</strong>Cara y con unas <b>240.000 partículas de plástico por litro</b> (Universidades de Columbia y Rutgers, PNAS 2024).</p></div>
+      </div>
+      <div class="col si scene">
+        <h3 class="rise"><svg viewBox="0 0 200 200" data-i="check"></svg>Sí funciona</h3>
+        <p class="epa rise" style="--d:80ms">La EPA reconoce solo 3 tecnologías que quitan los PFAS de verdad: <b>ósmosis inversa, carbón activado e intercambio iónico</b>.</p>
+        <div class="it rise" style="--d:160ms"><svg viewBox="0 0 200 200" data-i="check"></svg><p><strong>Ósmosis inversa</strong>Para el agua que toma, la de su comida y la de su biberón. En el estudio de Duke quitó <b>el 94 % o más</b> de los PFAS.</p></div>
+        <div class="it rise" style="--d:260ms"><svg viewBox="0 0 200 200" data-i="check"></svg><p><strong>Un sistema para toda la casa</strong>Bien elegido y con mantenimiento, para que su baño también tenga agua sin cloro y sin dureza.</p></div>
+      </div>
+    </div>
+    <p class="punch scene"><span class="rise" style="display:block">Por eso los filtros baratos no funcionan: no están hechos para esto.</span></p>
+
+    <div class="bridge scene" style="margin-top:44px">
+      <p class="calm rise">Pero no te preocupes.</p>
+      <p class="rise" style="--d:120ms">Si no sabes cómo elegir el filtro adecuado para tu casa, tengo una buena noticia: <b>ya he ayudado a más de 3.000 familias a encontrar el suyo</b>. Hoy sus hijos toman, comen y se bañan con agua limpia, y ellos dejaron de preocuparse por el cloro, los plásticos y los químicos de su agua.</p>
+    </div>
+
+    <div class="call grid dk scene" id="cita" style="--glow:rgba(242,199,92,.14)">
+      <span class="eyebrow pill rise">Videollamada gratis · 25 minutos</span>
+      <h2 class="split">¿Cómo te puedo ayudar hoy a ti?</h2>
+      <p class="rise" style="--d:300ms">Este mes tengo un número limitado de videollamadas de asesoría para padres que quieren un hogar más sano para sus hijos. Si eres uno de ellos, en esta videollamada haremos esto:</p>
+      <ol class="steps">
+        <li class="rise" style="--d:380ms"><span>1</span>Revisamos la calidad del agua de tu zona en las páginas oficiales que he usado con miles de familias. Fácil y seguro.</li>
+        <li class="rise" style="--d:460ms"><span>2</span>Vemos qué contaminantes conviene reducir en tu casa y qué notas ahora mismo: piel, eccema, pelo, manchas o sabor.</li>
+        <li class="rise" style="--d:540ms"><span>3</span>Te explico qué filtros existen, cuáles valen la pena y cuáles no.</li>
+        <li class="rise" style="--d:620ms"><span>4</span>Te recomiendo el filtro adecuado para tu familia, para que dejes de preocuparte por los plásticos y los contaminantes.</li>
+      </ol>
+      <p class="free rise" style="--d:700ms">Sin compromiso de compra. Tú decides.</p>
+      <a class="cta pulse rise" style="--d:780ms" href="https://citasdavidmontenegro.com/agenda.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18M9 15l2 2 4-4"/></svg>Agendar mi videollamada gratis</a>
+      <p class="cta-note">Elige el día y la hora. Te toma menos de un minuto.</p>
+    </div>
+
+    <div class="end scene" style="margin-top:34px">
+      <p class="rise">Recuerda: para cuidar a tus hijos no hacen falta grandes cambios. Solo cambiar algunas cosas por otras.</p>
+      <p class="rise" style="--d:120ms"><b>Cada día que pasa, tu familia sigue bebiendo y bañándose con esa agua.</b></p>
+      <p class="last rise" style="--d:240ms">La guía termina aquí. La solución empieza con tu cita.</p>
+      <div class="byline rise" style="--d:320ms"><span class="dot">D</span><span><strong>David Montenegro</strong>Especialista en bienestar</span></div>
+    </div>
+
+    <details>
+      <summary>Fuentes de esta guía</summary>
+      <ol>
+        <li>Li D. et al. Microplastic release from infant feeding bottles. Nature Food, 2020 (Trinity College Dublin).</li>
+        <li>Marfella R. et al. Microplastics in carotid plaques. New England Journal of Medicine, 2024.</li>
+        <li>Healthy Babies Bright Futures. What’s in my baby’s food?, 2019.</li>
+        <li>Subcommittee on Economic and Consumer Policy, U.S. House. Baby foods are tainted with toxic heavy metals, 2021.</li>
+        <li>Gruenwald T. et al. Population attributable fraction of gas stoves and childhood asthma in the US. Int. J. Environ. Res. Public Health, 2022.</li>
+        <li>Neu L., Hammes F. et al. Ugly ducklings: the dark side of plastic materials in contact with potable water. npj Biofilms and Microbiomes, 2018 (Eawag, ETH Zúrich, U. de Illinois).</li>
+        <li>Sathyanarayana S. et al. Baby care products: possible sources of infant phthalate exposure. Pediatrics, 2008.</li>
+        <li>Chang M.W., Nakrani R. Six children with allergic contact dermatitis to methylisothiazolinone in wet wipes. Pediatrics, 2014.</li>
+        <li>Farrow A. et al. Symptoms of mothers and infants related to total volatile organic compounds in household products. Estudio ALSPAC, Universidad de Bristol, 2003–2004.</li>
+        <li>Asimakopoulos A.G., Kannan K. et al. Teethers as a source of exposure to endocrine-disrupting chemicals. Environmental Science &amp; Technology, 2016.</li>
+        <li>Wu C.F. et al. Melamine release from melamine tableware. JAMA Internal Medicine, 2013.</li>
+        <li>Stapleton H.M. et al. Identification of flame retardants in polyurethane foam collected from baby products. Environmental Science &amp; Technology, 2011 (Universidad de Duke).</li>
+        <li>CDC. No safe blood lead level in children has been identified. · Academia Americana de Pediatría (HealthyChildren.org), plomo en el agua del grifo.</li>
+        <li>Perkin M.R. et al. Association between domestic water hardness, chlorine, and atopic dermatitis risk in early life. J Allergy Clin Immunol, 2016 (King’s College London).</li>
+        <li>National Academies of Sciences, Engineering, and Medicine. Guidance on PFAS exposure, testing, and clinical follow-up, 2022 · Grandjean P. et al. (Islas Feroe), respuesta a vacunas.</li>
+        <li>Orb Media y Universidad de Minnesota. Invisibles: microplásticos en el agua del grifo, 2017.</li>
+        <li>Herkert N.J. et al. Point-of-use filters and PFAS removal. Environmental Science &amp; Technology Letters, 2020 (Universidad de Duke).</li>
+        <li>Qian N. et al. Nanoplastics in bottled water. PNAS, 2024 (Columbia y Rutgers).</li>
+      </ol>
+    </details>
+    <p class="disc">Esta guía es informativa y no sustituye la consulta con el pediatra de tu hijo.</p>
+  </div>
+</section>
+
+<a class="float" id="float" href="https://citasdavidmontenegro.com/agenda.html" target="_blank" rel="noopener" aria-label="Agendar videollamada gratis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Agendar videollamada</a>
+
+<script>
+(function(){
+const C={ink:'#243329',paper:'#F1F4EE',salvia:'#DEE8DD',hondo:'#35513F',bosque:'#456B52',vivo:'#5B9169',vivoLuz:'#86C79A',hueso:'#C5D4C4',humo:'#5F7265',nieve:'#FFFFFF',ambar:'#F2C75C',err:'#A83B28',errLuz:'#EF6A50',dark:'#0F1512',dark2:'#16201A'};
+const shade=(hex,k)=>{const n=parseInt(hex.slice(1),16);const f=v=>Math.max(0,Math.min(255,Math.round(v*k)));return `rgb(${f(n>>16)},${f((n>>8)&255)},${f(n&255)})`;};
+// place: outer positions, inner animates
+const P=(x,y,s,inner,cls='',d=0,b=0,extra='')=>`<g transform="translate(${x} ${y}) scale(${s})"><g class="${cls}" style="--d:${d}ms;--b:${b}s;${extra}">${inner}</g></g>`;
+const R=(x,y,s,rot,inner)=>`<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})">${inner}</g>`;
+
+/* ---------- flat kid (port of his people.tsx) ---------- */
+function kid(o={}){
+  const {skin='#F2C9A0',hair='#4A3020',style='short',shirt='#59B7E8',mood='neutral',tie='#EF6A50',over='',b=0}=o;
+  const x=100,y=86,r=56,eyeY=92,dx=21,my=118,neckY=124,by=150,sh=30,lx=x-dx,rx=x+dx;
+  const ln=`stroke="${C.ink}" stroke-width="5" stroke-linecap="round" fill="none"`;
+  let back='',front='';
+  if(style==='pigtails')back=`<circle cx="${x-r*1.02}" cy="${y-r*.05}" r="${r*.36}" fill="${hair}"/><circle cx="${x+r*1.02}" cy="${y-r*.05}" r="${r*.36}" fill="${hair}"/><circle cx="${x-r*.78}" cy="${y-r*.18}" r="${r*.11}" fill="${tie}"/><circle cx="${x+r*.78}" cy="${y-r*.18}" r="${r*.11}" fill="${tie}"/>`;
+  if(style==='curly'){let bm='';for(let i=0;i<9;i++){const a=Math.PI*(1.05+(i/8)*.9);bm+=`<circle cx="${x+Math.cos(a)*r*.86}" cy="${y+Math.sin(a)*r*.86}" r="${r*.3}" fill="${hair}"/>`;}
+    front=`<path d="M${x-r*.95} ${y-r*.05} C${x-r*.9} ${y-r*1.05} ${x+r*.9} ${y-r*1.05} ${x+r*.95} ${y-r*.05} C${x+r*.5} ${y-r*.45} ${x-r*.5} ${y-r*.45} ${x-r*.95} ${y-r*.05} Z" fill="${hair}"/>${bm}`;}
+  else if(style!=='bald'){const part=style==='short'?.2:0;front=`<path d="M${x-r*.99} ${y+r*.08} C${x-r*1.06} ${y-r*.88} ${x-r*.4} ${y-r*1.14} ${x+r*.08} ${y-r*1.1} C${x+r*.76} ${y-r*1.06} ${x+r*1.08} ${y-r*.6} ${x+r*.99} ${y+r*.08} C${x+r*.86} ${y-r*.36} ${x+r*.56} ${y-r*.55} ${x+r*(.2+part)} ${y-r*.52} C${x-r*.1} ${y-r*.7} ${x-r*.62} ${y-r*.56} ${x-r*.99} ${y+r*.08} Z" fill="${hair}"/>`;}
+  let eyes=`<g class="blink" style="--b:${b}s"><ellipse cx="${lx}" cy="${eyeY}" rx="5.8" ry="6.6" fill="${C.ink}"/><ellipse cx="${rx}" cy="${eyeY}" rx="5.8" ry="6.6" fill="${C.ink}"/><circle cx="${lx+2}" cy="${eyeY-2.4}" r="1.8" fill="#fff"/><circle cx="${rx+2}" cy="${eyeY-2.4}" r="1.8" fill="#fff"/></g>`;
+  let brows='',mouth=`<path d="M${x-11} ${my} Q${x} ${my+9} ${x+11} ${my}" ${ln}/>`,blush=.32;
+  const browSad=k=>`<path d="M${lx-9} ${eyeY-12} L${lx+8} ${eyeY-12-6*k}" ${ln} stroke-width="4.5"/><path d="M${rx+9} ${eyeY-12} L${rx-8} ${eyeY-12-6*k}" ${ln} stroke-width="4.5"/>`;
+  if(mood==='happy'){eyes=`<path d="M${lx-7} ${eyeY+2} Q${lx} ${eyeY-7} ${lx+7} ${eyeY+2}" ${ln}/><path d="M${rx-7} ${eyeY+2} Q${rx} ${eyeY-7} ${rx+7} ${eyeY+2}" ${ln}/>`;mouth=`<path d="M${x-14} ${my-2} Q${x} ${my+16} ${x+14} ${my-2} Z" fill="#B94A4A" stroke="${C.ink}" stroke-width="3.5" stroke-linejoin="round"/>`;}
+  if(mood==='worried'||mood==='sad'){brows=browSad(1);const k=mood==='sad'?1:.5;mouth=`<path d="M${x-11} ${my+6} Q${x} ${my+6-10*k} ${x+11} ${my+6}" ${ln}/>`;}
+  if(mood==='sick'){eyes=`<path d="M${lx-7} ${eyeY} Q${lx} ${eyeY+5} ${lx+7} ${eyeY}" ${ln}/><path d="M${rx-7} ${eyeY} Q${rx} ${eyeY+5} ${rx+7} ${eyeY}" ${ln}/>`;brows=browSad(.8);mouth=`<path d="M${x-10} ${my+4} Q${x-5} ${my} ${x} ${my+4} Q${x+5} ${my+8} ${x+10} ${my+4}" ${ln} stroke-width="4"/>`;blush=.6;}
+  const nose=`<path d="M${x-3.5} ${(eyeY+my)/2+1} Q${x} ${(eyeY+my)/2+6} ${x+3.5} ${(eyeY+my)/2+1}" stroke="${shade(skin,.74)}" stroke-width="3.5" fill="none" stroke-linecap="round"/>`;
+  const cheeks=`<ellipse cx="${lx-9}" cy="${eyeY+17}" rx="9" ry="6" fill="rgba(239,106,80,${blush})"/><ellipse cx="${rx+9}" cy="${eyeY+17}" rx="9" ry="6" fill="rgba(239,106,80,${blush})"/>`;
+  const x0=sh,x1=200-sh;
+  return `${back}<rect x="${x-13}" y="${neckY}" width="26" height="${by-neckY+14}" rx="10" fill="${shade(skin,.9)}"/><path d="M${x0} 222 C${x0} ${by+22} ${x0+34} ${by} 100 ${by} C${x1-34} ${by} ${x1} ${by+22} ${x1} 222 Z" fill="${shirt}"/><path d="M84 ${by+1} Q100 ${by+16} 116 ${by+1}" fill="${shade(skin,.9)}"/><circle cx="${x-r*.98}" cy="${eyeY+4}" r="${r*.2}" fill="${shade(skin,.94)}"/><circle cx="${x+r*.98}" cy="${eyeY+4}" r="${r*.2}" fill="${shade(skin,.94)}"/><ellipse cx="${x}" cy="${y}" rx="${r}" ry="${r}" fill="${skin}"/>${front}${nose}${cheeks}${brows}${eyes}${mouth}${over}`;
+}
+
+/* ---------- icons (same flat language as his icons.tsx) ---------- */
+const I={
+ iceCream:`<path d="M62 92 L100 190 L138 92 Z" fill="#E1B67A" stroke="#B8894A" stroke-width="4" stroke-linejoin="round"/><path d="M72 112 L128 112 M80 134 L120 134 M88 156 L112 156" stroke="#B8894A" stroke-width="3"/><circle cx="78" cy="80" r="30" fill="#F6B6C8"/><circle cx="122" cy="80" r="30" fill="#FBE7C6"/><circle cx="100" cy="52" r="32" fill="#8A5A44"/><circle cx="90" cy="40" r="7" fill="rgba(255,255,255,0.35)"/><circle cx="100" cy="18" r="9" fill="#D8313F"/><path d="M100 10 Q104 0 112 -4" stroke="#4B7A3A" stroke-width="3" fill="none"/>`,
+ candy:`<path d="M44 100 L8 72 L14 128 Z" fill="#E86A92"/><path d="M156 100 L192 72 L186 128 Z" fill="#E86A92"/><circle cx="100" cy="100" r="58" fill="#F48FB1"/><path d="M60 70 Q100 100 76 146 M100 42 Q120 100 100 158 M140 70 Q100 100 124 146" stroke="#fff" stroke-width="10" fill="none" opacity="0.85"/><circle cx="80" cy="76" r="10" fill="rgba(255,255,255,0.5)"/>`,
+ bottle:`<path d="M86 10 Q100 -6 114 10 L119 40 L81 40 Z" fill="#EBC9A4"/><rect x="66" y="38" width="68" height="24" rx="8" fill="#59B7E8"/><path d="M62 62 L138 62 L146 210 Q146 232 124 232 L76 232 Q54 232 54 210 Z" fill="rgba(255,255,255,0.92)" stroke="${C.hueso}" stroke-width="4"/><path d="M59 118 L141 118 L146 210 Q146 232 124 232 L76 232 Q54 232 54 210 Z" fill="#FBF0D6"/><path d="M118 90h18 M118 120h18 M118 150h18 M118 180h18" stroke="#9AA9A0" stroke-width="3"/><path d="M70 80 Q66 150 72 212" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>`,
+ brain:`<path d="M100 40 C80 20 44 30 44 58 C24 64 22 96 38 108 C26 126 40 152 62 152 C70 172 100 172 100 150 C100 172 130 172 138 152 C160 152 174 126 162 108 C178 96 176 64 156 58 C156 30 120 20 100 40 Z" fill="#F4A7B9"/><path d="M100 42 L100 150" stroke="#D97A93" stroke-width="5"/><path d="M60 70 Q78 76 72 94 M140 70 Q122 76 128 94 M50 112 Q70 110 76 130 M150 112 Q130 110 124 130" stroke="#D97A93" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="72" cy="56" r="8" fill="rgba(255,255,255,.45)"/>`,
+ lungs:`<path d="M100 20 L100 92" stroke="#C98A94" stroke-width="12" stroke-linecap="round"/><path d="M100 86 Q86 92 78 104 M100 86 Q114 92 122 104" stroke="#C98A94" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M86 64 C40 60 18 110 22 160 C24 186 56 190 74 176 C92 162 92 120 90 74 Z" fill="#F08FA0"/><path d="M114 64 C160 60 182 110 178 160 C176 186 144 190 126 176 C108 162 108 120 110 74 Z" fill="#F08FA0"/><path d="M50 110 Q40 140 50 160 M150 110 Q160 140 150 160" stroke="rgba(255,255,255,0.45)" stroke-width="7" fill="none" stroke-linecap="round"/>`,
+ duck:`<path d="M30 120 Q30 180 100 180 Q170 180 172 130 Q174 100 140 104 Q150 60 116 46 Q82 34 70 70 Q66 90 80 104 Q30 96 30 120 Z" fill="#F6CF3E"/><circle cx="106" cy="70" r="7" fill="${C.ink}"/><circle cx="108" cy="67" r="2" fill="#fff"/><path d="M70 74 L40 80 L68 90 Z" fill="#F08A2E"/><circle cx="46" cy="81" r="3.5" fill="${C.dark}"/><path d="M60 132 Q100 150 140 128" stroke="#E2B52A" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M90 60 Q96 50 108 50" stroke="rgba(255,255,255,.55)" stroke-width="7" fill="none" stroke-linecap="round"/>`,
+ lotion:`<rect x="94" y="4" width="12" height="28" fill="${C.hueso}"/><rect x="94" y="0" width="46" height="12" rx="6" fill="${C.hueso}"/><rect x="74" y="28" width="52" height="22" rx="6" fill="#E98FAD"/><path d="M58 50 L142 50 Q156 50 156 64 L156 206 Q156 224 138 224 L62 224 Q44 224 44 206 L44 64 Q44 50 58 50 Z" fill="#F8C6D6"/><rect x="62" y="104" width="76" height="74" rx="14" fill="#fff"/><path d="M100 152 C80 138 84 122 94 124 C98 125 100 130 100 130 C100 130 102 125 106 124 C116 122 120 138 100 152 Z" fill="#E98FAD"/><path d="M54 70 Q50 140 56 200" stroke="rgba(255,255,255,.55)" stroke-width="8" fill="none" stroke-linecap="round"/>`,
+ powder:`<rect x="70" y="6" width="60" height="26" rx="8" fill="#7FB6E0"/><circle cx="86" cy="18" r="3" fill="#fff"/><circle cx="100" cy="18" r="3" fill="#fff"/><circle cx="114" cy="18" r="3" fill="#fff"/><path d="M64 32 L136 32 Q156 40 156 70 L156 200 Q156 220 136 220 L64 220 Q44 220 44 200 L44 70 Q44 40 64 32 Z" fill="#BFDDF2"/><rect x="62" y="100" width="76" height="60" rx="14" fill="#fff"/><path d="M80 130 h40" stroke="#7FB6E0" stroke-width="8" stroke-linecap="round"/>`,
+ wipes:`<path d="M100 4 C86 20 116 24 104 44" stroke="${C.nieve}" stroke-width="10" fill="none" stroke-linecap="round"/><rect x="34" y="40" width="132" height="34" rx="12" fill="#F5C842"/><rect x="40" y="70" width="120" height="180" rx="16" fill="#F7E07A"/><rect x="40" y="226" width="120" height="24" rx="10" fill="#F5C842"/><rect x="54" y="112" width="92" height="86" rx="14" fill="${C.nieve}"/><circle cx="100" cy="150" r="22" fill="#59B7E8"/><path d="M90 150 l7 7 l14 -15" stroke="${C.nieve}" stroke-width="6" fill="none" stroke-linecap="round"/>`,
+ spray:`<path d="M70 10 L140 10 L150 40 L170 46 L170 58 L120 58 L120 76 L84 76 L84 58 Z" fill="${C.nieve}" stroke="${C.hueso}" stroke-width="3"/><path d="M78 76 L126 76 L140 110 L150 236 Q150 252 134 252 L70 252 Q54 252 54 236 L64 110 Z" fill="#E98FC0"/><rect x="70" y="140" width="64" height="70" rx="10" fill="${C.nieve}"/><path d="M102 160 C92 166 90 182 102 192 C114 182 112 166 102 160 Z" fill="#E98FC0"/><path d="M70 118 Q66 180 70 236" stroke="rgba(255,255,255,0.45)" stroke-width="7" fill="none" stroke-linecap="round"/>`,
+ teether:`<circle cx="100" cy="100" r="64" fill="none" stroke="#7FD1C3" stroke-width="34"/><circle cx="100" cy="100" r="64" fill="none" stroke="#5FBFAE" stroke-width="6" stroke-dasharray="6 22"/><circle cx="100" cy="36" r="20" fill="#F6CF3E"/><circle cx="164" cy="100" r="20" fill="#F48FB1"/><circle cx="36" cy="100" r="20" fill="#A77BEA"/><path d="M58 60 Q70 44 92 40" stroke="rgba(255,255,255,.6)" stroke-width="8" fill="none" stroke-linecap="round"/>`,
+ kidney:`<path d="M124 26 C70 16 36 60 42 112 C48 164 100 184 132 162 C154 147 144 124 126 116 C108 108 110 84 130 76 C154 66 162 32 124 26 Z" fill="#C46A6A"/><path d="M60 70 Q50 100 58 130" stroke="rgba(255,255,255,.4)" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M128 96 Q150 98 170 120" stroke="#E3A36A" stroke-width="10" fill="none" stroke-linecap="round"/>`,
+ bowlMel:`<ellipse cx="120" cy="86" rx="104" ry="24" fill="#F29B4B"/><ellipse cx="120" cy="86" rx="90" ry="17" fill="#F6B66E"/><path d="M60 82 q8 -8 16 0 q8 8 16 0 M130 90 q8 -8 16 0 q8 8 16 0" stroke="#FBE7C6" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M16 86 Q20 180 120 182 Q220 180 224 86 Z" fill="#59B7E8"/><circle cx="60" cy="122" r="11" fill="#F6CF3E"/><circle cx="100" cy="150" r="11" fill="#F48FB1"/><circle cx="146" cy="138" r="11" fill="#F6CF3E"/><circle cx="186" cy="116" r="11" fill="#F48FB1"/><path d="M40 112 Q54 146 92 160" stroke="rgba(255,255,255,0.45)" stroke-width="8" fill="none" stroke-linecap="round"/>`,
+ bowlRice:`<path d="M16 86 Q20 180 120 182 Q220 180 224 86 Z" fill="#9CC5E8"/><path d="M40 120 Q60 150 100 160" stroke="rgba(255,255,255,0.5)" stroke-width="8" fill="none" stroke-linecap="round"/>`,
+ stove:`<rect x="0" y="40" width="320" height="120" rx="18" fill="#3A3D3F"/><rect x="0" y="40" width="320" height="26" rx="12" fill="#4A4E50"/><ellipse cx="90" cy="52" rx="58" ry="15" fill="#25282A"/><ellipse cx="230" cy="52" rx="58" ry="15" fill="#25282A"/><path d="M36 52 H144 M90 38 V66 M176 52 H284 M230 38 V66" stroke="#55595C" stroke-width="5"/><circle cx="60" cy="112" r="15" fill="#25282A"/><circle cx="110" cy="112" r="15" fill="#25282A"/><circle cx="210" cy="112" r="15" fill="#25282A"/><circle cx="260" cy="112" r="15" fill="#25282A"/><rect x="58" y="100" width="4" height="12" rx="2" fill="#9AA0A3"/><rect x="108" y="100" width="4" height="12" rx="2" fill="#9AA0A3"/><rect x="208" y="100" width="4" height="12" rx="2" fill="#9AA0A3"/><rect x="258" y="100" width="4" height="12" rx="2" fill="#9AA0A3"/>`,
+ carSeat:`<rect x="20" y="236" width="200" height="22" rx="11" fill="#2C3530"/><path d="M40 238 L40 70 Q40 24 86 24 L118 24 Q142 24 142 48 L142 146 L184 146 Q210 146 210 172 L210 238 Z" fill="#5F7265"/><path d="M58 226 L58 82 Q58 44 90 44 L112 44 Q124 44 124 58 L124 164 L180 164 Q192 164 192 178 L192 226 Z" fill="#8FA196"/><path d="M82 110 L82 200 M106 110 L106 200" stroke="#3F4D45" stroke-width="7" stroke-linecap="round"/><rect x="74" y="168" width="40" height="16" rx="5" fill="#B9C6BD"/>`,
+ foamCut:`<rect x="0" y="0" width="120" height="86" rx="14" fill="#F3DB8E"/><rect x="0" y="0" width="120" height="86" rx="14" fill="none" stroke="#C9A94E" stroke-width="4" stroke-dasharray="8 7"/>`,
+ faucet:`<rect x="10" y="20" width="40" height="70" rx="10" fill="#B9C6BD"/><path d="M50 40 L120 40 Q150 40 150 70 L150 92 L126 92 L126 72 Q126 64 118 64 L50 64 Z" fill="#D6DFD8"/><rect x="58" y="6" width="34" height="16" rx="8" fill="#9AA9A0"/><rect x="70" y="18" width="10" height="24" fill="#9AA9A0"/><path d="M60 46 L118 46" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".7"/>`,
+ tag:`<path d="M20 0 L150 0 Q160 0 160 10 L160 70 Q160 80 150 80 L20 80 L0 40 Z" fill="${C.nieve}"/><circle cx="22" cy="40" r="7" fill="${C.dark}"/><text x="92" y="52" text-anchor="middle" font-family="Figtree,'Segoe UI',sans-serif" font-weight="800" font-size="30" fill="${C.ink}">BPA free</text>`,
+ magnifier:`<rect x="148" y="146" width="22" height="70" rx="11" fill="#9AA9A0" transform="rotate(-45 159 181)"/><circle cx="100" cy="100" r="78" fill="rgba(222,232,221,.10)" stroke="#D6DFD8" stroke-width="12"/>`,
+ check:`<circle cx="100" cy="100" r="90" fill="${C.vivo}"/><path d="M58 104 l28 28 l56 -62" stroke="${C.nieve}" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ cross:`<circle cx="100" cy="100" r="90" fill="${C.err}"/><path d="M66 66 L134 134 M134 66 L66 134" stroke="${C.nieve}" stroke-width="20" stroke-linecap="round"/>`,
+};
+const bug=(c='#8E5BC9',rot=0)=>`<g transform="rotate(${rot})"><path d="M-22 0 c-8 -6 -12 6 -20 0 M22 0 c8 -6 12 6 20 0" stroke="${c}" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="-22" y="-9" width="44" height="18" rx="9" fill="${c}" stroke="rgba(36,51,41,.55)" stroke-width="2"/><rect x="-16" y="-5" width="14" height="4" rx="2" fill="rgba(255,255,255,.55)"/><circle cx="6" cy="2" r="2.6" fill="rgba(36,51,41,.45)"/><circle cx="13" cy="-2" r="2" fill="rgba(36,51,41,.45)"/></g>`;
+const cocci=(c='#E0609A',n=4,rot=0)=>{let o='';for(let i=0;i<n;i++)o+=`<circle cx="${i*13}" cy="${(i%2)*4}" r="7" fill="${c}" stroke="rgba(36,51,41,.5)" stroke-width="1.8"/><circle cx="${i*13-2}" cy="${(i%2)*4-2}" r="2" fill="rgba(255,255,255,.6)"/>`;return `<g transform="rotate(${rot})">${o}</g>`;};
+const hexa=(label,c='#A77BEA')=>`<polygon points="0,-22 19,-11 19,11 0,22 -19,11 -19,-11" fill="none" stroke="${c}" stroke-width="5" stroke-linejoin="round"/><path d="M19 -11 L34 -20 M-19 11 L-34 20" stroke="${c}" stroke-width="5" stroke-linecap="round"/><text x="0" y="44" text-anchor="middle" font-family="Figtree,'Segoe UI',sans-serif" font-weight="800" font-size="15" fill="${c}">${label}</text>`;
+const tile=(sym,num,bg)=>`<rect x="-32" y="-32" width="64" height="64" rx="12" fill="${bg}"/><text x="-22" y="-14" font-family="Figtree,'Segoe UI',sans-serif" font-weight="700" font-size="12" fill="rgba(255,255,255,.85)">${num}</text><text x="0" y="16" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="800" font-size="32" fill="#fff">${sym}</text>`;
+const arrow=(d,c,dl=200,w=5)=>{const m=d.match(/(-?[\d.]+) (-?[\d.]+)$/);return `<path class="draw" pathLength="1" style="--d:${dl}ms" d="${d}" stroke="${c}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;};
+const head=(x,y,ang,c,dl)=>`<g transform="translate(${x} ${y}) rotate(${ang})"><path class="draw" pathLength="1" style="--d:${dl}ms" d="M-14 -10 L0 0 L-14 10" stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+const steam=(x,y,n=3,c='rgba(95,114,101,.55)')=>{let s='';for(let i=0;i<n;i++)s+=`<path class="steam" style="--b:${i*0.8}s" d="M${x+i*18} ${y} q-8 -10 0 -20 q8 -10 0 -20" stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round"/>`;return s;};
+const cloud=(c)=>`<circle cx="0" cy="0" r="22" fill="${c}"/><circle cx="22" cy="-6" r="18" fill="${c}"/><circle cx="-20" cy="4" r="15" fill="${c}"/><circle cx="8" cy="12" r="16" fill="${c}"/>`;
+const flame=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><path class="flick" d="M0 0 C-7 -8 -4 -20 0 -28 C4 -20 7 -8 0 0 Z" fill="#4FA3F0"/><path d="M0 0 C-3 -4 -2 -10 0 -14 C2 -10 3 -4 0 0 Z" fill="#BFE3FF"/></g>`;
+
+/* ---------- stages (viewBox 400x320) ---------- */
+const S={};
+S.hero=()=>{
+  return P(48,70,.95,`<g class="bob">${I.iceCream}</g>`,'pop',100)+
+    P(212,118,.95,`<g class="bob" style="--b:.8s">${I.candy}</g>`,'pop',240)+
+    `<g transform="translate(200 158)"><g class="stamp" style="--d:520ms;transform:rotate(-12deg)"><rect x="-96" y="-62" width="192" height="124" rx="26" fill="rgba(15,21,18,.35)" stroke="${C.errLuz}" stroke-width="12"/><text x="0" y="38" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="800" font-size="112" fill="${C.errLuz}" style="font-variation-settings:'WONK' 1,'SOFT' 30,'opsz' 144">NO</text></g></g>`;
+};
+S[1]=()=>{
+  let parts='';const cols=['#C5D4C4','#9CC5E8','#F6B6C8','#DEE8DD','#F5C842'];
+  for(let i=0;i<16;i++){const x=142+(i*37)%70,y=150+(i*53)%110,dx=60+(i*29)%90,dy=-40+(i*41)%70;parts+=`<rect class="shed" x="${x}" y="${y}" width="${5+i%4}" height="${4+(i*3)%5}" rx="1.5" fill="${cols[i%5]}" style="--b:${(i*0.21).toFixed(2)}s;--dx:${dx}px;--dy:${dy}px"/>`;}
+  return steam(150,52,3)+P(84,62,.95,`<g class="bob">${I.bottle}</g>`,'pop',0)+parts+
+    P(246,150,.7,kid({mood:'worried',skin:'#F2C9A0',hair:'#6B4A2E',style:'curly',shirt:'#F6B6C8',b:.3}),'pop',260)+
+    arrow('M300 112 C285 122 250 116 218 130',C.err,650)+head(218,130,160,C.err,1300);
+};
+S[2]=()=>{
+  let puffs='';for(let i=0;i<14;i++){const a=i/14*Math.PI,x=120+Math.cos(a)*(30+(i%3)*28)*1.4,y=88-Math.sin(a)*22-(i%2)*10;puffs+=`<circle cx="${x}" cy="${y}" r="${13+(i%3)*2}" fill="#F6E3B4" stroke="#E2C98C" stroke-width="2"/>`;}
+  return P(22,150,.78,`<g class="bob">${puffs}${I.bowlRice}</g>`,'pop',0)+
+    P(150,118,.9,`<g class="bob" style="--b:.4s">${tile('As',33,C.errLuz)}</g>`,'pop',300)+
+    P(196,176,.8,`<g class="bob" style="--b:1.1s">${tile('Pb',82,'#7E8C84')}</g>`,'pop',420)+
+    P(250,120,.62,`<g class="throb">${I.brain}</g>`,'pop',560)+
+    arrow('M150 210 C190 240 230 230 262 196',C.errLuz,700)+head(262,196,-50,C.errLuz,1350);
+};
+S[3]=()=>{
+  let fl='';for(let i=0;i<9;i++){const a=i/9*Math.PI*2;fl+=flame(90+Math.cos(a)*40,52+Math.sin(a)*9,.9);}
+  let cl='';const cc='rgba(150,160,155,.55)';for(let i=0;i<5;i++)cl+=`<g transform="translate(${110+i*14} ${190-i*8}) scale(${.7+i*.1})"><g class="drift" style="--b:${i*0.9}s;--dx:${90+i*10}px;--dy:${-60-i*6}px">${cloud(cc)}</g></g>`;
+  return P(14,188,.72,`${I.stove}<g>${fl}</g>`,'pop',0)+cl+
+    `<g transform="translate(150 150)"><g class="pop" style="--d:450ms"><text font-family="Figtree,'Segoe UI',sans-serif" font-weight="800" font-size="22" fill="${C.humo}">NO₂</text></g></g>`+
+    P(250,120,.7,kid({mood:'sick',skin:'#C68B65',hair:'#2B1D14',style:'short',shirt:'#59B7E8',b:.6}),'pop',250)+
+    P(118,36,.36,`<g class="breathe">${I.lungs.replaceAll('#F08FA0','#EF6A50')}</g>`,'pop',700)+
+    arrow('M192 90 C220 104 244 120 262 150',C.err,800,4)+head(262,150,55,C.err,1400);
+};
+S[4]=()=>{
+  const lens=`<rect x="148" y="146" width="22" height="70" rx="11" fill="#9AA9A0" transform="rotate(-45 159 181)"/><circle cx="100" cy="100" r="78" fill="#EEF4EC"/><circle cx="100" cy="100" r="78" fill="none" stroke="#D6DFD8" stroke-width="12"/><path d="M48 62 Q62 40 90 32" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>`;
+  const items=[[70,70,bug('#8E5BC9',-20),0],[122,88,bug('#4FA36B',30),.3],[84,124,bug('#8E5BC9',70),.6],[130,134,cocci('#E0609A',4,-15),.2],[52,104,cocci('#E0609A',3,40),.8],[104,58,cocci('#F0A040',3,10),.5],[60,146,bug('#4FA36B',-50),.9]];
+  let bugs='';items.forEach(([x,y,svg,b])=>{bugs+=`<g transform="translate(${x} ${y})"><g class="wig" style="--b:${b}s">${svg}</g></g>`;});
+  let dr='';for(let i=0;i<5;i++)dr+=`<circle class="squirt" cx="305" cy="280" r="${4+i%3}" fill="#9CD4F2" style="--b:${i*0.3}s;--dx:${-30-i*10}px;--dy:${18+i*3}px"/>`;
+  const hole=`<ellipse cx="104" cy="176" rx="9" ry="5" fill="#3A2A10"/>`;
+  return P(14,50,.95,`${lens}<g>${bugs}</g>`,'pop',100)+
+    P(208,110,.95,`<g class="bob">${I.duck}${hole}</g>`,'pop',0)+dr+
+    `<circle class="pop" style="--d:500ms" cx="307" cy="277" r="14" fill="none" stroke="${C.ambar}" stroke-width="3.5"/>`+
+    `<path class="draw" pathLength="1" style="--d:600ms" d="M294 284 C250 300 210 260 172 200" stroke="${C.ambar}" stroke-width="3.5" fill="none" stroke-linecap="round"/>`;
+};
+S[5]=()=>{
+  let w='';for(let i=0;i<3;i++)w+=`<path class="waft" style="--b:${i*0.6}s" d="M150 ${150+i*22} q14 -10 28 0 t28 0" stroke="#E98FAD" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+  return P(26,96,.8,`<g class="bob">${I.lotion}</g>`,'pop',0)+P(104,170,.55,`<g class="bob" style="--b:.6s">${I.powder}</g>`,'pop',140)+w+
+    P(196,110,.85,`<g class="floaty">${hexa('ftalato')}</g>`,'pop',500)+
+    P(176,214,.65,`<g class="floaty" style="--b:1.2s">${hexa('ftalato')}</g>`,'pop',640)+
+    P(250,150,.66,kid({mood:'neutral',skin:'#E8B58F',hair:'#3A2618',style:'bald',shirt:'#DEE8DD',b:.2}),'pop',260);
+};
+S[6]=()=>{
+  let rash='';[[66,112],[74,102],[58,104],[140,110],[132,100],[146,102],[70,120],[138,120]].forEach(([x,y],i)=>{rash+=`<circle class="pop" style="--d:${600+i*90}ms" cx="${x}" cy="${y}" r="5" fill="#E2483A"/>`;});
+  return P(40,120,.7,`<g class="bob">${I.wipes}</g>`,'pop',0)+
+    P(215,112,.85,kid({mood:'worried',skin:'#F2C9A0',hair:'#C9822E',style:'pigtails',shirt:'#A77BEA',over:rash,b:.5}),'pop',220)+
+    arrow('M160 190 C190 170 225 175 250 196',C.errLuz,450)+head(250,196,40,C.errLuz,1050);
+};
+S[7]=()=>{
+  let cl='';const cc='rgba(233,143,192,.45)';for(let i=0;i<6;i++)cl+=`<g transform="translate(${130+i*6} ${100+i*10}) scale(${.6+i*.08})"><g class="drift" style="--b:${i*0.75}s;--dx:${110+i*8}px;--dy:${20+i*6}px">${cloud(cc)}</g></g>`;
+  const tummy=`<g class="throb"><path d="M86 190 q14 -14 28 0 q-14 14 -28 0" stroke="${C.err}" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="100" cy="190" r="4" fill="${C.err}"/></g>`;
+  return P(30,70,.82,`<g class="shake">${I.spray}</g>`,'pop',0)+cl+
+    P(236,128,.74,kid({mood:'sick',skin:'#F2C9A0',hair:'#4A3020',style:'short',shirt:'#F5C842',over:tummy,b:.9}),'pop',260);
+};
+S[8]=()=>{
+  const ring=(c1,c2)=>`<circle cx="100" cy="100" r="64" fill="none" stroke="${c1}" stroke-width="34"/>${Array.from({length:12}).map((_,i)=>{const a=i/12*Math.PI*2;return `<circle cx="${100+Math.cos(a)*64}" cy="${100+Math.sin(a)*64}" r="7" fill="${c2}"/>`;}).join('')}<path d="M58 60 Q70 44 92 40" stroke="rgba(255,255,255,.65)" stroke-width="8" fill="none" stroke-linecap="round"/>`;
+  const arm=`<path d="M50 222 C34 196 58 166 96 150" stroke="#F2C9A0" stroke-width="22" fill="none" stroke-linecap="round"/>`;
+  const baby=kid({mood:'happy',skin:'#F2C9A0',hair:'#C9822E',style:'bald',shirt:'#A77BEA',b:.4});
+  return R(30,58,.8,-8,`<g class="pop" style="--d:300ms">${I.tag}</g>`)+
+    `<g transform="translate(142 104) scale(.24)"><g class="stamp" style="--d:800ms">${I.cross}</g></g>`+
+    P(50,176,.55,`<g class="bob" style="--b:.7s">${ring('#F6CF3E','#F5A623')}</g>`,'pop',200)+
+    P(172,88,1.02,`${baby}`,'pop',0)+
+    P(236,176,.42,`<g class="bob" style="--b:.2s">${ring('#7FD1C3','#4FB3A1')}</g>`,'pop',150)+
+    P(172,88,1.02,arm,'',0);
+};
+S[9]=()=>{
+  let st='';[[88,112],[100,128],[76,132],[92,146]].forEach(([x,y],i)=>{st+=`<circle class="pop" style="--d:${700+i*120}ms" cx="${x}" cy="${y}" r="${7+i%2*2}" fill="#F2D27A" stroke="#C9A94E" stroke-width="2"/>`;});
+  return steam(82,124,4)+P(20,130,.78,`<g class="bob">${I.bowlMel}</g>`,'pop',0)+
+    P(248,96,.66,`<g class="bob" style="--b:.5s">${I.kidney}${st}</g>`,'pop',300)+
+    arrow('M200 178 C230 190 250 180 262 160',C.err,600)+head(262,160,-60,C.err,1200);
+};
+S[10]=()=>{
+  const back=`<path d="M40 280 L30 86 Q30 12 120 12 Q210 12 210 86 L200 280 Z" fill="#5F7265"/><path d="M30 72 Q22 36 54 32 L64 126 L36 132 Z" fill="#4D5E54"/><path d="M210 72 Q218 36 186 32 L176 126 L204 132 Z" fill="#4D5E54"/><path d="M62 270 L56 94 Q56 40 120 40 Q184 40 184 94 L178 270 Z" fill="#8FA196"/>`;
+  const front=`<path d="M84 214 L106 290 M156 214 L134 290" stroke="#2C3530" stroke-width="11" stroke-linecap="round"/><rect x="106" y="248" width="28" height="22" rx="6" fill="#B9C6BD" stroke="#2C3530" stroke-width="3"/><path d="M22 176 Q14 270 62 284 L72 190 Z" fill="#4D5E54"/><path d="M218 176 Q226 270 178 284 L168 190 Z" fill="#4D5E54"/><rect x="10" y="276" width="220" height="30" rx="14" fill="#2C3530"/>`;
+  const seated=back+`<g transform="translate(20 76)">${kid({mood:'neutral',skin:'#F2C9A0',hair:'#6B4A2E',style:'short',shirt:'#86C79A',b:1.1})}</g>`+front;
+  let fb='';for(let i=0;i<14;i++){const a=i*2.4,r=8+(i*13)%38;fb+=`<circle cx="${Math.cos(a)*r}" cy="${Math.sin(a)*r}" r="${4+(i%3)*2.5}" fill="#FBECB8" stroke="#E2C98C" stroke-width="1.5"/>`;}
+  const badge=`<circle r="20" fill="#fff"/><path d="M0 12 C-9 12 -10 2 -5 -4 C-4 1 -1 2 0 -1 C-1 -6 2 -11 5 -15 C4 -8 10 -4 8 4 C7 9 4 12 0 12 Z" fill="#F07A2E"/><circle r="17" fill="none" stroke="${C.err}" stroke-width="4"/><path d="M-12 12 L12 -12" stroke="${C.err}" stroke-width="4"/>`;
+  let du='';for(let i=0;i<12;i++)du+=`<circle class="fall" cx="${290+(i*23)%80}" cy="${232+(i*7)%16}" r="${2+(i%3)}" fill="#D9C27A" style="--b:${(i*0.4).toFixed(1)}s;--dx:${(i%2?1:-1)*10}px"/>`;
+  return P(18,8,1.0,seated,'pop',0)+
+    `<path class="draw" pathLength="1" style="--d:500ms" d="M232 210 C262 200 278 180 290 168" stroke="#D6DFD8" stroke-width="3" fill="none" stroke-dasharray="1"/>`+
+    `<g transform="translate(330 128)"><g class="pop" style="--d:400ms"><circle r="56" fill="#F3DB8E" stroke="#D6DFD8" stroke-width="8"/><g>${fb}</g><text y="80" text-anchor="middle" font-family="Figtree,'Segoe UI',sans-serif" font-weight="800" font-size="17" fill="#E6EEE5">espuma</text></g></g>`+
+    `<g transform="translate(372 80)"><g class="stamp" style="--d:850ms">${badge}</g></g>`+du+
+    `<path d="M10 316 H392" stroke="rgba(222,232,221,.25)" stroke-width="3" stroke-linecap="round"/>`;
+};
+S.W=()=>{
+  const lab=(x,y,t,bg,fg,d)=>`<g transform="translate(${x} ${y})"><g class="pop" style="--d:${d}ms"><g class="bob" style="--b:${(d/700).toFixed(2)}s"><rect x="${-t.length*7-14}" y="-20" width="${t.length*14+28}" height="40" rx="20" fill="${bg}"/><text x="0" y="7" text-anchor="middle" font-family="Figtree,'Segoe UI',sans-serif" font-weight="800" font-size="19" fill="${fg}">${t}</text></g></g></g>`;
+  return P(70,26,.9,I.faucet,'pop',0)+
+    `<path class="stream" d="M194 110 L194 168" stroke="#7FC6EE" stroke-width="12" stroke-dasharray="14 10" stroke-linecap="round"/>`+
+    P(132,150,.62,`<g class="bob">${I.bottle.replace('#FBF0D6','#CFEAF8')}</g>`,'pop',200)+
+    lab(304,64,'Plomo','#7E8C84','#fff',500)+lab(308,128,'Cloro','#DEE8DD',C.ink,650)+lab(300,192,'PFAS',C.errLuz,'#fff',800)+
+    lab(78,214,'Plástico','#9CC5E8',C.ink,950)+lab(296,256,'Cal','#F2C75C',C.ink,1100);
+};
+
+/* small icons for text boxes */
+const small={
+ flask:`<path d="M15 5h10M17 5v9L9 30a3 3 0 0 0 3 4h16a3 3 0 0 0 3-4l-8-16V5" fill="none" stroke="${C.bosque}" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 25h16" stroke="${C.bosque}" stroke-width="2.6" stroke-linecap="round"/><circle cx="17" cy="29" r="1.8" fill="${C.vivo}"/><circle cx="23" cy="28" r="1.4" fill="${C.vivo}"/>`,
+ warn:`<path d="M20 5 L36 33 Q37 35 35 35 L5 35 Q3 35 4 33 Z" fill="${C.err}"/><rect x="18.5" y="14" width="3" height="11" rx="1.5" fill="#fff"/><circle cx="20" cy="29.5" r="1.9" fill="#fff"/>`,
+ leaf:`<path d="M8 32 C8 16 18 7 34 6 C34 22 26 32 10 32 Z" fill="${C.vivo}"/><path d="M8 32 C14 24 20 18 28 12" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/>`,
+ bag:`<path d="M8 14h24l-2 20H10Z" fill="none" stroke="${C.bosque}" stroke-width="3" stroke-linejoin="round"/><path d="M14 14v-3a6 6 0 0 1 12 0v3" fill="none" stroke="${C.bosque}" stroke-width="3" stroke-linecap="round"/>`,
+ arrowL:`<path class="draw" pathLength="1" style="--d:400ms" d="M50 30 C36 34 20 28 8 16" stroke="${C.vivo}" stroke-width="3.5" fill="none" stroke-linecap="round"/><path class="draw" pathLength="1" style="--d:900ms" d="M8 30 L6 15 L20 14" stroke="${C.vivo}" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ heart:`<path d="M100 172 C40 130 20 96 30 66 C40 38 78 34 100 62 C122 34 160 38 170 66 C180 96 160 130 100 172 Z" fill="#E2483A"/><path d="M58 70 Q50 86 56 100" stroke="rgba(255,255,255,.5)" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M30 112 H70 L82 92 L98 134 L112 104 H170" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ brain:I.brain, lungs:I.lungs, kidney:I.kidney,
+ eye:`<path d="M14 100 Q100 22 186 100 Q100 178 14 100 Z" fill="#fff" stroke="${C.err}" stroke-width="8"/><circle cx="100" cy="100" r="34" fill="#5E9AA8"/><circle cx="100" cy="100" r="15" fill="${C.ink}"/><circle cx="110" cy="90" r="6" fill="#fff"/><path d="M40 70 L60 84 M150 128 L168 140" stroke="#E2483A" stroke-width="5" stroke-linecap="round"/>`,
+ hormone:`<path d="M100 20 C70 64 52 92 52 120 A48 48 0 0 0 148 120 C148 92 130 64 100 20 Z" fill="#A77BEA"/><path d="M78 110 Q72 130 84 148" stroke="rgba(255,255,255,.55)" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M170 60 l18 -18 M188 42 l-14 0 M188 42 l0 14" stroke="${C.err}" stroke-width="8" stroke-linecap="round"/><path d="M30 60 l-18 18" stroke="${C.err}" stroke-width="8" stroke-linecap="round"/>`,
+ skin:`<path d="M60 190 L56 110 Q54 96 66 96 Q78 96 78 110 L80 60 Q80 46 92 46 Q104 46 104 60 L104 48 Q104 34 116 34 Q128 34 128 48 L128 60 Q128 48 140 48 Q152 48 152 62 L152 120 Q164 100 176 108 Q186 116 176 132 L146 190 Z" fill="#F2C9A0" stroke="#C98A6A" stroke-width="6" stroke-linejoin="round"/><circle cx="96" cy="130" r="8" fill="#E2483A"/><circle cx="118" cy="146" r="7" fill="#E2483A"/><circle cx="110" cy="116" r="6" fill="#E2483A"/><circle cx="130" cy="124" r="5" fill="#E2483A"/>`,
+ belly:`<circle cx="100" cy="104" r="76" fill="#F2C9A0"/><path d="M70 104 q15 -18 30 0 q15 18 30 0" stroke="${C.err}" stroke-width="8" fill="none" stroke-linecap="round"/><circle cx="100" cy="140" r="7" fill="#C98A6A"/><path d="M40 40 l14 14 M160 40 l-14 14" stroke="${C.err}" stroke-width="7" stroke-linecap="round"/>`,
+ hand:`<path d="M60 190 L56 110 Q54 96 66 96 Q78 96 78 110 L80 60 Q80 46 92 46 Q104 46 104 60 L104 48 Q104 34 116 34 Q128 34 128 48 L128 60 Q128 48 140 48 Q152 48 152 62 L152 120 Q164 100 176 108 Q186 116 176 132 L146 190 Z" fill="#F2C9A0" stroke="#C98A6A" stroke-width="6" stroke-linejoin="round"/><circle cx="94" cy="128" r="5" fill="#B08A3E"/><circle cx="116" cy="150" r="4" fill="#B08A3E"/><circle cx="128" cy="116" r="4" fill="#B08A3E"/><circle cx="104" cy="164" r="3.5" fill="#B08A3E"/>`,
+ pipe:`<rect x="10" y="80" width="120" height="40" rx="10" fill="#7E8C84"/><rect x="110" y="60" width="40" height="120" rx="10" fill="#7E8C84"/><rect x="16" y="70" width="14" height="60" rx="5" fill="#5F6B64"/><rect x="104" y="160" width="52" height="14" rx="5" fill="#5F6B64"/><circle cx="130" cy="196" r="9" fill="#9CD4F2"/><text x="60" y="108" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="800" font-size="30" fill="#fff">Pb</text>`,
+ drops:`<path d="M80 20 C40 80 30 110 30 130 A50 50 0 0 0 130 130 C130 110 120 80 80 20 Z" fill="#9CD4F2"/><circle cx="64" cy="128" r="9" fill="#fff"/><circle cx="92" cy="110" r="7" fill="#fff"/><circle cx="96" cy="146" r="8" fill="#fff"/><path d="M150 80 C130 112 126 126 126 136 A26 26 0 0 0 178 136 C178 126 172 112 150 80 Z" fill="#F2C75C"/>`,
+ tub:`<rect x="20" y="96" width="160" height="56" rx="20" fill="#DEE8DD"/><rect x="10" y="88" width="180" height="16" rx="8" fill="#fff"/><path d="M40 152 L34 176 M160 152 L166 176" stroke="#DEE8DD" stroke-width="10" stroke-linecap="round"/><path d="M50 70 q-8 -12 0 -24 q8 -12 0 -24 M90 70 q-8 -12 0 -24 q8 -12 0 -24 M130 70 q-8 -12 0 -24 q8 -12 0 -24" stroke="#9AA9A0" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="70" cy="92" r="12" fill="#fff"/><circle cx="96" cy="88" r="9" fill="#fff"/>`,
+ pfas:`<polygon points="100,30 160,64 160,134 100,168 40,134 40,64" fill="none" stroke="#EF6A50" stroke-width="12" stroke-linejoin="round"/><text x="100" y="114" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="800" font-size="40" fill="#EF6A50">F</text><path d="M160 64 L190 46 M40 134 L10 152" stroke="#EF6A50" stroke-width="12" stroke-linecap="round"/>`,
+ micro:`<path d="M80 20 C40 80 30 110 30 130 A50 50 0 0 0 130 130 C130 110 120 80 80 20 Z" fill="#9CD4F2"/><rect x="52" y="108" width="14" height="8" rx="2" fill="#F48FB1" transform="rotate(20 59 112)"/><rect x="88" y="130" width="16" height="7" rx="2" fill="#F5C842" transform="rotate(-30 96 133)"/><rect x="70" y="146" width="10" height="10" rx="2" fill="#A77BEA"/><rect x="96" y="102" width="9" height="12" rx="2" fill="#fff"/>`,
+ glass:`<path d="M50 30 L150 30 L136 180 Q134 190 124 190 L76 190 Q66 190 64 180 Z" fill="rgba(255,255,255,.75)" stroke="${C.hondo}" stroke-width="6"/><circle cx="80" cy="80" r="9" fill="#fff" stroke="${C.humo}" stroke-width="3"/><circle cx="114" cy="120" r="12" fill="#fff" stroke="${C.humo}" stroke-width="3"/><circle cx="88" cy="150" r="7" fill="#fff" stroke="${C.humo}" stroke-width="3"/><circle cx="122" cy="68" r="6" fill="#fff" stroke="${C.humo}" stroke-width="3"/>`,
+ nose:`<circle cx="100" cy="100" r="82" fill="#F2C9A0"/><path d="M100 60 L84 124 Q100 134 116 124" stroke="#C98A6A" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 40 q16 -10 30 0 M146 62 q16 -10 30 0" stroke="#5E9AA8" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="66" cy="84" r="7" fill="${C.ink}"/><circle cx="134" cy="84" r="7" fill="${C.ink}"/>`,
+ babynose:`<circle cx="88" cy="106" r="74" fill="#F2C9A0"/><path d="M62 40 q12 -20 30 -6" stroke="#6B4A2E" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M46 96 q10 9 20 0 M96 96 q10 9 20 0" stroke="${C.ink}" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="46" cy="124" rx="11" ry="7" fill="rgba(239,106,80,.35)"/><ellipse cx="124" cy="124" rx="11" ry="7" fill="rgba(239,106,80,.35)"/><path d="M80 108 q-4 16 8 18 q10 0 10 -8" stroke="#C98A6A" stroke-width="6" fill="#E9B98F" stroke-linecap="round"/><ellipse cx="88" cy="150" rx="8" ry="6" fill="#B94A4A"/><path d="M196 104 q-12 -9 -24 0 t-24 0 t-24 0" stroke="#4F97C9" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M196 128 q-12 -9 -24 0 t-24 0" stroke="#4F97C9" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="172" cy="60" r="22" fill="#DEE8DD" stroke="#4F97C9" stroke-width="4"/><text x="172" y="69" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="800" font-size="24" fill="#2D6F9E">Cl</text>`,
+ check:I.check, cross:I.cross,
+};
+
+/* why kids are more sensitive */
+const why=[
+ ['Para su tamaño comen, beben y respiran más que tú',`<svg viewBox="0 0 200 200">${I.lungs}</svg>`],
+ ['Se llevan todo a la boca',`<svg viewBox="0 0 200 200">${small.hand}</svg>`],
+ ['Su cuerpo y su cerebro aún se están formando',`<svg viewBox="0 0 200 200">${I.brain}</svg>`],
+];
+document.getElementById('why').innerHTML=why.map(([t,s],i)=>`<div class="pop" style="--d:${150+i*120}ms">${s}${t}</div>`).join('');
+
+/* render stages */
+const map={'st-hero':'hero',st1:1,st2:2,st3:3,st4:4,st5:5,st6:6,st7:7,st8:8,st9:9,st10:10,stW:'W'};
+for(const id in map){const el=document.getElementById(id);if(!el)continue;try{el.insertAdjacentHTML('afterbegin',`<svg class="art" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${S[map[id]]()}</svg>`);}catch(e){console.warn(id,e);}}
+document.querySelectorAll('svg[data-i]').forEach(s=>{const k=s.getAttribute('data-i');if(small[k])s.innerHTML=small[k];});
+
+/* split titles into words */
+document.querySelectorAll('.split').forEach(h=>{const words=h.textContent.trim().split(/\s+/);h.innerHTML=words.map((w,i)=>`<span class="w" style="--d:${i*70}ms">${w}</span>`).join(' ');});
+
+/* counters */
+const fmt=(v,el)=>{const dec=+el.dataset.dec||0;let s=v.toFixed(dec);if(el.dataset.sep){s=Math.round(v).toLocaleString('es-ES');if(v>=1000&&!/\./.test(s))s=Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');}else if(dec)s=s.replace('.',',');return s+(el.dataset.suffix||'');};
+const runCount=el=>{const to=parseFloat(el.dataset.to);const t0=performance.now();const dur=1300;const step=t=>{const p=Math.min(1,(t-t0)/dur);const e=1-Math.pow(1-p,3);el.textContent=fmt(to*e,el);if(p<1)requestAnimationFrame(step);};el.textContent=fmt(0,el);requestAnimationFrame(step);};
+
+/* play scenes on enter (rest state is fully visible) */
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&'IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){const el=en.target;el.classList.add('play');el.querySelectorAll('.count').forEach(c=>setTimeout(()=>runCount(c),250));io.unobserve(el);}});},{rootMargin:'0px 0px -8% 0px',threshold:0});
+  document.querySelectorAll('.scene').forEach(s=>io.observe(s));
+}
+
+/* progress + floating CTA */
+const bar=document.getElementById('bar'),fl=document.getElementById('float'),agua=document.getElementById('agua'),cita=document.getElementById('cita');
+let ticking=false;
+const upd=()=>{ticking=false;const h=document.documentElement;const max=h.scrollHeight-innerHeight;bar.style.transform=`scaleX(${max>0?Math.min(1,scrollY/max):0})`;
+  const a=agua.getBoundingClientRect().top<innerHeight*.5;const c=cita.getBoundingClientRect();const inCall=c.top<innerHeight&&c.bottom>0;fl.classList.toggle('show',a&&!inCall);};
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
+addEventListener('resize',upd);upd();
+/* inside Mi CRM: tell the app when the reader reaches the videollamada */
+try{if(window.parent!==window&&'IntersectionObserver' in window){const fin=new IntersectionObserver(e=>{if(e.some(x=>x.isIntersecting)){fin.disconnect();try{parent.postMessage({guia:'final'},location.origin);}catch(_){}}});fin.observe(cita);}}catch(_){}
+})();
+</script>
+
+</body>
+</html>

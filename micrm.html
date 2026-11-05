@@ -198,6 +198,7 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
 .marco-doc{width:100%; height:min(72dvh,640px); border:1px solid var(--hueso);
   border-radius:16px; background:var(--salvia)}
 .marco-foto{display:block; width:100%; height:auto; border-radius:16px;
+.marco-pagina{display:block; width:100%; height:calc(100vh - 140px); height:calc(100dvh - 140px); min-height:520px; border:0; border-radius:16px; background:#F1F4EE}
   border:1px solid var(--hueso)}
 
 /* ---------- El candado ---------- */
@@ -585,7 +586,8 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
     $("pfBoton").textContent = m.boton || "Ver la lista";
     $("mTipo").textContent =
       m.tipo === "youtube" ? "Video" :
-      m.tipo === "foto" ? "Imagen" : "Documento";
+      m.tipo === "foto" ? "Imagen" :
+      m.tipo === "pagina" ? "Guía" : "Documento";
 
     CON_FOTO = !vacio(m.portada);
     if (CON_FOTO) {
@@ -756,6 +758,7 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
 
     if (m.tipo === "youtube") verVideo(m, visor);
     else if (m.tipo === "foto") verFoto(m, visor);
+    else if (m.tipo === "pagina") verPagina(m, visor);
     else verDocumento(m, visor);
 
     pintarDescarga(m);
@@ -829,6 +832,21 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
     img.src = m.fuente; img.alt = m.titulo;
     visor.appendChild(img);
     vigilarFinal(visor, "Vio la imagen entera");
+  }
+
+  /* --- Guía web (una página de este mismo sitio, dentro de la app) ---
+     La guía avisa cuando la persona llega a la videollamada. */
+  function verPagina(m, visor) {
+    const marco = document.createElement("iframe");
+    marco.className = "marco-pagina";
+    marco.src = m.fuente;
+    marco.title = m.titulo || "Guía";
+    visor.appendChild(marco);
+    avisarPaso("empezo", "Abrió la guía");
+    window.addEventListener("message", ev => {
+      if (ev.origin !== location.origin || !ev.data) return;
+      if (ev.data.guia === "final") alFinal("Llegó a la videollamada de la guía");
+    });
   }
 
   /* --- Documento (PDF hoja por hoja, dentro de la app) --- */
@@ -999,7 +1017,7 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
   function pintarDescarga(m) {
     const caja = $("descargar");
     caja.innerHTML = "";
-    if (m.tipo === "youtube" || vacio(m.fuente)) return;
+    if (m.tipo === "youtube" || m.tipo === "pagina" || vacio(m.fuente)) return;
     const a = document.createElement("a");
     a.className = "btn btn--claro";
     a.href = m.fuente;
@@ -1188,7 +1206,7 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
       h += '<div class="mg"><div class="fila" style="border-bottom:0">' +
         '<div class="fila__txt"><b>' + esc(m.titulo) + '</b>' +
         '<span>' + esc(m.codigo) + ' · ' +
-        (m.tipo === "youtube" ? "Video" : m.tipo === "foto" ? "Imagen" : "Documento") +
+        (m.tipo === "youtube" ? "Video" : m.tipo === "foto" ? "Imagen" : m.tipo === "pagina" ? "Guía web" : "Documento") +
         (m.activo === false ? " · apagado" : "") + '</span></div>' +
         '<div class="fila__acc">' +
         '<button class="btn btn--chico btn--claro" data-edi="' + i + '">Editar</button>' +
@@ -1231,6 +1249,7 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
       '<option value="youtube"' + (m.tipo === "youtube" ? " selected" : "") + '>Video de YouTube</option>' +
       '<option value="doc"' + (m.tipo === "doc" ? " selected" : "") + '>PDF o documento</option>' +
       '<option value="foto"' + (m.tipo === "foto" ? " selected" : "") + '>Imagen</option>' +
+      '<option value="pagina"' + (m.tipo === "pagina" ? " selected" : "") + '>Guía web</option>' +
       '</select></div>' +
       '<div class="campo"><label for="eFuente" id="lFuente">Enlace de YouTube</label>' +
       '<input type="text" id="eFuente" value="' + esc(m.fuente) + '"></div>' +
@@ -1267,9 +1286,11 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
       const t = $("eTipo").value;
       $("lFuente").textContent = t === "youtube" ? "Enlace de YouTube"
         : t === "foto" ? "Nombre del archivo de la imagen"
+        : t === "pagina" ? "Nombre de la página (lo que subiste a GitHub)"
         : "Nombre del archivo (lo que subiste a GitHub)";
       $("eFuente").placeholder = t === "youtube" ? "https://youtu.be/..."
-        : t === "foto" ? "recursos/infografia.jpg" : "recursos/guia-del-agua.pdf";
+        : t === "foto" ? "recursos/infografia.jpg"
+        : t === "pagina" ? "guia-ninos.html" : "recursos/guia-del-agua.pdf";
     };
     etiqueta();
     $("eTipo").addEventListener("change", etiqueta);
