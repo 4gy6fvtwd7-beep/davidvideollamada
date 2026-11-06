@@ -837,16 +837,17 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
   /* --- Guía web (una página de este mismo sitio, dentro de la app) ---
      La guía avisa cuando la persona llega a la videollamada. */
   function verPagina(m, visor) {
-    const marco = document.createElement("iframe");
-    marco.className = "marco-pagina";
-    marco.src = m.fuente;
-    marco.title = m.titulo || "Guía";
-    visor.appendChild(marco);
-    avisarPaso("empezo", "Abrió la guía");
-    window.addEventListener("message", ev => {
-      if (ev.origin !== location.origin || !ev.data) return;
-      if (ev.data.guia === "final") alFinal("Llegó a la videollamada de la guía");
-    });
+    /* La guía se abre a pantalla completa (dentro de un marco se veía
+       pequeña en el navegador de Instagram). Antes se apunta que la abrió. */
+    visor.innerHTML = '<p class="sub" style="text-align:center;padding:30px 0">Abriendo tu guía…</p>';
+    const ir = () => location.replace(m.fuente);
+    let hecho = false;
+    const una = () => { if (!hecho) { hecho = true; ir(); } };
+    setTimeout(una, 1500);
+    if (QUIEN && MAGNET) {
+      pedir({ tipo: "paso", email: QUIEN, codigo: MAGNET.codigo,
+              paso: "empezo", donde: "Abrió la guía" }, 0).then(una, una);
+    } else una();
   }
 
   /* --- Documento (PDF hoja por hoja, dentro de la app) --- */

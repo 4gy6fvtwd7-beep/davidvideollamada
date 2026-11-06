@@ -631,7 +631,7 @@ details li{margin-bottom:6px}
   </div>
 </section>
 
-<a class="float" id="float" href="https://citasdavidmontenegro.com/agenda.html" target="_blank" rel="noopener" aria-label="Agendar videollamada gratis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Agendar videollamada</a>
+
 
 <script>
 (function(){
@@ -851,10 +851,10 @@ if(!reduce&&'IntersectionObserver' in window){
 }
 
 /* progress + floating CTA */
-const bar=document.getElementById('bar'),fl=document.getElementById('float'),agua=document.getElementById('agua'),cita=document.getElementById('cita');
+const bar=document.getElementById('bar'),agua=document.getElementById('agua'),cita=document.getElementById('cita');
 let ticking=false;
 const upd=()=>{ticking=false;const h=document.documentElement;const max=h.scrollHeight-innerHeight;bar.style.transform=`scaleX(${max>0?Math.min(1,scrollY/max):0})`;
-  const a=agua.getBoundingClientRect().top<innerHeight*.5;const c=cita.getBoundingClientRect();const inCall=c.top<innerHeight&&c.bottom>0;fl.classList.toggle('show',a&&!inCall);};
+  const a=agua.getBoundingClientRect().top<innerHeight*.5;const c=cita.getBoundingClientRect();const inCall=c.top<innerHeight&&c.bottom>0;};
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
 addEventListener('resize',upd);upd();
 /* inside Mi CRM: tell the app when the reader reaches the videollamada */
