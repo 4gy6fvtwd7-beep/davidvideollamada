@@ -959,15 +959,7 @@ html.embebido .pantalla{min-height:100dvh; padding:12px}
     "duracion": 2,
     "diasVista": 365,
     "bloquearDiaCompleto": false,
-    "reservas": [
-      {
-        "email": "maikelvm86@gmail.com",
-        "fecha": "2026-10-31",
-        "hora": 10,
-        "nombre": "Maikel Vázquez",
-        "telefono": "18134580305"
-      }
-    ]
+    "reservas": []
   },
   "textos": {
     "p1t": "Agenda tu cita",
@@ -1558,19 +1550,39 @@ const Agenda = (function () {
     String(d.getMonth() + 1).padStart(2, "0") + "-" +
     String(d.getDate()).padStart(2, "0");
 
-  function horas() {
+  /* Horario: de lunes a viernes solo desde las 3:30 pm (antes
+     trabaja); sábado y domingo, todo el día. Las horas de antes
+     de las 3:30 entre semana se ven, pero como ya ocupadas. */
+  const ENTRE_SEMANA_DESDE = 15.5;
+  const esFinde = fecha => { const d = new Date(fecha + "T12:00:00").getDay(); return d === 0 || d === 6; };
+  function rejilla() {
     const a = D.agenda, lista = [];
     for (let h = a.horaInicio; h + a.duracion <= a.horaFin; h += a.duracion) lista.push(h);
     return lista;
   }
+  function tarde() {
+    const a = D.agenda, lista = [];
+    for (let h = ENTRE_SEMANA_DESDE; h + a.duracion <= a.horaFin; h += a.duracion) lista.push(h);
+    return lista;
+  }
+  function horas(fecha) {
+    if (!fecha) return Array.from(new Set(rejilla().concat(tarde()))).sort((x, y) => x - y);
+    if (esFinde(fecha)) return rejilla();
+    return rejilla().filter(h => h < ENTRE_SEMANA_DESDE).concat(tarde());
+  }
+  const fueraDeHorario = (fecha, h) => !!fecha && !esFinde(fecha) && Number(h) < ENTRE_SEMANA_DESDE;
   function etiquetaHora(h) {
-    const f = n => { const ampm = n >= 12 ? "pm" : "am"; let x = n % 12; if (x === 0) x = 12; return x + " " + ampm; };
+    const f = n => {
+      const ampm = n >= 12 ? "pm" : "am"; let x = Math.floor(n) % 12; if (x === 0) x = 12;
+      const min = Math.round((n % 1) * 60);
+      return x + (min ? ":" + String(min).padStart(2, "0") : "") + " " + ampm;
+    };
     return f(h) + " a " + f(h + D.agenda.duracion);
   }
-  const ocupada = (fecha, h) =>
+  const ocupada = (fecha, h) => fueraDeHorario(fecha, h) ||
     (D.agenda.reservas || []).some(r => r && r.fecha === fecha &&
       (D.agenda.bloquearDiaCompleto || Number(r.hora) === Number(h)));
-  const diaLleno = fecha => horas().every(h => ocupada(fecha, h));
+  const diaLleno = fecha => horas(fecha).every(h => ocupada(fecha, h));
 
   function limites() {
     const hoy = new Date(); hoy.setHours(0,0,0,0);
@@ -1695,7 +1707,7 @@ const Form = (function () {
           "Aparto " + D.agenda.duracion + " horas completas. Lo importante son los primeros " +
           "veinte minutos; el resto es margen por si surgen preguntas.")) + '</p>' +
         '<div class="cal__horas">';
-      Agenda.horas().forEach((x, i) => {
+      Agenda.horas(R.fecha).forEach((x, i) => {
         const oc = Agenda.ocupada(R.fecha, x);
         h += '<button type="button" class="cal__hora' + (R.hora === x ? ' elegido' : '') + '" ' +
           'style="animation-delay:' + (i * 60) + 'ms" data-hora="' + x + '"' + (oc ? ' disabled' : '') + '>' +
@@ -1911,7 +1923,8 @@ const Form = (function () {
   }
 
   async function mandarAlCalendario() {
-    const inicio = R.fecha + "T" + String(R.hora).padStart(2, "0") + ":00:00";
+    const hh = Math.floor(R.hora), mm = Math.round((R.hora % 1) * 60);
+    const inicio = R.fecha + "T" + String(hh).padStart(2, "0") + ":" + String(mm).padStart(2, "0") + ":00";
     const res = await Citas.enviar({
       inicio: inicio,
       duracion: D.agenda.duracion,
