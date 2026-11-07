@@ -1554,6 +1554,7 @@ const Agenda = (function () {
      trabaja); sábado y domingo, todo el día. Las horas de antes
      de las 3:30 entre semana se ven, pero como ya ocupadas. */
   const ENTRE_SEMANA_DESDE = 15.5;
+  const ENTRE_SEMANA_HASTA = 21.5;   /* última cita: 7:30 a 9:30 pm */
   const esFinde = fecha => { const d = new Date(fecha + "T12:00:00").getDay(); return d === 0 || d === 6; };
   function rejilla() {
     const a = D.agenda, lista = [];
@@ -1562,7 +1563,7 @@ const Agenda = (function () {
   }
   function tarde() {
     const a = D.agenda, lista = [];
-    for (let h = ENTRE_SEMANA_DESDE; h + a.duracion <= a.horaFin; h += a.duracion) lista.push(h);
+    for (let h = ENTRE_SEMANA_DESDE; h + a.duracion <= ENTRE_SEMANA_HASTA; h += a.duracion) lista.push(h);
     return lista;
   }
   function horas(fecha) {
