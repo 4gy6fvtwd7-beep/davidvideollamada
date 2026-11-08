@@ -186,9 +186,6 @@ h1{font-family:var(--serif);font-variation-settings:"WONK" 1,"SOFT" 30,"opsz" 14
 .cta-note{text-align:center;font-size:14.5px;color:#A9BCAD!important;margin:12px 0 0!important}
 .dl{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:14px;padding:15px 20px;border-radius:999px;border:2px solid rgba(222,232,221,.35);color:#E6EEE5;text-decoration:none;font-weight:800;font-size:16px}
 .dl-top{color:var(--hondo);border-color:var(--hondo);margin-top:20px}
-.pdf-aviso{position:fixed;left:16px;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:50;max-width:430px;margin:0 auto;padding:16px 18px;border-radius:18px;background:#243329;color:#F1F4EE;font:600 15px/1.45 Figtree,"Segoe UI",sans-serif;box-shadow:0 18px 40px rgba(36,51,41,.35)}
-.pdf-aviso b{color:#F2C75C}
-.pdf-aviso button{display:block;margin:10px 0 0 auto;padding:6px 12px;border:0;border-radius:999px;background:#DEE8DD;color:#243329;font:700 14px Figtree,sans-serif}
 .dl:hover{background:rgba(222,232,221,.08)}
 .dl:focus-visible{outline:3px solid var(--ambar);outline-offset:4px}
 .dl svg{width:20px;height:20px}
@@ -281,7 +278,7 @@ details li{margin-bottom:6px}
 <section class="band intro">
   <div class="wrap scene">
     <div class="byline rise"><span class="dot">D</span><span><strong>David Montenegro</strong>Especialista en bienestar</span></div>
-    <a class="dl dl-top rise js-pdf" href="https://drive.google.com/file/d/1ypK5KKL-U3uJphF1PAeqTWgFZR_gpuNZ/view?usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Descargar la guía en PDF</a>
+    <a class="dl dl-top rise" href="https://drive.google.com/file/d/1ypK5KKL-U3uJphF1PAeqTWgFZR_gpuNZ/view?usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Descargar la guía en PDF</a>
     <p class="rise" style="margin-top:26px;font-size:20px">En el video te hablé de 3: <b>los detergentes con olor a frutas, las sartenes antiadherentes y los desinfectantes multiusos.</b></p>
     <p class="rise" style="--d:120ms">Aquí tienes <b>10 más</b>. De cada uno te digo qué químico tiene, quién lo demostró, qué le puede hacer a tu hijo con los años y con qué cambiarlo. Casi todos los cambios son baratos, y algunos son gratis.</p>
     <p class="rise" style="--d:220ms;color:var(--humo)">¿Por qué a ellos les afecta más que a ti?</p>
@@ -604,7 +601,7 @@ details li{margin-bottom:6px}
       <p class="free rise" style="--d:700ms">Sin compromiso de compra. Tú decides.</p>
       <a class="cta pulse rise" style="--d:780ms" href="https://citasdavidmontenegro.com/agenda.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18M9 15l2 2 4-4"/></svg>Agendar mi videollamada gratis</a>
       <p class="cta-note">Elige el día y la hora. Te toma menos de un minuto.</p>
-      <a class="dl js-pdf" href="https://drive.google.com/file/d/1ypK5KKL-U3uJphF1PAeqTWgFZR_gpuNZ/view?usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Descargar guía para leer más tarde</a>
+      <a class="dl" href="https://drive.google.com/file/d/1ypK5KKL-U3uJphF1PAeqTWgFZR_gpuNZ/view?usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Descargar guía para leer más tarde</a>
     </div>
 
     <div class="end scene" style="margin-top:34px">
@@ -872,35 +869,5 @@ try{if(window.parent!==window&&'IntersectionObserver' in window){const fin=new I
 })();
 </script>
 
-<script>
-/* PDF en Google Drive: dentro de Instagram/Facebook se abre fuera, en Safari o Chrome */
-(function(){
-  var ua=navigator.userAgent||'';
-  var inApp=/Instagram|FBAN|FBAV|FB_IAB|Messenger|TikTok|musical_ly|Bytedance/i.test(ua);
-  var ios=/iPhone|iPad|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-  var android=/Android/i.test(ua);
-  var pdf='https://drive.google.com/file/d/1ypK5KKL-U3uJphF1PAeqTWgFZR_gpuNZ/view?usp=sharing';
-  function aviso(){
-    var old=document.querySelector('.pdf-aviso'); if(old) old.remove();
-    var d=document.createElement('div'); d.className='pdf-aviso';
-    d.innerHTML=ios?'Si no se abrió, toca los <b>tres puntos (···)</b> arriba a la derecha y elige <b>Abrir en el navegador</b>. Allí toca otra vez el botón y se abrirá la guía en Google Drive para descargarla.'
-                   :'Si no se abrió, toca los <b>tres puntos (⋮)</b> arriba a la derecha y elige <b>Abrir en Chrome</b>. Allí toca otra vez el botón y se abrirá la guía en Google Drive para descargarla.';
-    var b=document.createElement('button'); b.textContent='Entendido'; b.onclick=function(){d.remove()}; d.appendChild(b);
-    document.body.appendChild(d);
-  }
-  document.querySelectorAll('.js-pdf').forEach(function(a){
-    a.addEventListener('click',function(e){
-      if(!inApp) return; /* navegador normal: descarga directa */
-      e.preventDefault();
-      var salio=false; var marca=function(){salio=true};
-      document.addEventListener('visibilitychange',marca,{once:true}); window.addEventListener('pagehide',marca,{once:true});
-      if(ios){ location.href='x-safari-'+pdf; }
-      else if(android){ location.href='intent://'+pdf.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(pdf)+';end'; }
-      else { location.href=pdf; }
-      setTimeout(function(){ if(!salio) aviso(); },1800);
-    });
-  });
-})();
-</script>
 </body>
 </html>
