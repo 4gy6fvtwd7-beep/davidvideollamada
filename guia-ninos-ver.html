@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guía para padres · David Montenegro</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F1F4EE;--hondo:#35513F;--ink:#243329;--humo:#5F7265;--hueso:#C5D4C4}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:Figtree,"Segoe UI",sans-serif}
+  .bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;
+       padding:10px 16px;padding-top:max(10px,env(safe-area-inset-top));background:rgba(241,244,238,.96);
+       border-bottom:1px solid var(--hueso);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .bar b{font-size:15px;font-weight:700;line-height:1.2}
+  .bar small{display:block;font-size:12px;color:var(--humo);font-weight:600}
+  .btn{flex:none;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;
+       background:var(--hondo);color:#fff;text-decoration:none;font-weight:700;font-size:14px}
+  .btn svg{width:16px;height:16px}
+  .doc{max-width:430px;margin:0 auto;background:var(--paper)}
+  .doc img{display:block;width:100%;height:auto;aspect-ratio:862/1865;background:var(--paper)}
+  .tip{max-width:430px;margin:0 auto;padding:18px 16px 40px;font-size:14px;color:var(--humo);font-weight:600;line-height:1.5;text-align:center}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <div><b>Guía para padres</b><small>David Montenegro · Especialista en bienestar</small></div>
+    <a class="btn" href="guia-ninos.pdf" download="Guia-para-padres-David-Montenegro.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>PDF</a>
+  </div>
+  <main class="doc" id="doc"></main>
+  <p class="tip">¿Quieres guardarla? Toca <b>PDF</b> arriba. Si estás dentro de Instagram, toca los tres puntos (···) y elige <b>Abrir en el navegador</b>; desde ahí se descarga.</p>
+<script>
+  var d=document.getElementById('doc');
+  for(var i=1;i<=36;i++){
+    var im=new Image(); var n=(i<10?'0':'')+i;
+    im.src='guia-ninos-paginas/p-'+n+'.jpg';
+    im.alt=i===1?'Guía: 10 productos que tienes en casa más dañinos para la salud de tus niños que el helado y las golosinas':'';
+    im.width=862; im.height=1865;
+    if(i>2){im.loading='lazy';} im.decoding='async';
+    d.appendChild(im);
+  }
+</script>
+</body>
+</html>
