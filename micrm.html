@@ -188,6 +188,14 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
 .yosoy__txt span{display:block; font-size:13.5px; color:var(--humo);
   overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 
+.enviado{text-align:center; padding:14px 4px 6px}
+.enviado__ico{width:58px; height:58px; margin:0 auto 12px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; background:var(--vivo)}
+.enviado--mal .enviado__ico{background:var(--hondo)}
+.enviado__ico svg{width:28px; height:28px}
+.enviado__tit{font-family:var(--display); font-weight:600;
+  font-size:24px; line-height:1.2; color:var(--hondo); margin:0 0 8px}
+.enviado__txt{font-size:16px; line-height:1.5; color:var(--tinta); margin:0}
 .err{min-height:22px; margin-top:10px; font-size:14.5px;
   color:var(--alarma); font-weight:600}
 
@@ -584,6 +592,14 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
        alguno, cae en el de siempre y no queda un hueco. */
     $("btnDame").textContent = m.boton || "Ver el contenido";
     $("pfBoton").textContent = m.boton || "Ver la lista";
+    /* Guías que se mandan por correo: se dice para qué es el correo
+       y el botón lo deja claro. No se abren en la web. */
+    if (m.porCorreo) {
+      const nota = "Solo un pasito más: coloca tu nombre y tu correo para que la guía te llegue por email.";
+      document.querySelector(".puertafoto__nota").textContent = nota;
+      $("porque").textContent = nota;
+      [$("pfYaVine"), $("btnYaVine")].forEach(b => { b.firstChild.textContent = "Enviar a "; });
+    }
     $("mTipo").textContent =
       m.tipo === "youtube" ? "Video" :
       m.tipo === "foto" ? "Imagen" :
@@ -696,14 +712,34 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
        perder el apunte es malo, dejar a la persona sin lo que vino
        a buscar es peor. Si falló, queda apuntado aquí y se reintenta
        la próxima vez que abra la app. */
-    const res = await pedir(lead);
+    if (MAGNET.porCorreo) boton.textContent = "Enviando tu guía…";
+    /* Por correo no se reintenta solo: así nadie recibe la guía dos veces. */
+    const res = await pedir(lead, MAGNET.porCorreo ? 0 : 2);
     avisarPaso("correo");
     if (!res || !res.ok) {
       const cola = leerLocal(PENDIENTE) || [];
       cola.push(lead);
       guardarLocal(PENDIENTE, cola.slice(-20));
     }
-    entregar(MAGNET);
+    if (MAGNET.porCorreo) avisarEnviado(!!(res && res.ok && res.guia === true), boton);
+    else entregar(MAGNET);
+  }
+
+  /* El aviso que sustituye al formulario cuando la guía va por correo. */
+  function avisarEnviado(bien, boton) {
+    const caja = boton.closest(".puertafoto__caja") || $("formNuevo");
+    const d = document.createElement("div");
+    d.className = "enviado" + (bien ? "" : " enviado--mal");
+    d.setAttribute("role", "status");
+    d.innerHTML = bien
+      ? '<div class="enviado__ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>' +
+        '<p class="enviado__tit">¡Ya te envié la guía!</p>' +
+        '<p class="enviado__txt">Revisa tu correo electrónico y también tu bandeja de spam.</p>'
+      : '<div class="enviado__ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></div>' +
+        '<p class="enviado__tit">No pude enviarte la guía</p>' +
+        '<p class="enviado__txt">Escríbeme por privado y te la mando personalmente a tu correo.</p>';
+    caja.innerHTML = "";
+    caja.appendChild(d);
   }
 
   /* Un apunte de por dónde va. Se manda y se olvida: si falla,
