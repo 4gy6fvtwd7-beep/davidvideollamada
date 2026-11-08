@@ -595,7 +595,7 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
     /* Guías que se mandan por correo: se dice para qué es el correo
        y el botón lo deja claro. No se abren en la web. */
     if (m.porCorreo) {
-      const nota = "Solo un pasito más: coloca tu nombre y tu correo para que la guía te llegue por email.";
+      const nota = "Solo un pasito más: coloca tu nombre y tu correo para que la " + (m.palabra || "guía") + " te llegue por email.";
       document.querySelector(".puertafoto__nota").textContent = nota;
       $("porque").textContent = nota;
       [$("pfYaVine"), $("btnYaVine")].forEach(b => { b.firstChild.textContent = "Enviar a "; });
@@ -712,7 +712,7 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
        perder el apunte es malo, dejar a la persona sin lo que vino
        a buscar es peor. Si falló, queda apuntado aquí y se reintenta
        la próxima vez que abra la app. */
-    if (MAGNET.porCorreo) boton.textContent = "Enviando tu guía…";
+    if (MAGNET.porCorreo) boton.textContent = "Enviando tu " + (MAGNET.palabra || "guía") + "…";
     /* Por correo no se reintenta solo: así nadie recibe la guía dos veces. */
     const res = await pedir(lead, MAGNET.porCorreo ? 0 : 2);
     avisarPaso("correo");
@@ -727,16 +727,17 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
 
   /* El aviso que sustituye al formulario cuando la guía va por correo. */
   function avisarEnviado(bien, boton) {
+    const cosa = MAGNET.palabra || "guía";
     const caja = boton.closest(".puertafoto__caja") || $("formNuevo");
     const d = document.createElement("div");
     d.className = "enviado" + (bien ? "" : " enviado--mal");
     d.setAttribute("role", "status");
     d.innerHTML = bien
       ? '<div class="enviado__ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>' +
-        '<p class="enviado__tit">¡Ya te envié la guía!</p>' +
+        '<p class="enviado__tit">¡Ya te envié la ' + cosa + '!</p>' +
         '<p class="enviado__txt">Revisa tu correo electrónico y también tu bandeja de spam.</p>'
       : '<div class="enviado__ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></div>' +
-        '<p class="enviado__tit">No pude enviarte la guía</p>' +
+        '<p class="enviado__tit">No pude enviarte la ' + cosa + '</p>' +
         '<p class="enviado__txt">Escríbeme por privado y te la mando personalmente a tu correo.</p>';
     caja.innerHTML = "";
     caja.appendChild(d);
@@ -1203,7 +1204,8 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
     }
     PASS = p;
     $("fClave").value = "";
-    DATOS = { magnets: res.magnets || [], leads: res.leads || [], vistas: res.vistas || {} };
+    DATOS = { magnets: res.magnets || [], leads: res.leads || [], vistas: res.vistas || {},
+              porCorreo: res.porCorreo || [] };
     $("pasoClave").hidden = true;
     $("pasoDentro").hidden = false;
     pintarPanel();
@@ -1212,7 +1214,7 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
   async function recargar() {
     const res = await pedir({ tipo: "panel", pass: PASS });
     if (res && res.ok) DATOS = { magnets: res.magnets || [], leads: res.leads || [],
-                                 vistas: res.vistas || {} };
+                                 vistas: res.vistas || {}, porCorreo: res.porCorreo || [] };
     pintarPanel();
   }
 
@@ -1553,20 +1555,20 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
 
   function pintarResumen(c) {
     const porMagnet = {};
-    const nuevo = titulo => {
-      const o = { titulo: titulo, abrio: 0 };
+    const nuevo = (titulo, codigo) => {
+      const o = { titulo: titulo, codigo: codigo, abrio: 0 };
       ESCALERA.forEach(k => { o[k] = 0; });
       return o;
     };
-    DATOS.magnets.forEach(m => { porMagnet[m.codigo] = nuevo(m.titulo); });
+    DATOS.magnets.forEach(m => { porMagnet[m.codigo] = nuevo(m.titulo, m.codigo); });
     Object.keys(DATOS.vistas || {}).forEach(k => {
-      if (!porMagnet[k]) porMagnet[k] = nuevo(k);
+      if (!porMagnet[k]) porMagnet[k] = nuevo(k, k);
       porMagnet[k].abrio = Number(DATOS.vistas[k]) || 0;
     });
     DATOS.leads.forEach(l => {
       const hasta = ESCALERA.indexOf(l.progreso || "correo");
       (l.magnets || []).forEach(cod => {
-        if (!porMagnet[cod]) porMagnet[cod] = nuevo(cod);
+        if (!porMagnet[cod]) porMagnet[cod] = nuevo(cod, cod);
         /* Quien llegó a un peldaño pasó por todos los de antes. */
         ESCALERA.forEach((k, i) => { if (i <= hasta) porMagnet[cod][k]++; });
       });
@@ -1590,20 +1592,26 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
     if (!filas.length) h += '<p class="vacio">Todavía no hay datos.</p>';
 
     filas.forEach(f => {
+      /* Lo que va por correo no se lee aquí: no se puede saber si lo
+         empezaron, por dónde iban ni si lo terminaron. Esos pasos no
+         se enseñan, para no dar números que no son verdad. */
+      const SIN_LECTURA = ["empezo", "mitad", "final", "tocoagendar"];
+      const pels = (DATOS.porCorreo || []).indexOf(f.codigo) !== -1
+        ? PELDANOS.filter(p => SIN_LECTURA.indexOf(p[0]) === -1) : PELDANOS;
       /* El peldaño donde más gente se queda por el camino. */
       let peor = -1, caidaPeor = 0;
-      for (let i = 1; i < PELDANOS.length; i++) {
-        const de = f[PELDANOS[i - 1][0]], a = f[PELDANOS[i][0]];
+      for (let i = 1; i < pels.length; i++) {
+        const de = f[pels[i - 1][0]], a = f[pels[i][0]];
         if (de > 0 && de - a > caidaPeor) { caidaPeor = de - a; peor = i; }
       }
       h += '<div class="emb"><div class="emb__t">' + esc(f.titulo) + '</div>';
-      PELDANOS.forEach((pel, i) => {
+      pels.forEach((pel, i) => {
         const n = f[pel[0]];
-        const arriba = i === 0 ? n : f[PELDANOS[0][0]];
+        const arriba = i === 0 ? n : f[pels[0][0]];
         /* Con cero no se pinta nada: una rayita mínima haría creer
            que algo llegó hasta ahí. */
         const ancho = (n > 0 && arriba > 0) ? Math.max(2, Math.round(n / arriba * 100)) : 0;
-        const antes = i === 0 ? null : f[PELDANOS[i - 1][0]];
+        const antes = i === 0 ? null : f[pels[i - 1][0]];
         const cae = antes !== null && antes > 0 ? antes - n : 0;
         h += '<div class="pel' + (i === peor ? " pel--fuga" : "") + '">' +
           '<div class="pel__barra"><i style="width:' + ancho + '%"></i></div>' +
