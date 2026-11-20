@@ -203,6 +203,13 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
 .marco-video{position:relative; width:100%; aspect-ratio:16/9;
   background:var(--hondo); border-radius:16px; overflow:hidden}
 .marco-video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+/* Video grabado en vertical (como un reel): se ve de pie y lo más
+   grande que quepa en la pantalla, sin tener que abrirlo aparte. */
+.marco-video--vertical{aspect-ratio:9/16; width:min(100%, calc((100vh - 32px) * 9 / 16));
+  width:min(100%, calc((100dvh - 32px) * 9 / 16)); margin:0 auto}
+@media(max-width:619px){
+  .marco-video--vertical{width:calc(100% + 44px); margin:0 -22px; border-radius:0}
+}
 .marco-doc{width:100%; height:min(72dvh,640px); border:1px solid var(--hueso);
   border-radius:16px; background:var(--salvia)}
 .marco-foto{display:block; width:100%; height:auto; border-radius:16px;
@@ -819,7 +826,7 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
     const id = idDeYouTube(m.fuente);
     if (!id) { visor.innerHTML = '<p class="err">Este video no está bien puesto.</p>'; return; }
     const marco = document.createElement("div");
-    marco.className = "marco-video";
+    marco.className = "marco-video" + (m.vertical ? " marco-video--vertical" : "");
     marco.innerHTML = '<div id="tocadiscos"></div>';
     visor.appendChild(marco);
 
@@ -1114,9 +1121,10 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
      el botón sale ahí, nunca antes. */
   const SIN_CORREO = {
     "salud": {
-      titulo: "Salud natural: lo que hay en el agua de tu casa",
-      texto: "Mira el video completo. Al final te dejo el botón para agendar tu videollamada gratuita.",
+      titulo: "Las 6 cosas que dañan tu salud a largo plazo sin que lo sepas",
+      texto: "",
       tipo: "youtube",
+      vertical: true,
       fuente: "https://youtu.be/4dvgVjVRvCw",
       agendarEn: 613,
       cierret: "Agenda tu videollamada gratuita",
