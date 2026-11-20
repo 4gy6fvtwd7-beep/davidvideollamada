@@ -617,6 +617,11 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
     } else {
       mostrarPantalla("cliente");
     }
+    if (m.sinCorreo) {
+      pedir({ tipo: "abrio", codigo: m.codigo }, 0);
+      entregar(m);
+      return;
+    }
     prepararPuerta();
     /* Se cuenta que alguien abrió el enlace, antes de pedirle
        nada. Sin esto no se sabe cuánta gente llega y se va sin
@@ -845,9 +850,10 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
                 const donde = "Minuto " + minuto(va) + " de " + minuto(d);
                 if (parte > 0.45) avisarPaso("mitad", donde);
                 else avisarDonde(donde);
-                if (parte > 0.92) { clearInterval(reloj); alFinal(donde); }
+                const llego = m.agendarEn ? va >= m.agendarEn : parte > 0.92;
+                if (llego) { clearInterval(reloj); alFinal(donde); }
               } catch (e) { clearInterval(reloj); }
-            }, 2000);
+            }, m.agendarEn ? 500 : 2000);
           }
         }
       });
@@ -1102,6 +1108,24 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
   /* ──────────────────────────────────────────────────────────
      ARRANQUE
      ────────────────────────────────────────────────────────── */
+  /* Videos que se ven sin dejar el correo. Van aqui y no en la hoja:
+     asi no hace falta tocar el Apps Script. "agendarEn" es el segundo
+     exacto del video donde se dice "agenda tu videollamada acá abajo":
+     el botón sale ahí, nunca antes. */
+  const SIN_CORREO = {
+    "salud": {
+      titulo: "Salud natural: lo que hay en el agua de tu casa",
+      texto: "Mira el video completo. Al final te dejo el botón para agendar tu videollamada gratuita.",
+      tipo: "youtube",
+      fuente: "https://youtu.be/4dvgVjVRvCw",
+      agendarEn: 613,
+      cierret: "Agenda tu videollamada gratuita",
+      cierrep: "25 minutos para revisar el agua de tu casa, sin compromiso de compra.",
+      cierreb: "Agenda mi videollamada",
+      activo: true
+    }
+  };
+
   async function arrancar() {
     conectarPuerta();
     conectarPanel();
@@ -1109,6 +1133,10 @@ body:has(#puertaFoto:not([hidden])) .llave{top:10px; bottom:auto}
 
     const codigo = codigoDelEnlace();
     if (!codigo) { mostrarPantalla("vacio"); return; }
+    if (SIN_CORREO[codigo]) {
+      pintarMagnet(Object.assign({ codigo: codigo, sinCorreo: true }, SIN_CORREO[codigo]));
+      return;
+    }
 
     const res = await pedir({ tipo: "magnet", codigo: codigo });
     if (res && res.ok && res.magnet) pintarMagnet(res.magnet);
